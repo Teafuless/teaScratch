@@ -51,4 +51,4 @@ class teandedScratch {
         return Math.atan(xr/yr) + res * 180
     }
   }
-Scratch.extensions.register(new turnTea());
+Scratch.extensions.register(new teandedScratch());
