@@ -18,8 +18,8 @@ class turnTea {
         ]
       };
     }
-    turnTea(args) {
-      return args.TEXT+" - чай"
+    turnInToTea({TEXT}) {
+      return TEXT+" - чай"
     }
   }
-  Scratch.extensions.register(new turnTea());
+Scratch.extensions.register(new turnTea());
