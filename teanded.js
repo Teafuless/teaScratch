@@ -21,19 +21,19 @@ class teandedScratch {
             text: 'Получить направление позиции X: [X], Y: [Y] с симуляцией позиции X: [XX], Y: [YY]',
             arguments: {
               X: {
-                type: Scratch.ArgumentType.STRING,
+                type: Scratch.ArgumentType.NUMBER,
                 defaultValue: '0'
               },
               Y: {
-                type: Scratch.ArgumentType.STRING,
+                type: Scratch.ArgumentType.NUMBER,
                 defaultValue: '0'
               },
               XX: {
-                type: Scratch.ArgumentType.STRING,
+                type: Scratch.ArgumentType.NUMBER,
                 defaultValue: '50'
               },
               YY: {
-                type: Scratch.ArgumentType.STRING,
+                type: Scratch.ArgumentType.NUMBER,
                 defaultValue: '50'
               }
             }
@@ -45,8 +45,8 @@ class teandedScratch {
       return TEXT+" - чай"
     }
     getPosDirection({X,Y,XX,YY}){
-        let xr = X - XX
-        let yr = Y - YY
+        let xr = XX - X
+        let yr = YY - Y
         let res = (!Y>YY) ? 1 : 0
         let ress = res * 180
         let res2 = Math.atan(xr/yr)
