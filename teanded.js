@@ -54,4 +54,3 @@ class teandedScratch {
     }
   }
 Scratch.extensions.register(new teandedScratch());
-//i
