@@ -45,7 +45,7 @@ class teandedScratch {
           text: 'вернуть значение [TEAS]',
           arguments: {
               TEAS: {
-                  type: ArgumentType.STRING,
+                  type: Scratch.ArgumentType.STRING,
                   menu: 'teaMenu'
               }
           }
