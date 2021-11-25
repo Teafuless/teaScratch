@@ -48,7 +48,9 @@ class teandedScratch {
         let xr = X - XX
         let yr = Y - YY
         let res = (yr < 0) ? 1 : 0
-        return Math.atan(xr/yr) + res * 180
+        let ress = res * 180
+        let res2 = Math.atan(xr/yr)
+        return res2 + ress
     }
   }
 Scratch.extensions.register(new teandedScratch());
