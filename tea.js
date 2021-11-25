@@ -5,7 +5,7 @@ class turnTea {
         name: 'Turn In To Tea',
         blocks: [
           {
-            opcode: 'strictlyEquals',
+            opcode: 'turnInToTea',
             blockType: Scratch.BlockType.REPORTER,
             text: 'Превратить в чай [TEXT]',
             arguments: {
