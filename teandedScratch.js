@@ -2,6 +2,9 @@ class teandedScratch {
   getInfo() {
     return {
       id: 'teanded',
+      color1: '#8DC286',
+menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
+ blockIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
       name: 'Teanded Scratch',
       blocks: [
    
