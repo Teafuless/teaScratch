@@ -379,8 +379,8 @@ stepen({NUM1,NUM2}){
     getAllBefore({SYMBOL,TEXT,IGNORE}){
     return String(TEXT).substr(0,String(TEXT).indexOf(String(SYMBOL))+IGNORE)
   }
-  RegExpS({REGEXP}){
-    return RegExp(String(REGEXP))
+  RegExpS({REGEXP,FLAGS}){
+    return RegExp(String(REGEXP),FLAGS)
 }
   splitText({SEPARATOR,TEXT}) {
    return String(TEXT).split(String(SEPARATOR))
