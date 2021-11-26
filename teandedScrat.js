@@ -16,6 +16,7 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
           text: 'Скрыть спрайт',
           arguments: {
         }
+        }
       ],
       menus: {
         teaMenu: {
@@ -24,8 +25,8 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
     }
     };
   }
-  hideSprite {
-    this.visible = false;
+  hideSprite() {
+ Blockly.Blocks['looks_hide']
   }
 }
 Scratch.extensions.register(new teandedScratch());
