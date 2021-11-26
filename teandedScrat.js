@@ -21,6 +21,17 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
             }
           }
         },
+        {
+          opcode: 'RegExpS',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'RegExp [REGEXP]',
+          arguments: {
+            REGEXP: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: ''
+            }
+          }
+        },
          {
           opcode: 'randomText',
           blockType: Scratch.BlockType.REPORTER,
