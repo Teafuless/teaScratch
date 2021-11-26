@@ -1,5 +1,4 @@
 class teandedScratch {
-  
   getInfo() {
     return {
       
