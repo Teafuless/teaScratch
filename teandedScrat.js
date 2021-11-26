@@ -16,6 +16,7 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
           text: 'Скрыть спрайт',
           arguments: {
         }
+      }
       ],
       menus: {
         teaMenu: {
@@ -24,7 +25,7 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
     }
     };
   }
-  hideSprite {
+  hideSprite (){
     this.visible = false;
   }
 }
