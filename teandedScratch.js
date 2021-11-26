@@ -144,7 +144,7 @@ res = TEXT.replace(res1, NEW);
     return res 
   }
   replaceTimes({TEXT,WORD,NEW,HM}) {
-     res = TEXT.replace(WORD,NEW)
+    let res = TEXT.replace(WORD,NEW)
     for (let i = 0;i!=HM+1;i++) {
    res = res.replace(WORD,NEW)
     }
