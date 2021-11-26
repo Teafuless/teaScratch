@@ -15,18 +15,22 @@ Teanded Scratch - это дополнение для [TurboWarp](https://turbowa
 Так и появился Teanded Scratch.
 
 ---
-Данное дополнение доступно по ссылке **`https://gitcdn.link/cdn/Teafuless/teaScratch/version/teandedScrat.js`**<br/>
+Данное дополнение доступно по ссылке **`https://gitcdn.link/cdn/Teafuless/teaScratch/version/teandedScrat.js`** или **`https://raw.githack.com/Teafuless/teaScratch/version/teandedScrat.js`** <br/>
 Вместо `version` поставьте необходимую Вам версию, после чего добавьте дополнение по этой ссылке в проект, через "Пользовательские Дополнения".<br/>
 Например:
 ```js
-https://gitcdn.link/cdn/Teafuless/teaScratch/v0.2.5/teandedScrat.js
+https://gitcdn.link/cdn/Teafuless/teaScratch/v0.5.2/teandedScrat.js
+//или
+https://raw.githack.com/Teafuless/teaScratch/v0.5.2/teandedScrat.js
 ```
 Или запустите его через экспериментальную песочницу:<br/>
 ```js
-https://turbowarp.org/editor?extensions=ссылка-на-дополнение
+https://turbowarp.org/editor?extension=ссылка-на-дополнение
 ```
 Например:
 ```js
-https://turbowarp.org/editor?extensions=https://gitcdn.link/cdn/Teafuless/teaScratch/v0.2.5/teandedScrat.js
+https://turbowarp.org/editor?extension=https://gitcdn.link/cdn/Teafuless/teaScratch/v0.5.2/teandedScrat.js
+//или
+https://turbowarp.org/editor?extension=https://raw.githack.com/Teafuless/teaScratch/v0.5.2/teandedScrat.js
 ```
 Предложить свои идеи: <https://oqhszi2ha88.typeform.com/to/DbB4xulZ>
