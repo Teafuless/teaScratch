@@ -25,11 +25,15 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
          {
           opcode: 'onSomething',
           blockType: Scratch.BlockType.HAT,
-          text: 'Если условие [CONDITION] будет верно',
+          text: 'Если условие [CONDITION] будет верно, ждать пока условие не будет верно: [WAIT]',
           arguments: {
             CONDITION: {
               type: Scratch.ArgumentType.BOOLEAN
-            }
+            },
+            WAIT: {
+                  type: Scratch.ArgumentType.STRING,
+                  menu: 'waitMenu'
+              }
           }
         },
         {
@@ -332,6 +336,9 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
       menus: {
         teaMenu: {
             items: ['teaful','tealess','teafuless']
+        },
+        waitMenu: {
+            items: ['true','false']
         }
     }
     };
@@ -411,14 +418,18 @@ stepen({NUM1,NUM2}){
   evalSSS({EVAL}){
    return eval(EVAL)
   }
-  onSomething({CONDITION}) {
+  onSomething({CONDITION,WAIT}) {
     this.update()
     if (CONDITION) {
       return true
   } else { 
     return false 
   }
+    if (WAIT){
+      while (CONDITION) {
+      }
     return false
+    } else { return false }
   }
 }
 Scratch.extensions.register(new teandedScratch());
