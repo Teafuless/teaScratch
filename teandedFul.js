@@ -19,6 +19,67 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
             }
           }
         },
+         {
+          opcode: 'replaceIn',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Заменить [WORD] в [TEXT] на [NEW]',
+          arguments: {
+            TEXT: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'Teaful'
+            },
+            WORD: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'ful'
+            },
+            NEW: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: ''
+            }
+          }
+        },
+        {
+          opcode: 'replaceAll',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Заменить все [WORD] в [TEXT] на [NEW]',
+          arguments: {
+            TEXT: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'Teaful'
+            },
+            WORD: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'ful'
+            },
+            NEW: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: ''
+            }
+          }
+        },
+        {
+          opcode: 'replaceTimes',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Заменить [WORD] в [TEXT] на [NEW], [HM] раз',
+          arguments: {
+            TEXT: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'Teaful'
+            },
+            WORD: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'ful'
+            },
+            NEW: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: ''
+            },
+            HM: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: '1'
+            }
+          }
+        },
         {
           opcode: 'getPosDirection',
           blockType: Scratch.BlockType.REPORTER,
@@ -72,6 +133,21 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
       let ress = res * 180
       let res2 = Math.atan(xr/yr)
       return res2 + ress
+  }
+  replaceIn({TEXT,WORD,NEW}) {
+   return TEXT.replace(WORD,NEW)
+  }
+  replaceAll({TEXT,WORD,NEW}) {
+    let res;
+var res1 = new RegExp(WORD, 'g');
+res = TEXT.replace(res1, NEW);
+    return res 
+  }
+  replaceTimes({TEXT,WORD,NEW,HM}) {
+     res = TEXT.replace(WORD,NEW)
+    for (let i = 0;i!=HM+1;i++) {
+   res = res.replace(WORD,NEW)
+    }
   }
   returnValue({TEAS}) {
 return TEAS
