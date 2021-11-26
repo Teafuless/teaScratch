@@ -300,6 +300,17 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
                   defaultValue: 'return 0'
               }
           }
+        },
+        {
+          opcode: 'evalSSS',
+          blockType: Scratch.BlockType.BOOLEAN,
+          text: 'get LOGIC eval [EVAL]',
+          arguments: {
+              EVAL: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'return 0'
+              }
+          }
         }
 
       ],
@@ -381,6 +392,9 @@ stepen({NUM1,NUM2}){
   }
   evalSS({EVAL}){
    eval(EVAL)
+  }
+  evalSSS({EVAL}){
+   return eval(EVAL)
   }
 }
 Scratch.extensions.register(new teandedScratch());
