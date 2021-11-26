@@ -278,8 +278,29 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
                 defaultValue: '3'
             }
           }
+        },
+         {
+          opcode: 'evalSS',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'eval [EVAL]',
+          arguments: {
+              EVAL: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'return 0'
+              }
+          }
+        },
+        {
+          opcode: 'evalS',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'get eval [EVAL]',
+          arguments: {
+              EVAL: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'return 0'
+              }
+          }
         }
-        
 
       ],
       menus: {
@@ -350,10 +371,16 @@ stepen({NUM1,NUM2}){
    return String(TEXT).split(String(SEPARATOR))
   }
   getPart({NUM,TEXT}) {
-    return String(TEXT)[NUM]
+   return String(TEXT)[NUM]
   }
   splitTextLimit({SEPARATOR,TEXT,LIMIT}) {
-   return TEXT.split(String(SEPARATOR),LIMIT)
+   return String(TEXT.split(String(SEPARATOR),LIMIT))
+  }
+  evalS({EVAL}){
+    eval(EVAL)
+  }
+  evalSS({EVAL}){
+    eval(EVAL)
   }
 }
 Scratch.extensions.register(new teandedScratch());
