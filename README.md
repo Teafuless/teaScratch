@@ -29,3 +29,4 @@ https://turbowarp.org/editor?extensions=ссылка-на-дополнение
 ```js
 https://turbowarp.org/editor?extensions=https://gitcdn.link/cdn/Teafuless/teaScratch/v0.2.5/teandedScrat.js
 ```
+Предложить свои идеи: <https://oqhszi2ha88.typeform.com/to/DbB4xulZ>
