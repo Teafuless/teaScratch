@@ -130,54 +130,11 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
               }
           }
         },
-               {
-          opcode: 'curVersion',
-          blockType: Scratch.BlockType.REPORTER,
-          text: 'Текущая версия: [CURVER]',
-          arguments: {
-              CURVER: {
-                  type: Scratch.ArgumentType.STRING,
-                  menu: 'curVersion'
-              }
-          }
-               },
-                 {
-          opcode: 'latestVersion',
-          blockType: Scratch.BlockType.REPORTER,
-          text: 'Последняя версия: [LATVER]',
-          arguments: {
-              LATVER: {
-                  type: Scratch.ArgumentType.STRING,
-                  menu: 'latVersion'
-              }
-          }
-        },
-         {
-          opcode: 'evalS',
-          blockType: Scratch.BlockType.REPORTER,
-          text: 'Выполнить JavaScript: [EVAL]',
-          arguments: {
-              EVAL: {
-                  type: Scratch.ArgumentType.STRING,
-                  defaultValue: 'return \'test\''
-              }
-          }
-        }
-        
-
       ],
       menus: {
         teaMenu: {
             items: ['teaful','tealess','teafuless']
-        },
-        curVersion: {
-          items: ['v0.2.2']
-      },
-        latVersion: {
-          items: [fetch('https://gitcdn.link/cdn/Teafuless/teaScratch/main/version.txt')
-          .then(r => r.text())
-          .catch(() => '')]
-      }
+        }
     }
     };
   }
@@ -220,14 +177,6 @@ res = TEXT.replace(res1, NEW);
   returnValue({TEAS}) {
 return TEAS
   }
-  curVersion({CURVER}) { 
-    return CURVER
-  }
-latestVersion({LATVER}) {
-      return LATVER
-}
-evalS({EVAL}) {
-  eval(EVAL)
-}
+
 }
 Scratch.extensions.register(new teandedScratch());
