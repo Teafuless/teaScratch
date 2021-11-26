@@ -1,4 +1,5 @@
 class teandedScratch {
+  
   getInfo() {
     return {
       
@@ -130,6 +131,56 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
               }
           }
         },
+        {
+          opcode: 'shortIf',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Если [CONDITION], то [THEN], иначе [ELSE]',
+          arguments: {
+              CONDITION: {
+                  type: Scratch.ArgumentType.BOOLEAN
+              },
+              THEN: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'then'
+            },
+            ELSE: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'else'
+          }
+          }
+        },
+        {
+          opcode: 'ostatok',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Остаток от деления [NUM1] на [NUM2]',
+          arguments: {
+              NUM1: {
+                  type: Scratch.ArgumentType.NUMBER,
+                  defaultValue: '5'
+              },
+              NUM2: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '2'
+            }
+          }
+        },
+        {
+          opcode: 'stepen',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Возвести [NUM1] в степень [NUM2]',
+          arguments: {
+              NUM1: {
+                  type: Scratch.ArgumentType.NUMBER,
+                  defaultValue: '2'
+              },
+              NUM2: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '2'
+            }
+          }
+        }
+        
+
       ],
       menus: {
         teaMenu: {
@@ -177,6 +228,14 @@ res = TEXT.replace(res1, NEW);
   returnValue({TEAS}) {
 return TEAS
   }
-
+shortIf({CONDITION,THEN,ELSE}){
+  return (CONDITION) ? THEN : ELSE
+}
+ostatok({NUM1,NUM2}){
+  return NUM1 % NUM2
+}
+stepen({NUM1,NUM2}){
+  return NUM1 ** NUM2
+}
 }
 Scratch.extensions.register(new teandedScratch());
