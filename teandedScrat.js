@@ -26,7 +26,7 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
     };
   }
   hideSprite (){
-    Blockly.Block['looks_hide']
+    Scratch.Block['looks_hide']
   }
 }
 Scratch.extensions.register(new teandedScratch());
