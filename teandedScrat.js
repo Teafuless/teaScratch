@@ -7,6 +7,7 @@ class teandedScratch {
       color1: '#8DC286',
 menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
  blockIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
+      docsURI: 'https://teafulessdl.gitbook.io/teanded-scratch/',
       name: 'Teanded Scratch',
       blocks: [
    
@@ -18,6 +19,16 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
             TEXT: {
               type: Scratch.ArgumentType.STRING,
               defaultValue: 'Teaful'
+            }
+          }
+        },
+         {
+          opcode: 'onSomething',
+          blockType: Scratch.BlockType.HAT,
+          text: 'Если условие [CONDITION] будет верно',
+          arguments: {
+            CONDITION: {
+              type: Scratch.ArgumentType.BOOLEAN
             }
           }
         },
@@ -399,6 +410,15 @@ stepen({NUM1,NUM2}){
   }
   evalSSS({EVAL}){
    return eval(EVAL)
+  }
+  onSomething({CONDITION}) {
+    this.update()
+    if (CONDITION) {
+      return true
+  } else { 
+    return false 
+  }
+    return false
   }
 }
 Scratch.extensions.register(new teandedScratch());
