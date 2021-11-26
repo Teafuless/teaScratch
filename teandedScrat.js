@@ -1,6 +1,8 @@
 class teandedScratch {
+  
   getInfo() {
     return {
+      
       id: 'teanded',
       color1: '#8DC286',
 menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
@@ -128,13 +130,57 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
                   menu: 'teaMenu'
               }
           }
+        },
+               {
+          opcode: 'curVersion',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Текущая версия: [CURVER]',
+          arguments: {
+              CURVER: {
+                  type: Scratch.ArgumentType.STRING,
+                  menu: 'curVersion'
+              }
+          }
+               },
+                 {
+          opcode: 'latestVersion',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Последняя версия: [LATVER]',
+          arguments: {
+              LATVER: {
+                  type: Scratch.ArgumentType.STRING,
+                  menu: 'latVersion'
+              }
+          }
+        },
+         {
+          opcode: 'evalS',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Выполнить JavaScript: [EVAL]',
+          arguments: {
+              EVAL: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'return \'test\''
+              }
+          }
         }
+        
 
       ],
       menus: {
         teaMenu: {
             items: ['teaful','tealess','teafuless']
-        }
+        },
+        curVersion: {
+          let version = 'v0.2.2'
+          items: [version]
+      },
+        latVersion: {
+         let ver = fetch('https://gitcdn.link/cdn/Teafuless/teaScratch/main/version.txt')
+      .then(r => r.text())
+      .catch(() => '');
+          items: [ver]
+      }
     }
     };
   }
@@ -177,6 +223,14 @@ res = TEXT.replace(res1, NEW);
   returnValue({TEAS}) {
 return TEAS
   }
+  curVersion({CURVER}) { 
+    return CURVER
+  }
+latestVersion({LATVER}) {
+      return LATVER
+}
+evalS({EVAL}) {
+  eval(EVAL)
+}
 }
 Scratch.extensions.register(new teandedScratch());
-//Author - Teaful#0249
