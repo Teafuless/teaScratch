@@ -172,14 +172,12 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
             items: ['teaful','tealess','teafuless']
         },
         curVersion: {
-          let version = 'v0.2.2'
-          items: [version]
+          items: ['v0.2.2']
       },
         latVersion: {
-         let ver = fetch('https://gitcdn.link/cdn/Teafuless/teaScratch/main/version.txt')
-      .then(r => r.text())
-      .catch(() => '');
-          items: [ver]
+          items: [fetch('https://gitcdn.link/cdn/Teafuless/teaScratch/main/version.txt')
+          .then(r => r.text())
+          .catch(() => '');]
       }
     }
     };
