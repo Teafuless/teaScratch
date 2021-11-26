@@ -177,7 +177,7 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
         latVersion: {
           items: [fetch('https://gitcdn.link/cdn/Teafuless/teaScratch/main/version.txt')
           .then(r => r.text())
-          .catch(() => '');]
+          .catch(() => '')]
       }
     }
     };
