@@ -1,4 +1,7 @@
-
+const Motion = require('../../src/blocks/scratch3_motion');
+const Runtime = require('../../src/engine/runtime');
+const Sprite = require('../../src/sprites/sprite.js');
+const RenderedTarget = require('../../src/sprites/rendered-target.js');
 
 class teandedScratch {
   
