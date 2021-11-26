@@ -1,5 +1,4 @@
 
-
 class teandedScratch {
   
   getInfo() {
@@ -430,14 +429,9 @@ stepen({NUM1,NUM2}){
   }
     return false
   }
-  test({}){
-        const rt = new Runtime();
-    const motion = new Motion(rt);
-    const sprite = new Sprite(null, rt);
-    const target = new RenderedTarget(sprite, rt);
-    const util = {target};
+  test{
     
-        motion.goToXY({X: 50, Y:50}, util);
+        motion.goToXY({X: 50, Y:50}, {target});
 
   }
 }
