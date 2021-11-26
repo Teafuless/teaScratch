@@ -20,6 +20,21 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
           }
         },
          {
+          opcode: 'randomText',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Выдать случайное слово [WORD] или [WORD2]',
+          arguments: {
+            WORD: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'Teaful'
+            },
+                        WORD2: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'Teafuless'
+            }
+          }
+        },
+         {
           opcode: 'replaceIn',
           blockType: Scratch.BlockType.REPORTER,
           text: 'Заменить [WORD] в [TEXT] на [NEW]',
@@ -149,6 +164,15 @@ res = TEXT.replace(res1, NEW);
    res = res.replace(WORD,NEW)
     }
     return res
+  }
+  randomText({WORD,WORD2}) {
+    function random(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+    
+    return (random(1,2)==1) ? WORD : WORD2
   }
   returnValue({TEAS}) {
 return TEAS
