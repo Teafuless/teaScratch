@@ -216,6 +216,41 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
                 defaultValue: '1'
             }
           }
+        },
+        {
+          opcode: 'splitText',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Разделить текст [TEXT], с разделителем [SEPARATOR]',
+          arguments: {
+              TEXT: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'крутой/чай'
+              },
+              SEPARATOR: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '/'
+            }
+          }
+          
+        },
+           {
+          opcode: 'splitTextLimit',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Разделить текст [TEXT], с разделителем [SEPARATOR], с ограничением в [LIMIT] частей текста',
+          arguments: {
+              TEXT: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'крутой/чай'
+              },
+              SEPARATOR: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '/'
+            },
+            LIMIT: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '3'
+            }
+          }
         }
         
 
@@ -280,6 +315,18 @@ stepen({NUM1,NUM2}){
   }
     getAllBefore({SYMBOL,TEXT,IGNORE}){
     return String(TEXT).substr(0,String(TEXT).indexOf(String(SYMBOL))+IGNORE)
+  }
+  RegExpS({REGEXP}){
+    return RegExp(String(REGEXP))
+}
+  splitText({SEPARATOR,TEXT}) {
+   return String(TEXT).split(String(SEPARATOR))
+  }
+  getPart({NUMBER,TEXT}) {
+    return String(TEXT)[NUMBER]
+  }
+  splitTextLimit({SEPARATOR,TEXT,LIMIT}) {
+   return TEXT.split(String(SEPARATOR),LIMIT)
   }
 }
 Scratch.extensions.register(new teandedScratch());
