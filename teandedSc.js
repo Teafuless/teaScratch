@@ -75,7 +75,7 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
               defaultValue: ''
             },
             HM: {
-              type: Scratch.ArgumentType.STRING,
+              type: Scratch.ArgumentType.NUMBER,
               defaultValue: '1'
             }
           }
