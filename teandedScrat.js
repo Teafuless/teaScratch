@@ -48,6 +48,14 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
           }
         },
          {
+          opcode: 'test',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'ТЕСТ НОВОЙ ФУНКЦИИ',
+          arguments: {
+          
+          }
+        },
+         {
           opcode: 'randomText',
           blockType: Scratch.BlockType.REPORTER,
           text: 'Выдать случайное слово [WORD] или [WORD2]',
@@ -419,6 +427,10 @@ stepen({NUM1,NUM2}){
     return false 
   }
     return false
+  }
+  test({}){
+        motion.goToXY({X: 50, Y:50}, util);
+
   }
 }
 Scratch.extensions.register(new teandedScratch());
