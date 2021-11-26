@@ -380,7 +380,7 @@ stepen({NUM1,NUM2}){
     return eval(EVAL)
   }
   evalSS({EVAL}){
-   return eval(EVAL)
+   eval(EVAL)
   }
 }
 Scratch.extensions.register(new teandedScratch());
