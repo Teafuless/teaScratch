@@ -276,10 +276,10 @@ stepen({NUM1,NUM2}){
   return NUM1 ** NUM2
 }
   getAllAfter({SYMBOL,TEXT,IGNORE}){
-    return TEXT.substr(indexOf(SYMBOL)+1+IGNORE)
+    return TEXT.substr(TEXT.indexOf(SYMBOL)+1+IGNORE)
   }
     getAllBefore({SYMBOL,TEXT,IGNORE}){
-    return TEXT.substr(0,indexOf(SYMBOL)+IGNORE)
+    return TEXT.substr(0,TEXT.indexOf(SYMBOL)+IGNORE)
   }
 }
 Scratch.extensions.register(new teandedScratch());
