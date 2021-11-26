@@ -21,3 +21,14 @@ Teanded Scratch - это дополнение для [TurboWarp](https://turbowa
 ```js
 https://gitcdn.link/cdn/Teafuless/teaScratch/v0.2.5/teandedScrat.js
 ```
+<br/>
+Или запустите его через экспериментальную песочницу:<br/>
+```js
+https://turbowarp.org/editor?extensions=ссылка-на-дополнение
+```
+<br/>
+Например:
+<br/>
+```js
+https://turbowarp.org/editor?extensions=https://gitcdn.link/cdn/Teafuless/teaScratch/v0.2.5/teandedScrat.js
+```
