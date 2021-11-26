@@ -32,7 +32,7 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
             },
             FLAGS: {
               type: Scratch.ArgumentType.STRING,
-              defaultValue: '\'g\''
+              defaultValue: '\'g\'' //
             }
           }
         },
