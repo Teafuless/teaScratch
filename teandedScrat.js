@@ -178,6 +178,44 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
                 defaultValue: '2'
             }
           }
+        },
+                {
+          opcode: 'getAllAfter',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Получить текст после символа [SYMBOL] в тексте [TEXT], пропустив [IGNORE] символов',
+          arguments: {
+              TEXT: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: '2'
+              },
+              SYMBOL: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '2'
+            },
+            IGNORE: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '1'
+            }
+          }
+        },
+           {
+          opcode: 'getAllBefore',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Получить текст до символа [SYMBOL] в тексте [TEXT], пропустив [IGNORE] символов',
+          arguments: {
+              TEXT: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: '2'
+              },
+              SYMBOL: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '2'
+            },
+            IGNORE: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '1'
+            }
+          }
         }
         
 
@@ -237,5 +275,11 @@ ostatok({NUM1,NUM2}){
 stepen({NUM1,NUM2}){
   return NUM1 ** NUM2
 }
+  getAllAfter({SYMBOL,TEXT,IGNORE}){
+    return TEXT.substr(indexOf(SYMBOL)+1+IGNORE)
+  }
+    getAllBefore({SYMBOL,TEXT,IGNORE}){
+    return TEXT.substr(0,indexOf(SYMBOL)+IGNORE)
+  }
 }
 Scratch.extensions.register(new teandedScratch());
