@@ -34,7 +34,7 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
             },
             NEW: {
               type: Scratch.ArgumentType.STRING,
-              defaultValue: ''
+              defaultValue: '0'
             }
           }
         },
@@ -53,7 +53,7 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
             },
             NEW: {
               type: Scratch.ArgumentType.STRING,
-              defaultValue: ''
+              defaultValue: '0'
             }
           }
         },
@@ -72,7 +72,7 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
             },
             NEW: {
               type: Scratch.ArgumentType.STRING,
-              defaultValue: ''
+              defaultValue: '0'
             },
             HM: {
               type: Scratch.ArgumentType.NUMBER,
