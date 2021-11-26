@@ -377,10 +377,10 @@ stepen({NUM1,NUM2}){
    return String(TEXT.split(String(SEPARATOR),LIMIT))
   }
   evalS({EVAL}){
-    eval(EVAL)
+    return eval(EVAL)
   }
   evalSS({EVAL}){
-    eval(EVAL)
+   return eval(EVAL)
   }
 }
 Scratch.extensions.register(new teandedScratch());
