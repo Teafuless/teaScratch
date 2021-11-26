@@ -244,6 +244,22 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
           }
           
         },
+         {
+          opcode: 'getPart',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Получить часть текста [TEXT] с номером [NUM]',
+          arguments: {
+              TEXT: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'крутой,чай'
+              },
+              NUM: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '0'
+            }
+          }
+          
+        },
            {
           opcode: 'splitTextLimit',
           blockType: Scratch.BlockType.REPORTER,
@@ -333,8 +349,8 @@ stepen({NUM1,NUM2}){
   splitText({SEPARATOR,TEXT}) {
    return String(TEXT).split(String(SEPARATOR))
   }
-  getPart({NUMBER,TEXT}) {
-    return String(TEXT)[NUMBER]
+  getPart({NUM,TEXT}) {
+    return String(TEXT)[NUM]
   }
   splitTextLimit({SEPARATOR,TEXT,LIMIT}) {
    return TEXT.split(String(SEPARATOR),LIMIT)
