@@ -148,6 +148,7 @@ res = TEXT.replace(res1, NEW);
     for (let i = 0;i!=HM+1;i++) {
    res = res.replace(WORD,NEW)
     }
+    return res
   }
   returnValue({TEAS}) {
 return TEAS
