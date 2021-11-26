@@ -24,11 +24,15 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
         {
           opcode: 'RegExpS',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'RegExp [REGEXP]',
+          text: 'RegExp [REGEXP], flags: [FLAGS]',
           arguments: {
             REGEXP: {
               type: Scratch.ArgumentType.STRING,
-              defaultValue: ''
+              defaultValue: '\[tea\]'
+            },
+            FLAGS: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: '\'g\''
             }
           }
         },
