@@ -1,3 +1,9 @@
+goog.provide('Blockly.Blocks.looks');
+
+goog.require('Blockly.Blocks');
+goog.require('Blockly.Colours');
+goog.require('Blockly.constants');
+goog.require('Blockly.ScratchBlocks.VerticalExtensions');
 class teandedScratch {
   getInfo() {
     return {
@@ -25,7 +31,7 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
     };
   }
   hideSprite (){
-    Scratch.Block['looks_hide']
+    Blockly.block['looks_hide']
   }
 }
 Scratch.extensions.register(new teandedScratch());
