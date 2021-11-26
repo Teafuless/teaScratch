@@ -49,13 +49,65 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
           }
         },
          {
-          opcode: 'test',
-          blockType: Scratch.BlockType.REPORTER,
-          text: 'Получить эффект',
+          opcode: 'newVar',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'Создать переменную [NAME]',
           arguments: {
-          TEST: {
+          NAME: {
               type: Scratch.ArgumentType.STRING,
-              defaultValue: '0' //
+              defaultValue: 'Tea' //
+            }
+          }
+        },
+{
+          opcode: 'getVar',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Получить значение переменной [NAME]',
+          arguments: {
+          NAME: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'Tea' //
+            }
+          }
+        }, 
+{
+          opcode: 'getLogicVar',
+          blockType: Scratch.BlockType.BOOLEAN,
+          text: 'Получить логическое значение переменной [NAME]',
+          arguments: {
+          NAME: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'Tea' //
+            }
+          }
+        }, 
+{
+          opcode: 'setVar',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'Задать переменной [NAME] значение [VALUE]',
+          arguments: {
+          NAME: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'Tea' //
+            },
+VALUE: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'cool' //
+            }
+          }
+        },
+{
+          opcode: 'setLogicVar',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'Задать переменной [NAME] логическое значение [VALUE]',
+          arguments: {
+          NAME: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'Tea' //
+            },
+VALUE: {
+              type: Scratch.ArgumentType.BOOLEAN,
+              defaultValue: 'cool' //
             }
           }
         },
@@ -432,8 +484,21 @@ stepen({NUM1,NUM2}){
   }
     return false
   }
-geteffect({TEST}){
- return effects.color
+newVar({NAME}){
+globalThis[NAME] = 0
 }
+getVar({NAME}){
+globalThis[NAME]
+}
+setVar({NAME,VALUE}){
+globalThis[NAME] = VALUE
+}
+getLogicVar({NAME}){
+globalThis[NAME]
+}
+setLogicVar({NAME,VALUE}){
+globalThis[NAME] = VALUE
+}
+
 }
 Scratch.extensions.register(new teandedScratch());
