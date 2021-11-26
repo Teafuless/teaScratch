@@ -50,10 +50,13 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
         },
          {
           opcode: 'test',
-          blockType: Scratch.BlockType.COMMAND,
-          text: 'ТЕСТ НОВОЙ ФУНКЦИИ',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Получить эффект',
           arguments: {
-          
+          TEST: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: '0' //
+            }
           }
         },
          {
@@ -429,10 +432,8 @@ stepen({NUM1,NUM2}){
   }
     return false
   }
-  test(){
-    
-        motion.goToXY({X: 50, Y:50}, {target});
-
-  }
+geteffect({TEST}){
+ return effects.color
+}
 }
 Scratch.extensions.register(new teandedScratch());
