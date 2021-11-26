@@ -1,9 +1,10 @@
+
+class teandedScratch {
 goog.provide('Blockly.Blocks.looks');
 goog.require('Blockly.Blocks');
 goog.require('Blockly.Colours');
 goog.require('Blockly.constants');
 goog.require('Blockly.ScratchBlocks.VerticalExtensions');
-class teandedScratch {
   getInfo() {
     return {
       
