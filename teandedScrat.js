@@ -626,36 +626,6 @@ VALUE: {
                   defaultValue: 'cool'
               }
           }
-        },
-        {
-          opcode: 'tryCatch',
-          blockType: Scratch.BlockType.REPORTER,
-          text: 'try \{[TRY]\} catch\(err\) \{ [CATCH] \}',
-          arguments: {
-              TRY: {
-                  type: Scratch.ArgumentType.STRING,
-                  defaultValue: 'cool.tea(f)'
-              },
-            CATCH: {
-                  type: Scratch.ArgumentType.STRING,
-                  defaultValue: 'error'
-              }
-          }
-        },
-         {
-          opcode: 'tryCatchB',
-          blockType: Scratch.BlockType.COMMAND,
-          text: 'try \{[TRY]\} catch\(err\) \{ [CATCH] \}',
-          arguments: {
-              TRY: {
-                  type: Scratch.ArgumentType.STRING,
-                  defaultValue: 'cool.tea(f)'
-              },
-            CATCH: {
-                  type: Scratch.ArgumentType.STRING,
-                  defaultValue: 'error'
-              }
-          }
         }
       ],
       menus: {
@@ -775,7 +745,7 @@ newObject({NAME}) {
     globalThis[NAME].unshift(VALUE)
   }
   getObj({NAME,NUM}) {
-    globalThis[NAME][NUM]
+    return globalThis[NAME][NUM]
   }
   editObj({NAME,NUM,VALUE}){
     globalThis[NAME][NUM] = [VALUE]
@@ -787,10 +757,10 @@ newObject({NAME}) {
     globalThis[NAME].pop
   }
   objLength({NAME}){
-    globalThis[NAME].length
+    return globalThis[NAME].length
   }
   indexOfObj({NAME,VALUE}){
-    globalThis[NAME].indexOf([VALUE])
+    return globalThis[NAME].indexOf([VALUE])
   }
   newMap({NAME}){
     globalThis[NAME] = new Map()
@@ -799,10 +769,10 @@ newObject({NAME}) {
   globalThis[NAME].set(KEY,VALUE)
   }
   mapGet({NAME,KEY}){
- globalThis[NAME].get(KEY)
+ return globalThis[NAME].get(KEY)
   }
   mapHas({NAME,KEY}){
-  globalThis[NAME].has(KEY)
+  return globalThis[NAME].has(KEY)
  }
   mapDelete({NAME,KEY}){
   globalThis[NAME].delete(KEY)
@@ -811,27 +781,14 @@ newObject({NAME}) {
     globalThis[NAME].clear()
   }
   mapSize({NAME}){
-  globalThis[NAME].size
+  return globalThis[NAME].size
   }
   mapKeys({NAME}){
-    globalThis[NAME].keys()
+     return globalThis[NAME].keys()
   }
   mapValues({NAME}){
-    globalThis[NAME].values()
+    return globalThis[NAME].values()
   }
-  tryCatch({TRY,CATCH}){
-    try {
-      return eval TRY
-    } catch(err){
-      globalThis[CATCH] = String(err)
-    }
-  }
-    tryCatchB({TRY,CATCH}){
-    try {
-      eval TRY
-    } catch(err){
-      globalThis[CATCH] = String(err)
-    }
-  }
+
 }
 Scratch.extensions.register(new teandedScratch());
