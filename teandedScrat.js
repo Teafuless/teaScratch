@@ -631,6 +631,17 @@ VALUE: {
                   defaultValue: 'cool'
               }
           }
+        },
+              {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'да [TEXT]',
+          arguments: {
+              TEXT: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              }
+          }
         }
       ],
       menus: {
@@ -794,6 +805,8 @@ newObject({NAME}) {
   mapValues({NAME}){
     return globalThis[NAME].values()
   }
-
+  test({TEXT}){
+    return TEXT
+  }
 }
 Scratch.extensions.register(new teandedScratch());
