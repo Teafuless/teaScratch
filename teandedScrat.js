@@ -390,25 +390,8 @@ VALUE: {
                   defaultValue: 'return 0'
               }
           }
-        },
-        {
-                    opcode: 'imgBlock',
-                    blockType: Scratch.BlockType.COMMAND,
-                    text: 'Картинка: [IMG]',
-                    arguments: {
-                        IMG: {
-                            type: Scratch.ArgumentType.IMAGE,
-                            dataURI: blockIconURI
-                        }
-                    }
-                },
-        {
-                    opcode: 'imgBlock',
-                    blockType: Scratch.BlockType.BOOLEAN,
-                    text: 'Это сцена? (тест)',
-                    arguments: {
-                    }
-                }
+        }
+        
 
       ],
       menus: {
@@ -517,12 +500,5 @@ return globalThis[NAME]
 setLogicVar({NAME,VALUE}){
 globalThis[NAME] = VALUE
 }
-    stageCheck () {
-        const stage = this.runtime.getTargetForStage();
-        return stage ? stage.getName() : false;
-    }
-      imgBlock () {
-        return;
-    }
 }
 Scratch.extensions.register(new teandedScratch());
