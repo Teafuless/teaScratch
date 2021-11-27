@@ -488,13 +488,13 @@ newVar({NAME}){
 globalThis[NAME] = 0
 }
 getVar({NAME}){
-globalThis[NAME]
+return globalThis[NAME]
 }
 setVar({NAME,VALUE}){
 globalThis[NAME] = VALUE
 }
 getLogicVar({NAME}){
-globalThis[NAME]
+return globalThis[NAME]
 }
 setLogicVar({NAME,VALUE}){
 globalThis[NAME] = VALUE
