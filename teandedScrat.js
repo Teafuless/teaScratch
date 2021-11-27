@@ -634,12 +634,12 @@ VALUE: {
         },
               {
           opcode: 'test',
-          blockType: Scratch.BlockType.BUTTON,
+          blockType: Scratch.BlockType.LOOP,
           text: 'да [TEXT]',
           arguments: {
               TEXT: {
-                  type: Scratch.ArgumentType.STRING,
-                  defaultValue: 'cool'
+                  type: Scratch.ArgumentType.ANGLE,
+                  defaultValue: '0'
               }
           }
         }
