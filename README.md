@@ -33,4 +33,11 @@ https://turbowarp.org/editor?extension=https://gitcdn.link/cdn/Teafuless/teaScra
 //или
 https://turbowarp.org/editor?extension=https://raw.githack.com/Teafuless/teaScratch/v0.5.2/teandedScrat.js
 ```
+---
+Документацию можно найти в дополнении или по ссылке <https://teafulessdl.gitbook.io/teanded-scratch/>
+Краткий список функций:
+![image](https://user-images.githubusercontent.com/95038883/143675371-5379a3aa-e5ae-4e31-a800-450f2002c674.png)
+![image](https://user-images.githubusercontent.com/95038883/143675398-af7adada-68f7-45f7-b22b-4f8716783ce6.png)
+
+---
 Предложить свои идеи: <https://oqhszi2ha88.typeform.com/to/DbB4xulZ>
