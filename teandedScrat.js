@@ -634,7 +634,7 @@ VALUE: {
         },
               {
           opcode: 'test',
-          blockType: Scratch.BlockType.BUTTON,
+          blockType: Scratch.BlockType.COMMAND,
           text: 'да [TEXT]',
           arguments: {
               TEXT: {
@@ -806,7 +806,7 @@ newObject({NAME}) {
     return globalThis[NAME].values()
   }
   test({TEXT}){
-    return TEXT
+   runtime.ext_scratch3_motion._moveSteps(50, target);
   }
 }
 Scratch.extensions.register(new teandedScratch());
