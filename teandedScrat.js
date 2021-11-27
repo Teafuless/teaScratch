@@ -626,36 +626,6 @@ VALUE: {
                   defaultValue: 'cool'
               }
           }
-        },
-        {
-          opcode: 'tryCatch',
-          blockType: Scratch.BlockType.REPORTER,
-          text: 'try \{[TRY]\} catch\(err\) \{ [CATCH] \}',
-          arguments: {
-              TRY: {
-                  type: Scratch.ArgumentType.STRING,
-                  defaultValue: 'cool.tea(f)'
-              },
-            CATCH: {
-                  type: Scratch.ArgumentType.STRING,
-                  defaultValue: 'error'
-              }
-          }
-        },
-         {
-          opcode: 'tryCatchB',
-          blockType: Scratch.BlockType.COMMAND,
-          text: 'try \{[TRY]\} catch\(err\) \{ [CATCH] \}',
-          arguments: {
-              TRY: {
-                  type: Scratch.ArgumentType.STRING,
-                  defaultValue: 'cool.tea(f)'
-              },
-            CATCH: {
-                  type: Scratch.ArgumentType.STRING,
-                  defaultValue: 'error'
-              }
-          }
         }
       ],
       menus: {
@@ -819,19 +789,6 @@ newObject({NAME}) {
   mapValues({NAME}){
     globalThis[NAME].values()
   }
-  tryCatch({TRY,CATCH}){
-    try {
-      return eval TRY
-    } catch(err){
-      globalThis[CATCH] = String(err)
-    }
-  }
-    tryCatchB({TRY,CATCH}){
-    try {
-      eval TRY
-    } catch(err){
-      globalThis[CATCH] = String(err)
-    }
-  }
+
 }
 Scratch.extensions.register(new teandedScratch());
