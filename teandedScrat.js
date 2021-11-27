@@ -390,9 +390,273 @@ VALUE: {
                   defaultValue: 'return 0'
               }
           }
-        }
+        },
+              {
+          opcode: 'newObject',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'Создать новый пустой массив с названием [NAME]',
+          arguments: {
+              NAME: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              }
+          }
+        },
+         {
+          opcode: 'pushObj',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'Добавить значение [VALUE] в массив [NAME]',
+          arguments: {
+              NAME: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              },
+            VALUE: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              }
+          }
+        },
+        {
+          opcode: 'getObj',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Получить значение под номером [NUM] из массива [NAME]',
+          arguments: {
+              NAME: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              },
+            NUM: {
+                  type: Scratch.ArgumentType.NUMBER,
+                  defaultValue: 'cool'
+              }
+          }
+        },
         
-
+               {
+          opcode: 'unshiftObj',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'Добавить значение в начало массива [NAME]',
+          arguments: {
+              NAME: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              }
+          }
+        },
+               {
+          opcode: 'editObj',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'Изменить значение под номером [NUM] из массива [NAME] на [VALUE]',
+          arguments: {
+              NAME: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              },
+            NUM: {
+                  type: Scratch.ArgumentType.NUMBER,
+                  defaultValue: '0'
+              },
+            VALUE: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              }
+          }
+        },
+          {
+          opcode: 'shiftObj',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'Удалить первое значение массива [NAME]',
+          arguments: {
+              NAME: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              }
+          }
+        },
+          {
+          opcode: 'popObj',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'Удалить значение из конца массива [NAME]',
+          arguments: {
+              NAME: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              }
+          }
+        },
+        {
+          opcode: 'objLength',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Получить длину массива [NAME]',
+          arguments: {
+              NAME: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              }
+          }
+        },
+{
+          opcode: 'indexOfObj',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Получить номер значения из массива [NAME]',
+          arguments: {
+              NAME: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              }
+          }
+        },
+        {
+          opcode: 'newMap',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'Создать новую карту ключей с названием [NAME]',
+          arguments: {
+              NAME: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              }
+          }
+        },
+        {
+          opcode: 'mapSet',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'Установить ключу [KEY] карты [NAME] значение [VALUE]',
+          arguments: {
+              NAME: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              },
+            VALUE: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: '0'
+              },
+            KEY: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              }
+          }
+        },
+        {
+          opcode: 'mapGet',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Получить значение ключа [KEY] из карты [NAME]',
+          arguments: {
+              NAME: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              },
+            KEY: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              }
+          }
+        },
+        {
+          opcode: 'mapHas',
+          blockType: Scratch.BlockType.BOOLEAN,
+          text: 'Карта [NAME] содержит [KEY]?',
+          arguments: {
+              NAME: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              },
+            KEY: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              }
+          }
+        },
+        
+        {
+          opcode: 'mapDelete',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'Удалить ключ [KEY] из карты [NAME]',
+          arguments: {
+              NAME: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              },
+            KEY: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              }
+          }
+        },
+        {
+          opcode: 'mapClear',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'Очистить карту [NAME]',
+          arguments: {
+              NAME: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              }
+          }
+        },
+        {
+          opcode: 'mapSize',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Размер карты [NAME]',
+          arguments: {
+              NAME: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              }
+          }
+        },
+        {
+          opcode: 'mapKeys',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Получить список ключей карты [NAME]',
+          arguments: {
+              NAME: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              }
+          }
+        },
+        {
+          opcode: 'mapValues',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Получить список значений карты [NAME]',
+          arguments: {
+              NAME: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              }
+          }
+        },
+        {
+          opcode: 'tryCatch',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'try \{[TRY]\} catch\(err\) \{ [CATCH] \}',
+          arguments: {
+              TRY: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool.tea(f)'
+              },
+            CATCH: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'error'
+              }
+          }
+        },
+         {
+          opcode: 'tryCatchB',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'try \{[TRY]\} catch\(err\) \{ [CATCH] \}',
+          arguments: {
+              TRY: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool.tea(f)'
+              },
+            CATCH: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'error'
+              }
+          }
+        }
       ],
       menus: {
         teaMenu: {
@@ -500,5 +764,74 @@ return globalThis[NAME]
 setLogicVar({NAME,VALUE}){
 globalThis[NAME] = VALUE
 }
+newObject({NAME}) {
+  globalThis[NAME] = []
+}
+  pushObj({NAME,VALUE}) {
+    globalThis[NAME].push(VALUE)
+  }
+  
+  unshiftObj({NAME,VALUE}) {
+    globalThis[NAME].unshift(VALUE)
+  }
+  getObj({NAME,NUM}) {
+    globalThis[NAME][NUM]
+  }
+  editObj({NAME,NUM,VALUE}){
+    globalThis[NAME][NUM] = [VALUE]
+  }
+  shiftObj({NAME}) {
+    globalThis[NAME].shift
+  }
+  popObj({NAME}){
+    globalThis[NAME].pop
+  }
+  objLength({NAME}){
+    globalThis[NAME].length
+  }
+  indexOfObj({NAME,VALUE}){
+    globalThis[NAME].indexOf([VALUE])
+  }
+  newMap({NAME}){
+    globalThis[NAME] = new Map()
+  }
+  mapSet({NAME,KEY,VALUE}){
+  globalThis[NAME].set(KEY,VALUE)
+  }
+  mapGet({NAME,KEY}){
+ globalThis[NAME].get(KEY)
+  }
+  mapHas({NAME,KEY}){
+  globalThis[NAME].has(KEY)
+ }
+  mapDelete({NAME,KEY}){
+  globalThis[NAME].delete(KEY)
+  }
+  mapClear({NAME}){
+    globalThis[NAME].clear()
+  }
+  mapSize({NAME}){
+  globalThis[NAME].size
+  }
+  mapKeys({NAME}){
+    globalThis[NAME].keys()
+  }
+  mapValues({NAME}){
+    globalThis[NAME].values()
+  }
+  tryCatch({TRY,CATCH}){
+    try {
+      return eval TRY
+    } catch(err){
+      globalThis[CATCH] = String(err)
+    }
+  }
+    tryCatchB({TRY,CATCH}){
+    try {
+      eval TRY
+    } catch(err){
+      globalThis[CATCH] = String(err)
+    }
+  }
 }
 Scratch.extensions.register(new teandedScratch());
