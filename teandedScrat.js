@@ -477,7 +477,7 @@ stepen({NUM1,NUM2}){
   }
   onSomething({CONDITION}) {
     this.update()
-    if (CONDITION) {
+    if (CONDITION===true) {
       return true
   } else { 
     return false 
