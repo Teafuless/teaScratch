@@ -409,6 +409,7 @@ VALUE: {
                     arguments: {
                     }
                 }
+        
 
       ],
       menus: {
@@ -517,12 +518,12 @@ return globalThis[NAME]
 setLogicVar({NAME,VALUE}){
 globalThis[NAME] = VALUE
 }
-    stageCheck () {
+    stageCheck ({TEST}) {
         const stage = this.runtime.getTargetForStage();
         return stage ? stage.getName() : false;
     }
-      imgBlock () {
-        return;
+      imgBlock ({TEST}) {
+        return 0
     }
 }
 Scratch.extensions.register(new teandedScratch());
