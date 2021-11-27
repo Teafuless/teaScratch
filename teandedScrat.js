@@ -436,13 +436,17 @@ VALUE: {
                {
           opcode: 'unshiftObj',
           blockType: Scratch.BlockType.COMMAND,
-          text: 'Добавить значение в начало массива [NAME]',
+          text: 'Добавить значение [VALUE] в начало массива [NAME]',
           arguments: {
               NAME: {
                   type: Scratch.ArgumentType.STRING,
                   defaultValue: 'cool'
               }
-          }
+          },
+                               VALUE: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'h'
+              }
         },
                {
           opcode: 'editObj',
