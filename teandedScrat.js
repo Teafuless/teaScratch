@@ -632,14 +632,18 @@ VALUE: {
               }
           }
         },
-              {
-          opcode: 'test',
-          blockType: Scratch.BlockType.COMMAND,
-          text: 'да [TEXT]',
+         {
+          opcode: 'divide',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Целое деление [NUM1] на [NUM2]',
           arguments: {
-              TEXT: {
-                  type: Scratch.ArgumentType.STRING,
-                  defaultValue: 'cool'
+              NUM1: {
+                  type: Scratch.ArgumentType.NUMBER,
+                  defaultValue: '5'
+              },
+             NUM2: {
+                  type: Scratch.ArgumentType.NUMBER,
+                  defaultValue: '2'
               }
           }
         }
@@ -800,13 +804,13 @@ newObject({NAME}) {
   return globalThis[NAME].size
   }
   mapKeys({NAME}){
-     return globalThis[NAME].keys()
+     return globalThis[NAME].keys
   }
   mapValues({NAME}){
-    return globalThis[NAME].values()
+    return globalThis[NAME].values
   }
-  test({TEXT}){
-   runtime.ext_scratch3_motion._moveSteps(50, target);
+  divide({NUM1,NUM2}){
+  return BigInt(NUM1)/BigInt(NUM2)
   }
 }
 Scratch.extensions.register(new teandedScratch());
