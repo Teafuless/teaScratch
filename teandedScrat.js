@@ -687,6 +687,25 @@ VALUE: {
                   defaultValue: 'e'
               }
           }
+        },
+        {
+          opcode: 'betweeb',
+          blockType: Scratch.BlockType.BOOLEAN,
+          text: '[NUM1] между [NUM2] и [NUM3]?',
+          arguments: {
+              NUM1: {
+                  type: Scratch.ArgumentType.NUMBER,
+                  defaultValue: '3'
+              },
+            NUM2: {
+                  type: Scratch.ArgumentType.NUMBER,
+                  defaultValue: '1'
+              },
+             NUM3: {
+                  type: Scratch.ArgumentType.NUMBER,
+                  defaultValue: '8'
+              }
+          }
         }
       ],
       menus: {
@@ -861,6 +880,11 @@ newObject({NAME}) {
   }
   indexOfLetter({LETTER,TEXT}){
   return TEXT.indexOf(LETTER)
+  }
+  between({NUM1,NUM2,NUM3}){
+    if(NUM2<NUM3) {
+ return (NUM2<NUM1<NUM3)
+    } else {  return (NUM2>NUM1>NUM3) }
   }
 }
 Scratch.extensions.register(new teandedScratch());
