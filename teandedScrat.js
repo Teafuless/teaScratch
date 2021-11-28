@@ -646,6 +646,28 @@ VALUE: {
                   defaultValue: '2'
               }
           }
+        },
+         {
+          opcode: 'tostr',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Превратить [TEXT] в строку',
+          arguments: {
+              TEXT: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: '5/2'
+              }
+          }
+        },
+         {
+          opcode: 'tonumber',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Превратить строку [TEXT] в число',
+          arguments: {
+              TEXT: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: '2'
+              }
+          }
         }
       ],
       menus: {
@@ -811,6 +833,12 @@ newObject({NAME}) {
   }
   divide({NUM1,NUM2}){
   return BigInt(NUM1)/BigInt(NUM2)
+  }
+  tostr({TEXT}){
+   return String(TEXT)
+  }
+    tonum({TEXT}){
+   return Number(TEXT)
   }
 }
 Scratch.extensions.register(new teandedScratch());
