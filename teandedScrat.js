@@ -672,6 +672,21 @@ VALUE: {
                   defaultValue: '2'
               }
           }
+        },
+        {
+          opcode: 'indexOfLetter',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Получить номер символа [LETTER] в тексте [TEXT]',
+          arguments: {
+              TEXT: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'tea'
+              },
+            LETTER: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'e'
+              }
+          }
         }
       ],
       menus: {
@@ -843,6 +858,9 @@ newObject({NAME}) {
   }
     tonum({TEXT}){
    return Number(TEXT)
+  }
+  indexOfLetter({LETTER,TEXT}){
+  return TEXT.indexOf(LETTER)
   }
 }
 Scratch.extensions.register(new teandedScratch());
