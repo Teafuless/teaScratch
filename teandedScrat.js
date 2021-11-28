@@ -661,12 +661,18 @@ VALUE: {
          {
           opcode: 'tonumber',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Превратить строку [TEXT] в число',
+          text: 'Превратить строку [TEXT] в число [IMG] ',
           arguments: {
               TEXT: {
                   type: Scratch.ArgumentType.STRING,
                   defaultValue: '2'
-              }
+              },
+            IMG: {
+                    type: ArgumentType.IMAGE,
+                    dataURI: 'blockIconUri',
+                    alt: '1',
+                    flipRTL: true
+                }
           }
         }
       ],
@@ -840,5 +846,6 @@ newObject({NAME}) {
     tonum({TEXT}){
    return Number(TEXT)
   }
+  
 }
 Scratch.extensions.register(new teandedScratch());
