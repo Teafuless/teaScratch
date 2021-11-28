@@ -504,9 +504,13 @@ VALUE: {
 {
           opcode: 'indexOfObj',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Получить номер значения из массива [NAME]',
+          text: 'Получить номер значения [VALUE] из массива [NAME]',
           arguments: {
               NAME: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              },
+            VALUE: {
                   type: Scratch.ArgumentType.STRING,
                   defaultValue: 'cool'
               }
