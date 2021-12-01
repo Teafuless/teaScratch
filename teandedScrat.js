@@ -1,6 +1,11 @@
 
 class teandedScratch {
+  /*
   
+  */
+let varsTea = []
+let teaObj = []
+let teaMaps = []
   getInfo() {
     return {
       
@@ -64,9 +69,9 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
           blockType: Scratch.BlockType.REPORTER,
           text: 'Получить значение переменной [NAME]',
           arguments: {
-          NAME: {
+         NAME: {
               type: Scratch.ArgumentType.STRING,
-              defaultValue: 'Tea' //
+              menu: 'varsTea'
             }
           }
         }, 
@@ -75,9 +80,9 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
           blockType: Scratch.BlockType.BOOLEAN,
           text: 'Получить логическое значение переменной [NAME]',
           arguments: {
-          NAME: {
+         NAME: {
               type: Scratch.ArgumentType.STRING,
-              defaultValue: 'Tea' //
+              menu: 'varsTea'
             }
           }
         }, 
@@ -88,7 +93,7 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
           arguments: {
           NAME: {
               type: Scratch.ArgumentType.STRING,
-              defaultValue: 'Tea' //
+              menu: 'varsTea'
             },
 VALUE: {
               type: Scratch.ArgumentType.STRING,
@@ -101,9 +106,9 @@ VALUE: {
           blockType: Scratch.BlockType.COMMAND,
           text: 'Задать переменной [NAME] логическое значение [VALUE]',
           arguments: {
-          NAME: {
+         NAME: {
               type: Scratch.ArgumentType.STRING,
-              defaultValue: 'Tea' //
+              menu: 'varsTea'
             },
 VALUE: {
               type: Scratch.ArgumentType.BOOLEAN,
@@ -396,10 +401,10 @@ VALUE: {
           blockType: Scratch.BlockType.COMMAND,
           text: 'Создать новый пустой массив с названием [NAME]',
           arguments: {
-              NAME: {
-                  type: Scratch.ArgumentType.STRING,
-                  defaultValue: 'cool'
-              }
+             NAME: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'objeeeect'
+            }
           }
         },
          {
@@ -408,9 +413,9 @@ VALUE: {
           text: 'Добавить значение [VALUE] в массив [NAME]',
           arguments: {
               NAME: {
-                  type: Scratch.ArgumentType.STRING,
-                  defaultValue: 'cool'
-              },
+              type: Scratch.ArgumentType.STRING,
+              menu: 'teaObj'
+            },
             VALUE: {
                   type: Scratch.ArgumentType.STRING,
                   defaultValue: 'cool'
@@ -423,9 +428,9 @@ VALUE: {
           text: 'Получить значение под номером [NUM] из массива [NAME]',
           arguments: {
               NAME: {
-                  type: Scratch.ArgumentType.STRING,
-                  defaultValue: 'cool'
-              },
+              type: Scratch.ArgumentType.STRING,
+              menu: 'teaObj'
+            },
             NUM: {
                   type: Scratch.ArgumentType.NUMBER,
                   defaultValue: 'cool'
@@ -438,10 +443,10 @@ VALUE: {
           blockType: Scratch.BlockType.COMMAND,
           text: 'Добавить значение [VALUE] в начало массива [NAME]',
           arguments: {
-              NAME: {
-                  type: Scratch.ArgumentType.STRING,
-                  defaultValue: 'cool'
-              },
+               NAME: {
+              type: Scratch.ArgumentType.STRING,
+              menu: 'teaObj'
+            },
             VALUE: {
                   type: Scratch.ArgumentType.STRING,
                   defaultValue: 'h'
@@ -454,10 +459,10 @@ VALUE: {
           blockType: Scratch.BlockType.COMMAND,
           text: 'Изменить значение под номером [NUM] из массива [NAME] на [VALUE]',
           arguments: {
-              NAME: {
-                  type: Scratch.ArgumentType.STRING,
-                  defaultValue: 'cool'
-              },
+               NAME: {
+              type: Scratch.ArgumentType.STRING,
+              menu: 'teaObj'
+            },
             NUM: {
                   type: Scratch.ArgumentType.NUMBER,
                   defaultValue: '0'
@@ -473,10 +478,10 @@ VALUE: {
           blockType: Scratch.BlockType.COMMAND,
           text: 'Удалить первое значение массива [NAME]',
           arguments: {
-              NAME: {
-                  type: Scratch.ArgumentType.STRING,
-                  defaultValue: 'cool'
-              }
+               NAME: {
+              type: Scratch.ArgumentType.STRING,
+              menu: 'teaObj'
+            }
           }
         },
           {
@@ -485,9 +490,9 @@ VALUE: {
           text: 'Удалить значение из конца массива [NAME]',
           arguments: {
               NAME: {
-                  type: Scratch.ArgumentType.STRING,
-                  defaultValue: 'cool'
-              }
+              type: Scratch.ArgumentType.STRING,
+              menu: 'teaObj'
+            }
           }
         },
         {
@@ -496,9 +501,9 @@ VALUE: {
           text: 'Получить длину массива [NAME]',
           arguments: {
               NAME: {
-                  type: Scratch.ArgumentType.STRING,
-                  defaultValue: 'cool'
-              }
+              type: Scratch.ArgumentType.STRING,
+              menu: 'teaObj'
+            }
           }
         },
 {
@@ -507,9 +512,9 @@ VALUE: {
           text: 'Получить номер значения [VALUE] из массива [NAME]',
           arguments: {
               NAME: {
-                  type: Scratch.ArgumentType.STRING,
-                  defaultValue: 'cool'
-              },
+              type: Scratch.ArgumentType.STRING,
+              menu: 'teaObj'
+            },
             VALUE: {
                   type: Scratch.ArgumentType.STRING,
                   defaultValue: 'cool'
@@ -522,9 +527,9 @@ VALUE: {
           text: 'Создать новую карту ключей с названием [NAME]',
           arguments: {
               NAME: {
-                  type: Scratch.ArgumentType.STRING,
-                  defaultValue: 'cool'
-              }
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: "mapppp"
+            }
           }
         },
         {
@@ -533,9 +538,9 @@ VALUE: {
           text: 'Установить ключу [KEY] карты [NAME] значение [VALUE]',
           arguments: {
               NAME: {
-                  type: Scratch.ArgumentType.STRING,
-                  defaultValue: 'cool'
-              },
+              type: Scratch.ArgumentType.STRING,
+              menu: 'teaMaps'
+            },
             VALUE: {
                   type: Scratch.ArgumentType.STRING,
                   defaultValue: '0'
@@ -551,10 +556,10 @@ VALUE: {
           blockType: Scratch.BlockType.REPORTER,
           text: 'Получить значение ключа [KEY] из карты [NAME]',
           arguments: {
-              NAME: {
-                  type: Scratch.ArgumentType.STRING,
-                  defaultValue: 'cool'
-              },
+             NAME: {
+              type: Scratch.ArgumentType.STRING,
+              menu: 'teaMaps'
+            },
             KEY: {
                   type: Scratch.ArgumentType.STRING,
                   defaultValue: 'cool'
@@ -567,9 +572,9 @@ VALUE: {
           text: 'Карта [NAME] содержит [KEY]?',
           arguments: {
               NAME: {
-                  type: Scratch.ArgumentType.STRING,
-                  defaultValue: 'cool'
-              },
+              type: Scratch.ArgumentType.STRING,
+              menu: 'teaMaps'
+            },
             KEY: {
                   type: Scratch.ArgumentType.STRING,
                   defaultValue: 'cool'
@@ -583,9 +588,9 @@ VALUE: {
           text: 'Удалить ключ [KEY] из карты [NAME]',
           arguments: {
               NAME: {
-                  type: Scratch.ArgumentType.STRING,
-                  defaultValue: 'cool'
-              },
+              type: Scratch.ArgumentType.STRING,
+              menu: 'teaMaps'
+            },
             KEY: {
                   type: Scratch.ArgumentType.STRING,
                   defaultValue: 'cool'
@@ -598,9 +603,9 @@ VALUE: {
           text: 'Очистить карту [NAME]',
           arguments: {
               NAME: {
-                  type: Scratch.ArgumentType.STRING,
-                  defaultValue: 'cool'
-              }
+              type: Scratch.ArgumentType.STRING,
+              menu: 'teaMaps'
+            }
           }
         },
         {
@@ -609,9 +614,9 @@ VALUE: {
           text: 'Размер карты [NAME]',
           arguments: {
               NAME: {
-                  type: Scratch.ArgumentType.STRING,
-                  defaultValue: 'cool'
-              }
+              type: Scratch.ArgumentType.STRING,
+              menu: 'teaMaps'
+            }
           }
         },
         {
@@ -620,9 +625,9 @@ VALUE: {
           text: 'Получить список ключей карты [NAME]',
           arguments: {
               NAME: {
-                  type: Scratch.ArgumentType.STRING,
-                  defaultValue: 'cool'
-              }
+              type: Scratch.ArgumentType.STRING,
+              menu: 'teaMaps'
+            }
           }
         },
         {
@@ -631,9 +636,9 @@ VALUE: {
           text: 'Получить список значений карты [NAME]',
           arguments: {
               NAME: {
-                  type: Scratch.ArgumentType.STRING,
-                  defaultValue: 'cool'
-              }
+              type: Scratch.ArgumentType.STRING,
+              menu: 'teaMaps'
+            }
           }
         },
          {
@@ -711,7 +716,18 @@ VALUE: {
       menus: {
         teaMenu: {
             items: ['teaful','tealess','teafuless']
-        }
+        },
+        varmenu: {
+        items: varsTea,
+        acceptReporters: true
+    },
+        objmenu: {
+        items: teaObj,
+        acceptReporters: true
+    },
+       mapsmenu: {
+        items: teaMaps,
+        acceptReporters: true
     }
     };
   }
@@ -800,7 +816,9 @@ stepen({NUM1,NUM2}){
     return false
   }
 newVar({NAME}){
+  teaVars.push(NAME)
 globalThis[NAME] = 0
+
 }
 getVar({NAME}){
 return globalThis[NAME]
@@ -815,6 +833,7 @@ setLogicVar({NAME,VALUE}){
 globalThis[NAME] = VALUE
 }
 newObject({NAME}) {
+  teaObj.push(NAME)
   globalThis[NAME] = []
 }
   pushObj({NAME,VALUE}) {
@@ -843,6 +862,7 @@ newObject({NAME}) {
     return globalThis[NAME].indexOf([VALUE])
   }
   newMap({NAME}){
+    teaMaps.push(NAME)
     globalThis[NAME] = new Map()
   }
   mapSet({NAME,KEY,VALUE}){
