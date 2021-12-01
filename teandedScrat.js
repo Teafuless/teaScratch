@@ -718,16 +718,14 @@ VALUE: {
             items: ['teaful','tealess','teafuless']
         },
         varmenu: {
-        items: varsTea,
-        acceptReporters: true
+        items: varsTea
+     
     },
         objmenu: {
-        items: teaObj,
-        acceptReporters: true
+        items: teaObj
     },
        mapsmenu: {
-        items: teaMaps,
-        acceptReporters: true
+        items: teaMaps
     }
     };
   }
