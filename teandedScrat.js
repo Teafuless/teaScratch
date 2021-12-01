@@ -791,13 +791,7 @@ stepen({NUM1,NUM2}){
    return eval(EVAL)
   }
   onSomething({CONDITION}) {
-    this.update()
-    if (CONDITION===true) {
-      return true
-  } else { 
-    return false 
-  }
-    return false
+if ((CONDITION)==true) { return true }
   }
 newVar({NAME}){
 globalThis[NAME] = 0
