@@ -791,13 +791,7 @@ stepen({NUM1,NUM2}){
    return eval(EVAL)
   }
   onSomething({CONDITION}) {
-    this.update()
-    if (CONDITION===true) {
-      return true
-  } else { 
-    return false 
-  }
-    return false
+    return (CONDITION==true)
   }
 newVar({NAME}){
 globalThis[NAME] = 0
@@ -888,5 +882,6 @@ newObject({NAME}) {
       return NUM2>NUM1&&NUM1>NUM3
     }
   }
+  
 }
 Scratch.extensions.register(new teandedScratch());
