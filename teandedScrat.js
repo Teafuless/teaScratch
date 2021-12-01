@@ -5,10 +5,11 @@ class teandedScratch {
   */
 
   getInfo() {
+   varsTea: [],
+teaObj: [],
+teaMaps: [],
     return {
-      globalThis.varsTea = []
-globalThis.teaObj = []
-globalThis.teaMaps = []
+ 
       id: 'teanded',
       color1: '#8DC286',
 menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
@@ -718,18 +719,16 @@ VALUE: {
             items: ['teaful','tealess','teafuless']
         },
         varmenu: {
-        items: varsTea,
-        acceptReporters: true
+        items: varsTea
     },
         objmenu: {
-        items: teaObj,
-        acceptReporters: true
+        items: teaObj
     },
        mapsmenu: {
-        items: teaMaps,
-        acceptReporters: true
+        items: teaMaps
     }
-    };
+    }
+    }
   }
   turnInToTea({TEXT}) {
     return TEXT+" - чай"
