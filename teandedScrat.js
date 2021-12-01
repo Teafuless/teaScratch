@@ -791,12 +791,7 @@ stepen({NUM1,NUM2}){
    return eval(EVAL)
   }
   onSomething({CONDITION}) {
-    this.update()
-    if (CONDITION===true) {
-      return true
-  } else { 
-    return false 
-  }
+if ((CONDITION)==true) { return true }
     return false
   }
 newVar({NAME}){
