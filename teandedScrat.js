@@ -21,7 +21,7 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
               defaultValue: 'Teaful'
             }
           }
-        },
+        },/*
          {
           opcode: 'onSomething',
           blockType: Scratch.BlockType.HAT,
@@ -31,7 +31,7 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
               type: Scratch.ArgumentType.BOOLEAN
             }
           }
-        },
+        },*/
         {
           opcode: 'RegExpS',
           blockType: Scratch.BlockType.REPORTER,
@@ -739,9 +739,9 @@ VALUE: {
                 {
           opcode: 'strictEquals',
           blockType: Scratch.BlockType.REPORTER,
-          text: '[STRING] строго равно [STRING2]',
+          text: '[STRING1] строго равно [STRING2]',
           arguments: {
-              STRING: {
+              STRING1: {
                   type: Scratch.ArgumentType.STRING,
                   defaultValue: '8'
               },
@@ -754,9 +754,9 @@ VALUE: {
         {
           opcode: 'strictNotEquals',
           blockType: Scratch.BlockType.REPORTER,
-          text: '[STRING] строго не равно [STRING2]',
+          text: '[STRING1] строго не равно [STRING2]',
           arguments: {
-              STRING: {
+              STRING1: {
                   type: Scratch.ArgumentType.STRING,
                   defaultValue: '8'
               },
@@ -769,9 +769,9 @@ VALUE: {
         {
           opcode: 'strictLogicNot',
           blockType: Scratch.BlockType.BOOLEAN,
-          text: '[STRING] строго не равно истине',
+          text: '[STRING1] строго не равно истине',
           arguments: {
-              STRING: {
+              STRING1: {
                   type: Scratch.ArgumentType.BOOLEAN
               }
           }
@@ -779,9 +779,9 @@ VALUE: {
              {
           opcode: 'strictLogic',
           blockType: Scratch.BlockType.BOOLEAN,
-          text: '[STRING] строго равно истине',
+          text: '[STRING1] строго равно истине',
           arguments: {
-              STRING: {
+              STRING1: {
                   type: Scratch.ArgumentType.BOOLEAN
               }
           }
@@ -877,7 +877,7 @@ stepen({NUM1,NUM2}){
   }
   evalSSS({EVAL}){
    return eval(EVAL)
-  }
+  }/*
   onSomething({CONDITION}) {
     this.update()
     if (CONDITION===true) {
@@ -886,7 +886,7 @@ stepen({NUM1,NUM2}){
     return false 
   }
     return false
-  }
+  }*/
 newVar({NAME}){
   teaVars.push(NAME)
 globalThis[NAME] = 0
@@ -967,9 +967,6 @@ newObject({NAME}) {
   tostr({TEXT}){
    return String(TEXT)
   }
-    tonum({TEXT}){
-   return Number(TEXT)
-  }
   indexOfLetter({LETTER,TEXT}){
   return TEXT.indexOf(LETTER)
   }
@@ -984,20 +981,20 @@ newObject({NAME}) {
   moreOrEquals({NUM1,NUM2}){
     return (NUM1>=NUM2)
   }
-  smallerOrEquals({NUM1,NUM2}){
+smallerOrEquals({NUM1,NUM2}){
     return (NUM1<=NUM2)
   }
-   strictEquals({STRING,STRING2}){
-    return (STRING===STRING2)
+ strictEquals({STRING1,STRING2}){
+    return (STRING1===STRING2)
   }
-   strictNotEquals({STRING,STRING2}){
-    return (STRING!==STRING2)
+strictNotEquals({STRING1,STRING2}){
+    return (STRING1!==STRING2)
   }
-     strictLogicNot({STRING}){
-    return (STRING!==true)
+strictLogicNot({STRING1}){
+    return (STRING1!==true)
   }
-       strictLogic({STRING}){
-    return (STRING===true)
+strictLogic({STRING1}){
+    return (STRING1===true)
   }
   
   
