@@ -1,9 +1,5 @@
 
 class teandedScratch {
-  /*
-  
-  */
-
   getInfo() {
   this.varsTea = [],
 this.teaObj = [],
@@ -779,8 +775,7 @@ VALUE: {
           text: '[STRING] строго не равно истине',
           arguments: {
               STRING: {
-                  type: Scratch.ArgumentType.BOOLEAN,
-                  defaultValue: '8'
+                  type: Scratch.ArgumentType.BOOLEAN
               }
           }
         },
@@ -790,8 +785,7 @@ VALUE: {
           text: '[STRING] строго равно истине',
           arguments: {
               STRING: {
-                  type: Scratch.ArgumentType.BOOLEAN,
-                  defaultValue: '8'
+                  type: Scratch.ArgumentType.BOOLEAN
               }
           }
         }
