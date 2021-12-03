@@ -786,6 +786,36 @@ VALUE: {
                   type: Scratch.ArgumentType.BOOLEAN
               }
           }
+        },
+        {
+          opcode: 'getProcent',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Получить [PROCENT]% от числа [NUMBER1]',
+          arguments: {
+              NUMBER1: {
+                  type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '100'
+              },
+            PROCENT: {
+                  type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '58'
+              }
+          }
+        },
+         {
+          opcode: 'getProcentFrom',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Сколько процентов число [NUMBER1] составляет от [NUMBER2]',
+          arguments: {
+              NUMBER1: {
+                  type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '50'
+              },
+            NUMBER2: {
+                  type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '25'
+              }
+          }
         }
       ],
       menus: {
@@ -985,6 +1015,12 @@ newObject({NAME}) {
   }
        strictLogic({STRING}){
     return (STRING===true)
+  }
+  getProcent({NUMBER1,PROCENT}){
+    return (NUMBER1/100)*PROCENT
+  }
+  getProcentFrom({NUMBER1,NUMBER2}){
+    return (NUMBER1/NUMBER2)*100
   }
 }
 Scratch.extensions.register(new teandedScratch());
