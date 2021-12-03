@@ -706,6 +706,86 @@ VALUE: {
                   defaultValue: '8'
               }
           }
+        },
+                       {
+          opcode: 'moreOrEquals',
+          blockType: Scratch.BlockType.REPORTER,
+          text: '[NUM1] \>\= [NUM2]',
+          arguments: {
+              NUM1: {
+                  type: Scratch.ArgumentType.NUMBER,
+                  defaultValue: '8'
+              },
+            NUM2: {
+                  type: Scratch.ArgumentType.NUMBER,
+                  defaultValue: '5'
+              }
+          }
+        },
+                {
+          opcode: 'smallerOrEquals',
+          blockType: Scratch.BlockType.REPORTER,
+          text: '[NUM1] \<\= [NUM2]',
+          arguments: {
+              NUM1: {
+                  type: Scratch.ArgumentType.NUMBER,
+                  defaultValue: '2'
+              },
+            NUM2: {
+                  type: Scratch.ArgumentType.NUMBER,
+                  defaultValue: '5'
+              }
+          }
+        },
+                {
+          opcode: 'strictEquals',
+          blockType: Scratch.BlockType.REPORTER,
+          text: '[STRING] строго равно [STRING2]',
+          arguments: {
+              STRING: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: '8'
+              },
+            STRING2: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: '5'
+              }
+          }
+        },
+        {
+          opcode: 'strictNotEquals',
+          blockType: Scratch.BlockType.REPORTER,
+          text: '[STRING] строго не равно [STRING2]',
+          arguments: {
+              STRING: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: '8'
+              },
+            STRING2: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: '5'
+              }
+          }
+        },
+        {
+          opcode: 'strictLogicNot',
+          blockType: Scratch.BlockType.BOOLEAN,
+          text: '[STRING] строго не равно истине',
+          arguments: {
+              STRING: {
+                  type: Scratch.ArgumentType.BOOLEAN
+              }
+          }
+        },
+             {
+          opcode: 'strictLogic',
+          blockType: Scratch.BlockType.BOOLEAN,
+          text: '[STRING] строго равно истине',
+          arguments: {
+              STRING: {
+                  type: Scratch.ArgumentType.BOOLEAN
+              }
+          }
         }
       ],
       menus: {
@@ -887,6 +967,24 @@ newObject({NAME}) {
     } else { 
       return NUM2>NUM1&&NUM1>NUM3
     }
+  }
+    moreOrEquals({NUM1,NUM2}){
+    return (NUM1>=NUM2)
+  }
+  smallerOrEquals({NUM1,NUM2}){
+    return (NUM1<=NUM2)
+  }
+   strictEquals({STRING,STRING2}){
+    return (STRING===STRING2)
+  }
+   strictNotEquals({STRING,STRING2}){
+    return (STRING!==STRING2)
+  }
+     strictLogicNot({STRING}){
+    return (STRING!==true)
+  }
+       strictLogic({STRING}){
+    return (STRING===true)
   }
 }
 Scratch.extensions.register(new teandedScratch());
