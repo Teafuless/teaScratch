@@ -1022,5 +1022,32 @@ newObject({NAME}) {
   getProcentFrom({NUMBER1,NUMBER2}){
     return (NUMBER1/NUMBER2)*100
   }
+  consoleLog({TEXT}){
+    globalThis.consoleLog = String(TEXT);
+    console.log(TEXT);
+  }
+  consoleError({CODE}){
+    try {
+    CODE
+} catch(error) {
+  globalThis.consoleErr = String(error)
+console.error(error)
+}
+  }
+catchError({CODE}){
+    try {
+    return CODE
+} catch(error) {
+return error
+}
+  }
+  catchErr({CODE}){
+    try {
+     CODE
+} catch(error) {
+ globalThis.consoleErr = String(error)
+console.error(error)
+}
+  }
 }
 Scratch.extensions.register(new teandedScratch());
