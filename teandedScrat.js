@@ -49,6 +49,11 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
           }
         },
          {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Переменные',
+        },
+         {
           opcode: 'newVar',
           blockType: Scratch.BlockType.COMMAND,
           text: 'Создать переменную [NAME]',
@@ -1118,6 +1123,9 @@ return error
  globalThis.consoleErr = String(error)
 console.error(error)
 }
+  }
+  test({ARG}) {
+    globalThis.test = true
   }
 }
 Scratch.extensions.register(new teandedScratch());
