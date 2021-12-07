@@ -816,11 +816,63 @@ VALUE: {
                 defaultValue: '25'
               }
           }
+        },
+         {
+          opcode: 'catchError',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Попробовать выполнить [CODE], записать ошибку в переменную [VARS]',
+          arguments: {
+              CODE: {
+                  type: Scratch.ArgumentType.STRING
+              },
+            VARS: {
+                  type: Scratch.ArgumentType.STRING,
+                  menu: 'varsMenu'
+              }
+          }
+        },
+         {
+          opcode: 'catchErr',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'Попробовать выполнить [CODE], записать ошибку в переменную [VARS]',
+          arguments: {
+              CODE: {
+                  type: Scratch.ArgumentType.STRING
+              },
+            VARS: {
+                  type: Scratch.ArgumentType.STRING,
+                  menu: 'varsMenu'
+              }
+          }
+        },
+         {
+          opcode: 'consoleError',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'console.error([CODE])',
+          arguments: {
+              CODE: {
+                  type: Scratch.ArgumentType.STRING
+              }
+          }
+        },
+         {
+          opcode: 'consoleLog',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'console.log([TEXT])',
+          arguments: {
+              TEXT: {
+                  type: Scratch.ArgumentType.STRING
+              }
+          }
         }
       ],
       menus: {
         teaMenu: {
             items: ['teaful','tealess','teafuless']
+        },
+        
+        varsMenu: {
+            items: ['consoleErr']
         }
     }
     };
@@ -1021,6 +1073,33 @@ newObject({NAME}) {
   }
   getProcentFrom({NUMBER1,NUMBER2}){
     return (NUMBER1/NUMBER2)*100
+  }
+  consoleLog({TEXT}){
+    globalThis.consoleLog = String(TEXT);
+    console.log(TEXT);
+  }
+  consoleError({CODE}){
+    try {
+    CODE
+} catch(error) {
+  globalThis.consoleErr = String(error)
+console.error(error)
+}
+  }
+catchError({CODE}){
+    try {
+    return CODE
+} catch(error) {
+return error
+}
+  }
+  catchErr({CODE}){
+    try {
+     CODE
+} catch(error) {
+ globalThis.consoleErr = String(error)
+console.error(error)
+}
   }
 }
 Scratch.extensions.register(new teandedScratch());
