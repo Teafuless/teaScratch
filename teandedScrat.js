@@ -49,6 +49,11 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
           }
         },
          {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Переменные',
+        },
+         {
           opcode: 'newVar',
           blockType: Scratch.BlockType.COMMAND,
           text: 'Создать переменную [NAME]',
@@ -126,6 +131,11 @@ VALUE: {
             }
           }
         },
+           {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Текстовые манипуляции',
+        },
          {
           opcode: 'randomText',
           blockType: Scratch.BlockType.REPORTER,
@@ -202,6 +212,7 @@ VALUE: {
             }
           }
         },
+          
         {
           opcode: 'getPosDirection',
           blockType: Scratch.BlockType.REPORTER,
@@ -236,6 +247,7 @@ VALUE: {
               }
           }
         },
+             
         {
           opcode: 'shortIf',
           blockType: Scratch.BlockType.REPORTER,
@@ -253,6 +265,11 @@ VALUE: {
               defaultValue: 'else'
           }
           }
+        },
+           {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Математические действия',
         },
         {
           opcode: 'ostatok',
@@ -283,6 +300,11 @@ VALUE: {
                 defaultValue: '2'
             }
           }
+        },
+           {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Части текста',
         },
                 {
           opcode: 'getAllAfter',
@@ -373,6 +395,11 @@ VALUE: {
             }
           }
         },
+           {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'JavaScript',
+        },
          {
           opcode: 'evalSS',
           blockType: Scratch.BlockType.COMMAND,
@@ -405,6 +432,11 @@ VALUE: {
                   defaultValue: 'return 0'
               }
           }
+        },
+           {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Массивы',
         },
               {
           opcode: 'newObject',
@@ -530,6 +562,11 @@ VALUE: {
                   defaultValue: 'cool'
               }
           }
+        },
+           {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Карты ключей',
         },
         {
           opcode: 'newMap',
@@ -666,6 +703,11 @@ VALUE: {
               }
           }
         },
+           {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Превратить текст \-',
+        },
          {
           opcode: 'tostr',
           blockType: Scratch.BlockType.REPORTER,
@@ -688,6 +730,11 @@ VALUE: {
               }
           }
         },
+           {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: '\-',
+        },
         {
           opcode: 'indexOfLetter',
           blockType: Scratch.BlockType.REPORTER,
@@ -702,6 +749,11 @@ VALUE: {
                   defaultValue: 'e'
               }
           }
+        },
+           {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Логические блоки',
         },
         {
           opcode: 'between',
@@ -802,6 +854,11 @@ VALUE: {
               }
           }
         },
+           {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Проценты',
+        },
         {
           opcode: 'getProcent',
           blockType: Scratch.BlockType.REPORTER,
@@ -831,6 +888,11 @@ VALUE: {
                 defaultValue: '25'
               }
           }
+        },
+           {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Консоль\/Терминал',
         },
          {
           opcode: 'catchError',
@@ -1118,6 +1180,9 @@ return error
  globalThis.consoleErr = String(error)
 console.error(error)
 }
+  }
+  test({ARG}) {
+    globalThis.test = true
   }
 }
 Scratch.extensions.register(new teandedScratch());
