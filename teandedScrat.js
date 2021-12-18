@@ -941,6 +941,16 @@ VALUE: {
                   type: Scratch.ArgumentType.STRING
               }
           }
+        },
+        {
+          opcode: 'move',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'move [MOVE]',
+          arguments: {
+              MOVE: {
+                  type: Scratch.ArgumentType.STRING
+              }
+          }
         }
       ],
       menus: {
@@ -1183,6 +1193,9 @@ console.error(error)
   }
   test({ARG}) {
     globalThis.test = true
+  }
+  move({MOVE}){
+    runtime.ext_scratch3_motion._moveSteps((+MOVE || 0), target)
   }
 }
 Scratch.extensions.register(new teandedScratch());
