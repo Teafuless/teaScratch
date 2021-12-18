@@ -941,7 +941,17 @@ VALUE: {
                   type: Scratch.ArgumentType.STRING
               }
           }
-        }
+        },
+              {
+          opcode: 'alertt',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'alert([TEXT])',
+          arguments: {
+              TEXT: {
+                  type: Scratch.ArgumentType.STRING
+              }
+          }
+        },
       ],
       menus: {
         teaMenu: {
@@ -1183,6 +1193,9 @@ console.error(error)
   }
   test({ARG}) {
     globalThis.test = true
+  }
+  alert({TEXT}){
+    alert(String(TEXT))
   }
 }
 Scratch.extensions.register(new teandedScratch());
