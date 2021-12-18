@@ -33,21 +33,7 @@ menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favicon.png',
             }
           }
         },
-        {
-          opcode: 'RegExpS',
-          blockType: Scratch.BlockType.REPORTER,
-          text: 'RegExp [REGEXP], flags: [FLAGS]',
-          arguments: {
-            REGEXP: {
-              type: Scratch.ArgumentType.STRING,
-              defaultValue: '\[tea\]'
-            },
-            FLAGS: {
-              type: Scratch.ArgumentType.STRING,
-              defaultValue: 'g' //
-            }
-          }
-        },
+        
          {
           opcode: 'test',
           blockType: Scratch.BlockType.BUTTON,
@@ -431,6 +417,51 @@ VALUE: {
                   type: Scratch.ArgumentType.STRING,
                   defaultValue: 'return 0'
               }
+          }
+        },
+        {
+          opcode: 'joinsum',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Сложить строки [STRING1] и [STRING2]',
+          arguments: {
+              STRING1: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'ча'
+              },
+            STRING2: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'й'
+              }
+          }
+        },
+         {
+          opcode: 'sumvar',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Добавить [VALUE] к переменной [VAR]',
+          arguments: {
+              VALUE: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'tea'
+              },
+            VAR: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'teaful'
+              }
+          }
+        },
+        {
+          opcode: 'RegExpS',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'RegExp [REGEXP], flags: [FLAGS]',
+          arguments: {
+            REGEXP: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: '\[tea\]'
+            },
+            FLAGS: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'g' //
+            }
           }
         },
            {
@@ -1196,6 +1227,12 @@ console.error(error)
   }
   alert({TEXT}){
     alert(String(TEXT))
+  }
+  joinsum({STRING1,STRING2}){
+    return STRING1+STRING2
+  }
+    sumvar({VAR,VALUE}){
+    return globalThis[VAR]+=VALUE
   }
 }
 Scratch.extensions.register(new teandedScratch());
