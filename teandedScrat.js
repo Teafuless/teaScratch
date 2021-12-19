@@ -1106,6 +1106,11 @@ VALUE: {
               }
           }
         },
+        {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Функции',
+        },
            {
           opcode: 'newFunc',
           blockType: Scratch.BlockType.COMMAND,
@@ -1142,7 +1147,7 @@ VALUE: {
         },
          {
           opcode: 'execFuncRep',
-          blockType: Scratch.BlockType.COMMAND,
+          blockType: Scratch.BlockType.REPORTER,
           text: 'Выполнить функцию [NAME], с аргументами [ARGS]',
           arguments: {
               NAME: {
@@ -1489,7 +1494,6 @@ ${c}
 \}`
   return r
 }
-
 globalThis[NAME] = gen(NAME,CODE,ARGS)
 eval(globalThis[NAME])
   }
@@ -1499,7 +1503,8 @@ eval(globalThis[NAME])
 r = `${n}\(${a}\)`
   eval(r)
 }
- exec(NAME,ARGS)
+ eval(globalThis[NAME])
+    exec(NAME,ARGS)
   }
   execFuncRep({NAME,ARGS}){
     function exec(n,a){
@@ -1507,7 +1512,8 @@ r = `${n}\(${a}\)`
 r = `${n}\(${a}\)`
   eval(r)
 }
- return exec(NAME,ARGS)
+ return eval(globalThis[NAME])
+    exec(NAME,ARGS)
   }
 }
 Scratch.extensions.register(new teandedScratch());
