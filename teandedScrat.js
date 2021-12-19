@@ -1080,6 +1080,21 @@ VALUE: {
               }
           }
         },
+          {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Текст',
+        },
+          {
+          opcode: 'text',
+          blockType: Scratch.BlockType.REPORTER,
+          text: '[TEXT]',
+          arguments: {
+              TEXT: {
+                  type: Scratch.ArgumentType.STRING
+              }
+          }
+        },
       ],
       menus: {
         teaMenu: {
@@ -1376,6 +1391,9 @@ console.error(error)
   } else {  
   }
      globalThis[MSG+'tsMsg'] = 0
+  }
+  text({TEXT}){
+    return TEXT
   }
 }
 Scratch.extensions.register(new teandedScratch());
