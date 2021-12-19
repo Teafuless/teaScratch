@@ -100,37 +100,6 @@ menuIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/favico.png',
             }
           }
         },
-        
-        {
-          opcode: 'onMsg',
-          blockType: Scratch.BlockType.HAT,
-          text: 'Когда я получу сообщение [MSG]',
-          arguments: {
-          MSG: {
-              type: Scratch.ArgumentType.STRING,
-              defaultValue: 'hi' //
-            }
-          }
-        },
-        {
-          opcode: 'onMsgVar',
-          blockType: Scratch.BlockType.HAT,
-          text: 'Когда я получу сообщение [MSG] со значением [VALUE] переменной [VAR]',
-          arguments: {
-          MSG: {
-              type: Scratch.ArgumentType.STRING,
-              defaultValue: 'hi' //
-            },
-             VALUE: {
-              type: Scratch.ArgumentType.STRING,
-              defaultValue: 'hello' //
-            },
-             VAR: {
-              type: Scratch.ArgumentType.STRING,
-              defaultValue: 'answer' //
-            }
-          }
-        },
           {
           opcode: 'test',
           blockType: Scratch.BlockType.BUTTON,
@@ -1337,26 +1306,30 @@ console.error(error)
     globalThis[MSG+'tsMsg'] = 0
   }
     sendMsgVar({MSG,VALUE,VAR}){
+      function delay(time) {
+  return new Promise(resolve => setTimeout(resolve, time));
+}
     globalThis[MSG+'tsMsg'] = 1
     globalThis[VAR] = VALUE
+      
+      async function undo() {
+        console.log('undo')
+  await delay(300);
+       globalThis[MSG+'tsMsg'] = 0 
+}
+      undo()
   }
    sendMsg({MSG}){
+     function delay(time) {
+  return new Promise(resolve => setTimeout(resolve, time));
+}
     globalThis[MSG+'tsMsg'] = 1
-  }
-   onMsg({MSG}) {
-    if (globalThis[MSG+'tsMsg']==1) {
-      return true
-  } else { 
-  }
-     globalThis[MSG+'tsMsg'] = 0
-  }
-  
-  onMsgVar({MSG}) {
-    if (globalThis[MSG+'tsMsg']==1&&globalThis[VAR]==VALUE) {
-      return true
-  } else {  
-  }
-     globalThis[MSG+'tsMsg'] = 0
+      async function undo() {
+        console.log('undo')
+  await delay(300);
+       globalThis[MSG+'tsMsg'] = 0 
+}
+     undo()
   }
 }
 Scratch.extensions.register(new teandedScratch());
