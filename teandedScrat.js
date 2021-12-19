@@ -1337,11 +1337,30 @@ console.error(error)
     globalThis[MSG+'tsMsg'] = 0
   }
     sendMsgVar({MSG,VALUE,VAR}){
+      function delay(time) {
+  return new Promise(resolve => setTimeout(resolve, time));
+}
     globalThis[MSG+'tsMsg'] = 1
     globalThis[VAR] = VALUE
+      
+      async function undo() {
+        console.log('undo')
+  await delay(300);
+       globalThis[MSG+'tsMsg'] = 0 
+}
+      undo()
   }
    sendMsg({MSG}){
+     function delay(time) {
+  return new Promise(resolve => setTimeout(resolve, time));
+}
     globalThis[MSG+'tsMsg'] = 1
+      async function undo() {
+        console.log('undo')
+  await delay(300);
+       globalThis[MSG+'tsMsg'] = 0 
+}
+     undo()
   }
    onMsg({MSG}) {
     if (globalThis[MSG+'tsMsg']==1) {
