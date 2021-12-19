@@ -1545,6 +1545,8 @@ r = `${n}\(${a}\)`
 'sendMessage_end': '\'+\'tsMsg\']=1',
 'receivedMessage':'(globalThis[\'',
 'receivedMessage_end': '\'+\'tsMsg\']==true)',
+'unSendMessage': 'globalThis[\'',
+'unSendMessage_end': '\'+\'tsMsg\']=0',
 'move': 'globalThis[\'spriteMove\'+\'tsMsg\']=1;globalThis[\'steps\']=',
 'move_end': ' '
 }
