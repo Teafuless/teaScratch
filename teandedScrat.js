@@ -1,4 +1,3 @@
-const teaCode = require('./teaCode.js')
 class teandedScratch {
   getInfo() {
     return {
@@ -1161,7 +1160,17 @@ VALUE: {
               }
           }
         },
-        
+         {
+          opcode: 'tsEval',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'TS:[CODE]',
+          arguments: {
+              CODE: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'create {tea} setValue 5;variable{tea}'
+              }
+          }
+        },
       ],
       menus: {
         teaMenu: {
@@ -1517,7 +1526,25 @@ r = `${n}\(${a}\)`
    return exec(NAME,ARGS)
   }
   tsEval({CODE}){
-    eval(CODE.replace(/(\w+)/g, (m,n) => (teaCode[n] || m)))
+    /*
+    Teanded Scratch pseudo-programming language
+    */
+function sum(...args){
+  var result = 0;
+
+  for (var i = 0; i < arguments.length; i++) {
+    result += arguments[i];
+  }
+
+  return result;
+}
+
+let teaCode = require('./tea.js')
+
+try {
+return eval(CODE.replace(/(\w+|.)/g, (m,n) => (teaCode.Code[n] || m)))
+} catch (e) {return e}
+   /*end*/
   }
 }
 Scratch.extensions.register(new teandedScratch());
