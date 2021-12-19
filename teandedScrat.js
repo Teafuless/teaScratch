@@ -1536,13 +1536,14 @@ r = `${n}\(${a}\)`
 ']': ')',
 '{': '[\'',
 '}': '\']',
-'send': 'console',
-'in': '.',
-'console': 'log',
+'sendInConsole': 'console.log',
 'variable': 'globalThis',
 'create': 'globalThis',
 'setValue': '=',
-'also': ' '
+'sendMessage': ' ',
+'also': ' ',
+'[TS:': 'let VAL = ',
+'TS_END]': ';globalThis[VAL] = 1; function delay(time) {return new Promise(resolve => setTimeout(resolve, time));}async function undo() {console.log(\'undo\')await delay(300);globalThis[VAL] = 0
 }
     /*CODE-END*/
     
