@@ -29,7 +29,7 @@ menuIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/favico.png',
           text: 'Если условие [CONDITION] будет верно',
           arguments: {
             CONDITION: {
-              type: Scratch.ArgumentType.BOOLEAN
+              type: Scratch.ArgumentType.STRING
             }
           }
         },
@@ -38,6 +38,102 @@ menuIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/favico.png',
           opcode: 'test',
           blockType: Scratch.BlockType.BUTTON,
           text: 'Переменные',
+        },
+        {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Сообщения',
+        },
+         {
+          opcode: 'sendMsgVar',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'Отправить сообщение [MSG] спрайтам со значением [VALUE] переменной [VAR]',
+          arguments: {
+          MSG: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'hi' //
+            },
+             VALUE: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'hello' //
+            },
+             VAR: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'answer' //
+            }
+          }
+        },
+        {
+          opcode: 'sendMsg',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'Отправить сообщение [MSG]',
+          arguments: {
+          MSG: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'hi' //
+            }
+          }
+        },
+        {
+          opcode: 'recMsg',
+          blockType: Scratch.BlockType.BOOLEAN,
+          text: 'Получено сообщение [MSG]?',
+          arguments: {
+          MSG: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'hi' //
+            }
+          }
+        },
+        {
+          opcode: 'recMsgVar',
+          blockType: Scratch.BlockType.BOOLEAN,
+          text: 'Получено сообщение [MSG] со значением [VALUE] переменной [VAR]?',
+          arguments: {
+          MSG: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'hi' //
+            },
+             VALUE: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'hello' //
+            },
+             VAR: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'answer' //
+            }
+          }
+        },
+        
+        {
+          opcode: 'onMsg',
+          blockType: Scratch.BlockType.HAT,
+          text: 'Когда я получу сообщение [MSG]',
+          arguments: {
+          MSG: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'hi' //
+            }
+          }
+        },
+        {
+          opcode: 'onMsgVar',
+          blockType: Scratch.BlockType.HAT,
+          text: 'Когда я получу сообщение [MSG] со значением [VALUE] переменной [VAR]',
+          arguments: {
+          MSG: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'hi' //
+            },
+             VALUE: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'hello' //
+            },
+             VAR: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'answer' //
+            }
+          }
         },
          {
           opcode: 'newVar',
@@ -1071,7 +1167,6 @@ stepen({NUM1,NUM2}){
    return eval(EVAL)
   }
   onSomething({CONDITION}) {
-    this.update()
     if (CONDITION===true) {
       return true
   } else { 
@@ -1233,6 +1328,39 @@ console.error(error)
   }
     sumvar({VAR,VALUE}){
     return globalThis[VAR]+=VALUE
+  }
+  recMsg({MSG}){
+    return (globalThis[MSG+'tsMsg']==1)
+  }
+  recMsgVar({MSG,VALUE,VAR}){
+    return (globalThis[MSG+'tsMsg']==1&&globalThis[VAR]==VALUE)
+  }
+    sendMsgVar({MSG,VALUE,VAR}){
+    globalThis[MSG+'tsMsg'] = 1
+    globalThis[VAR] = VALUE
+  }
+   sendMsg({MSG}){
+    globalThis[MSG+'tsMsg'] = 1
+  }
+   onMsg({MSG}) {
+    if (globalThis[MSG+'tsMsg']==1) {
+      return true
+  } else { 
+    return false 
+  }
+     globalThis[MSG+'tsMsg'] = 0
+    return false
+  }
+  
+  onMsgVar({MSG}) {
+    if (globalThis[MSG+'tsMsg']==1&&globalThis[VAR]==VALUE) {
+      return true
+  } else { 
+    return false 
+  }
+     globalThis[MSG+'tsMsg'] = 0
+    
+    return false
   }
 }
 Scratch.extensions.register(new teandedScratch());
