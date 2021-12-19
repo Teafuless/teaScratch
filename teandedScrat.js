@@ -1,4 +1,4 @@
-
+let customCharSet = 0
 class teandedScratch {
   
   getInfo() {
@@ -1095,6 +1095,20 @@ VALUE: {
               }
           }
         },
+        {
+          opcode: 'randomString',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Случайная строка с набором символов [CHAR] длиной в [LEN] символов.',
+          arguments: {
+              LEN: {
+                  type: Scratch.ArgumentType.NUMBER
+              },
+             CHAR: {
+                  type: Scratch.ArgumentType.STRING,
+               menu: 'charSet'
+              }
+          }
+        }
       ],
       menus: {
         teaMenu: {
@@ -1103,6 +1117,9 @@ VALUE: {
         
         varsMenu: {
             items: ['consoleErr']
+        },
+        charSet: {
+        items: ['ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789','ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮйцукенгшщзхъфывапролджэячсмитьбюёЁ0123456789', customCharSet]
         }
     }
     };
@@ -1394,6 +1411,24 @@ console.error(error)
   }
   text({TEXT}){
     return TEXT
+  }
+  randomString({LEN,CHAR}){
+    globalThis['CHAR_SET'] = CHAR;
+
+function generateString(length) {
+    let result = ' ';
+  if (globalThis['CHAR_SET']==0){
+    const charactersLength = globalThis['CHAR_SET'].length;
+  }
+    for ( let i = 0; i < length; i++ ) {
+        result += globalThis['CHAR_SET'].charAt(Math.floor(Math.random() * charactersLength));
+    }
+
+    return result;
+}
+    
+  generateString(LEN)
+    globalThis['CHAR_SET'] = 0
   }
 }
 Scratch.extensions.register(new teandedScratch());
