@@ -6,8 +6,8 @@ class teandedScratch {
       
       id: 'teanded',
       color1: '#8DC286',
-menuIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favico.png',
- blockIconURI: 'https://ghcdn.rawgit.org/Teafuless/teaScratch/main/favico.png',
+menuIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/favico.png',
+ blockIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/favico.png',
       docsURI: 'https://teafulessdl.gitbook.io/teanded-scratch/',
       name: 'Teanded Scratch',
       blocks: [
