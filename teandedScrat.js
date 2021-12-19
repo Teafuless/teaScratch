@@ -1,9 +1,6 @@
-
 class teandedScratch {
-  
   getInfo() {
     return {
-      
       id: 'teanded',
       color1: '#8DC286',
 menuIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/favico.png',
@@ -1095,6 +1092,20 @@ VALUE: {
               }
           }
         },
+        {
+          opcode: 'randomString',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Случайная строка с набором символов [CHAR] длиной в [LEN] символов.',
+          arguments: {
+              LEN: {
+                  type: Scratch.ArgumentType.NUMBER
+              },
+             CHAR: {
+                  type: Scratch.ArgumentType.STRING,
+               menu: 'charSet'
+              }
+          }
+        }
       ],
       menus: {
         teaMenu: {
@@ -1103,6 +1114,9 @@ VALUE: {
         
         varsMenu: {
             items: ['consoleErr']
+        },
+        charSet: {
+        items: ['QWERTY','ЙЦУКЕН','0123456789']
         }
     }
     };
@@ -1394,6 +1408,28 @@ console.error(error)
   }
   text({TEXT}){
     return TEXT
+  }
+  randomString({LEN,CHAR}){
+    if  (CHAR = 'QWERTY'){
+    globalThis['CHAR_SET'] = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+    } else if (CHAR = 'ЙЦУКЕН'){
+      globalThis['CHAR_SET'] = 'ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮйцукенгшщзхъфывапролджэячсмитьбюёЁ0123456789'
+    } else if (CHAR = '0123456789'){
+       globalThis['CHAR_SET'] = '0123456789'
+    }
+function generateString(length) {
+    let result = ' ';
+ 
+    const charactersLength = globalThis['CHAR_SET'].length;
+  
+    for ( let i = 0; i < length; i++ ) {
+        result += globalThis['CHAR_SET'].charAt(Math.floor(Math.random() * charactersLength));
+    }
+
+   result;
+}
+    
+  return generateString(LEN)
   }
 }
 Scratch.extensions.register(new teandedScratch());
