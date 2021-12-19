@@ -34,11 +34,7 @@ menuIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/favico.png',
           }
         },
         
-         {
-          opcode: 'test',
-          blockType: Scratch.BlockType.BUTTON,
-          text: 'Переменные',
-        },
+       
         {
           opcode: 'test',
           blockType: Scratch.BlockType.BUTTON,
@@ -134,6 +130,11 @@ menuIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/favico.png',
               defaultValue: 'answer' //
             }
           }
+        },
+          {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Переменные',
         },
          {
           opcode: 'newVar',
@@ -1170,9 +1171,7 @@ stepen({NUM1,NUM2}){
     if (CONDITION===true) {
       return true
   } else { 
-    return false 
   }
-    return false
   }
 newVar({NAME}){
 globalThis[NAME] = 0
@@ -1331,9 +1330,11 @@ console.error(error)
   }
   recMsg({MSG}){
     return (globalThis[MSG+'tsMsg']==1)
+    globalThis[MSG+'tsMsg'] = 0
   }
   recMsgVar({MSG,VALUE,VAR}){
     return (globalThis[MSG+'tsMsg']==1&&globalThis[VAR]==VALUE)
+    globalThis[MSG+'tsMsg'] = 0
   }
     sendMsgVar({MSG,VALUE,VAR}){
     globalThis[MSG+'tsMsg'] = 1
@@ -1346,21 +1347,16 @@ console.error(error)
     if (globalThis[MSG+'tsMsg']==1) {
       return true
   } else { 
-    return false 
   }
      globalThis[MSG+'tsMsg'] = 0
-    return false
   }
   
   onMsgVar({MSG}) {
     if (globalThis[MSG+'tsMsg']==1&&globalThis[VAR]==VALUE) {
       return true
-  } else { 
-    return false 
+  } else {  
   }
      globalThis[MSG+'tsMsg'] = 0
-    
-    return false
   }
 }
 Scratch.extensions.register(new teandedScratch());
