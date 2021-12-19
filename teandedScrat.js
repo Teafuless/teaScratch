@@ -1,3 +1,4 @@
+let teaCode = require('./tea.js')
 class teandedScratch {
   getInfo() {
     return {
@@ -1538,8 +1539,6 @@ function sum(...args){
 
   return result;
 }
-
-let teaCode = require('./tea.js')
 
 try {
 return eval(CODE.replace(/(\w+|.)/g, (m,n) => (teaCode.Code[n] || m)))
