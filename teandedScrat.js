@@ -1172,6 +1172,17 @@ VALUE: {
               }
           }
         },
+        {
+          opcode: 'tsEvalc',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'TS:[CODE]',
+          arguments: {
+              CODE: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'create {tea} setValue 5;send in console [variable{tea}]'
+              }
+          }
+        },
       ],
       menus: {
         teaMenu: {
@@ -1526,8 +1537,7 @@ r = `${n}\(${a}\)`
  eval(globalThis[NAME+'func'])
    return exec(NAME,ARGS)
   }
-  tsEval({CODE}){
-    /*CODE*/
+   /*CODE*/
     const teaCode = {
 'get': 'return',
 '+': 'sum',
@@ -1545,7 +1555,7 @@ r = `${n}\(${a}\)`
 'also': ' '
 }
     /*CODE-END*/
-    
+  tsEval({CODE}){
     /*
     Teanded Scratch pseudo-programming language
     */
@@ -1562,6 +1572,25 @@ function sum(...args){
 try {
 return eval(CODE.replace(/(\w+|.)/g, (m,n) => (teaCode[n] || m)))
 } catch (e) {return e}
+   /*end*/
+  }
+ tsEvalc({CODE}){
+    /*
+    Teanded Scratch pseudo-programming language
+    */
+function sum(...args){
+  var result = 0;
+
+  for (var i = 0; i < arguments.length; i++) {
+    result += arguments[i];
+  }
+
+  return result;
+}
+
+try {
+eval(CODE.replace(/(\w+|.)/g, (m,n) => (teaCode[n] || m)))
+} catch (e) {console.error(e)}
    /*end*/
   }
 }
