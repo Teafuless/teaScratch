@@ -1105,7 +1105,57 @@ VALUE: {
                menu: 'charSet'
               }
           }
-        }
+        },
+           {
+          opcode: 'newFunc',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'Создать функцию [NAME], с аргументами [ARGS], с кодом [CODE]',
+          arguments: {
+              NAME: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'tea'
+              },
+             ARGS: {
+                  type: Scratch.ArgumentType.STRING,
+               defaultValue:'text'
+              },
+              CODE: {
+                  type: Scratch.ArgumentType.STRING,
+               defaultValue: 'return text'
+              }
+          }
+        },
+        {
+          opcode: 'execFunc',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'Выполнить функцию [NAME], с аргументами [ARGS]',
+          arguments: {
+              NAME: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'tea'
+              },
+             ARGS: {
+                  type: Scratch.ArgumentType.STRING,
+               defaultValue: '\'привет\''
+              }
+          }
+        },
+         {
+          opcode: 'execFuncRep',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'Выполнить функцию [NAME], с аргументами [ARGS]',
+          arguments: {
+              NAME: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'tea'
+              },
+             ARGS: {
+                  type: Scratch.ArgumentType.STRING,
+               defaultValue: '\'привет\''
+              }
+          }
+        },
+        
       ],
       menus: {
         teaMenu: {
@@ -1430,6 +1480,34 @@ function generateString(length) {
 }
     
   return generateString(LEN)
+  }
+  newFunc({NAME,ARGS,CODE}){
+    function gen(n,c,a){
+  let r = ''
+  r = `function ${n}\(${a}\)\{
+${c}
+\}`
+  return r
+}
+
+globalThis[NAME] = gen(NAME,CODE,ARGS)
+eval(globalThis[NAME])
+  }
+  execFunc({NAME,ARGS}){
+    function exec(n,a){
+  let r
+r = `${n}\(${a}\)`
+  eval(r)
+}
+ exec(NAME,ARGS)
+  }
+  execFuncRep({NAME,ARGS}){
+    function exec(n,a){
+  let r
+r = `${n}\(${a}\)`
+  eval(r)
+}
+ return exec(NAME,ARGS)
   }
 }
 Scratch.extensions.register(new teandedScratch());
