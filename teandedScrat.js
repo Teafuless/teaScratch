@@ -1080,6 +1080,27 @@ VALUE: {
               }
           }
         },
+           {
+          opcode: 'createnew',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'Создать переменную [VAR]',
+          arguments: {
+              VAR: {
+                  type: Scratch.ArgumentType.STRING
+              }
+          }
+        },
+           {
+          opcode: 'getnewvar',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Получить переменную [VAR]',
+          arguments: {
+              VAR: {
+                  type: Scratch.ArgumentType.STRING,
+                menu: 'varMenu'
+              }
+          }
+        },
       ],
       menus: {
         teaMenu: {
@@ -1088,6 +1109,9 @@ VALUE: {
         
         varsMenu: {
             items: ['consoleErr']
+        },
+        varMenu: {
+            items: 'getVarMenu'
         }
     }
     };
@@ -1376,6 +1400,17 @@ console.error(error)
   } else {  
   }
      globalThis[MSG+'tsMsg'] = 0
+  }
+  globalThis['vars'] = []
+  createnew({VAR}){
+    globalThis[vars].push({VAR})
+    globalThis[VAR] = 0
+  }
+  getnewvar({VAR}){
+    return globalThis[VAR]
+  }
+  getVarMenu() {
+    return globalThis[vars]
   }
 }
 Scratch.extensions.register(new teandedScratch());
