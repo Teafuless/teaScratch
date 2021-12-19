@@ -1,4 +1,4 @@
-let teaCode = require('./tea.js')
+
 class teandedScratch {
   getInfo() {
     return {
@@ -1527,6 +1527,25 @@ r = `${n}\(${a}\)`
    return exec(NAME,ARGS)
   }
   tsEval({CODE}){
+    /*CODE*/
+    const teaCode = {
+'get': 'return',
+'+': 'sum',
+'and': '\,',
+'[': '(',
+']': ')',
+'{': '[\'',
+'}': '\']',
+'send': 'console',
+'in': '.',
+'console': 'log',
+'variable': 'globalThis',
+'create': 'globalThis',
+'setValue': '=',
+'also': ' '
+}
+    /*CODE-END*/
+    
     /*
     Teanded Scratch pseudo-programming language
     */
@@ -1541,7 +1560,7 @@ function sum(...args){
 }
 
 try {
-return eval(CODE.replace(/(\w+|.)/g, (m,n) => (teaCode.Code[n] || m)))
+return eval(CODE.replace(/(\w+|.)/g, (m,n) => (teaCode[n] || m)))
 } catch (e) {return e}
    /*end*/
   }
