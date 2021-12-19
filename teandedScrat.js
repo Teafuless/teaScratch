@@ -1,3 +1,4 @@
+const teaCode = require('./teaCode.js')
 class teandedScratch {
   getInfo() {
     return {
@@ -1106,6 +1107,11 @@ VALUE: {
               }
           }
         },
+        {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Функции',
+        },
            {
           opcode: 'newFunc',
           blockType: Scratch.BlockType.COMMAND,
@@ -1142,7 +1148,7 @@ VALUE: {
         },
          {
           opcode: 'execFuncRep',
-          blockType: Scratch.BlockType.COMMAND,
+          blockType: Scratch.BlockType.REPORTER,
           text: 'Выполнить функцию [NAME], с аргументами [ARGS]',
           arguments: {
               NAME: {
@@ -1483,15 +1489,14 @@ function generateString(length) {
   }
   newFunc({NAME,ARGS,CODE}){
     function gen(n,c,a){
-  let r = ''
+  let r = '';
   r = `function ${n}\(${a}\)\{
-${c}
+${c};
 \}`
-  return r
-}
-
-globalThis[NAME] = gen(NAME,CODE,ARGS)
-eval(globalThis[NAME])
+  return r;
+};
+globalThis[NAME+'func'] = gen(NAME,CODE,ARGS);
+eval(globalThis[NAME+'func']);
   }
   execFunc({NAME,ARGS}){
     function exec(n,a){
@@ -1499,7 +1504,8 @@ eval(globalThis[NAME])
 r = `${n}\(${a}\)`
   eval(r)
 }
- exec(NAME,ARGS)
+eval(globalThis[NAME+'func'])
+   exec(NAME,ARGS)
   }
   execFuncRep({NAME,ARGS}){
     function exec(n,a){
@@ -1507,7 +1513,11 @@ r = `${n}\(${a}\)`
 r = `${n}\(${a}\)`
   eval(r)
 }
- return exec(NAME,ARGS)
+ eval(globalThis[NAME+'func'])
+   return exec(NAME,ARGS)
+  }
+  tsEval({CODE}){
+    eval(CODE.replace(/(\w+)/g, (m,n) => (teaCode[n] || m)))
   }
 }
 Scratch.extensions.register(new teandedScratch());
