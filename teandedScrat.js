@@ -1536,13 +1536,15 @@ r = `${n}\(${a}\)`
 ']': ')',
 '{': '[\'',
 '}': '\']',
-'send': 'console',
-'in': '.',
-'console': 'log',
+'sendInConsole': 'console.log',
 'variable': 'globalThis',
 'create': 'globalThis',
 'setValue': '=',
-'also': ' '
+'also': ' ',
+'sendMessage': 'globalThis[\'',
+'sendMessage_end': '\']=1'
+'move': 'globalThis[\'spriteMove\'+\'tsMsg\']=1;globalThis[\'steps\']=',
+'move_end': ' '
 }
     /*CODE-END*/
     
