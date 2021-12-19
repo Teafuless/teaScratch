@@ -1,5 +1,23 @@
 
 class teandedScratch {
+   /*CODE*/
+    const teaCode = {
+'get': 'return',
+'+': 'sum',
+'and': '\,',
+'[': '(',
+']': ')',
+'{': '[\'',
+'}': '\']',
+'send': 'console',
+'in': '.',
+'console': 'log',
+'variable': 'globalThis',
+'create': 'globalThis',
+'setValue': '=',
+'also': ' '
+}
+    /*CODE-END*/
   getInfo() {
     return {
       id: 'teanded',
@@ -1537,24 +1555,7 @@ r = `${n}\(${a}\)`
  eval(globalThis[NAME+'func'])
    return exec(NAME,ARGS)
   }
-   /*CODE*/
-    const teaCode = {
-'get': 'return',
-'+': 'sum',
-'and': '\,',
-'[': '(',
-']': ')',
-'{': '[\'',
-'}': '\']',
-'send': 'console',
-'in': '.',
-'console': 'log',
-'variable': 'globalThis',
-'create': 'globalThis',
-'setValue': '=',
-'also': ' '
-}
-    /*CODE-END*/
+  
   tsEval({CODE}){
     /*
     Teanded Scratch pseudo-programming language
