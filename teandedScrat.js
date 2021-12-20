@@ -1598,6 +1598,17 @@ r = `${n}\(${a}\)`
 'if_start': '\{ \n\/\*Teanded Scratch \'if start\'\*\/\n',
 'if_end': '\n\/\*Teanded Scratch \'if end\'\*\/\n}',
 'c_v': '\/\*code_view\*\/',
+'say': 'globalThis[\'say\'+\'tsMsg\']=1;globalThis[\'sayText\']=',
+'say_end': ' ',
+'say_AW': 'globalThis[\'say_AW\'+\'tsMsg\']=1;globalThis[\'say_AWText\']=',
+'say_AW_end': ';',
+'say_wait': 'globalThis[\'say_AWWait\']=',
+'say_wait_end': ' ',
+'switch_costumeTo': 'globalThis[\'switchCostume\'+\'tsMsg\']=1;globalThis[\'swCostume\']=,
+'switch_costume_end': ' ',
+'switch_costumeBy': 'globalThis[\'switchCostumeBy\'+\'tsMsg\']=1;globalThis[\'swCostumeBy\']=,
+'switch_costumeBy_end': ' ',
+
 }
     /*CODE-END*/
     
@@ -1654,5 +1665,6 @@ try {
   pi({TEA}){
     return '3.1415926535'
   }
+  
 }
 Scratch.extensions.register(new teandedScratch());
