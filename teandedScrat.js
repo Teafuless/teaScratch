@@ -1176,7 +1176,7 @@ VALUE: {
                 defaultValue: 'create {tea} setValue 5;variable{tea}'
               }
           }
-        },
+        }
       ],
       menus: {
         teaMenu: {
@@ -1561,7 +1561,7 @@ r = `${n}\(${a}\)`
 'rotateBack': 'globalThis[\'rotate\'+\'tsMsg\']=1;globalThis[\'rotate\']=(',
 'rotateBack_end': ')*-1',
 'condition': '\(',
-'condition_end': '\)==true'
+'condition_end': '\)==true',
 'if_start': '\{ \n\/\*Teanded Scratch \'if start\'\*\/\n',
 'if_end': '\n\/\*Teanded Scratch \'if end\'\*\/\\n}',
 '\&cv': '\/\*code_view\*\/'
@@ -1584,7 +1584,7 @@ function sum(...args){
 try {
   if(CODE.replace('\&cv',' ')==CODE)){
 return eval(CODE.replace(/(\w+|.)/g, (m,n) => (teaCode[n] || m)))
-  } else return CODE.replace(/(\w+|.)/g, (m,n) => (teaCode[n] || m))
+  } else return String(CODE.replace(/(\w+|.)/g, (m,n) => (teaCode[n] || m)))
 } catch (e) {return e}
    /*end*/
   }
