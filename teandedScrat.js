@@ -1,6 +1,7 @@
 class teandedScratch {
   getInfo() {
     return {
+      const fs = require("fs")
       id: 'teanded',
       color1: '#8DC286',
 menuIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/favico.png',
@@ -1654,5 +1655,6 @@ try {
   pi({TEA}){
     return '3.1415926535'
   }
+  
 }
 Scratch.extensions.register(new teandedScratch());
