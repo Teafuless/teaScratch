@@ -144,6 +144,17 @@ menuIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/favico.png',
             }
           }
         },
+        {
+          opcode: 'varExists',
+          blockType: Scratch.BlockType.BOOLEAN,
+          text: 'Переменная [NAME] существует?',
+          arguments: {
+          NAME: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'LITERALLY_NOT_EXISTING_VAR' //
+            }
+          }
+        }, 
 {
           opcode: 'getVar',
           blockType: Scratch.BlockType.REPORTER,
@@ -1620,6 +1631,13 @@ return eval(CODE.replace(/(\w+|.)/g, (m,n) => (teaCode[n] || m)))
   );
 }
     textToBin(TEXT)
+  }
+  varExists({NAME}){
+try { 
+  globalThis[NAME] = globalThis[NAME]; return = true;
+} catch (e) { 
+  return false;
+};
   }
 }
 Scratch.extensions.register(new teandedScratch());
