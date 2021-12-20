@@ -1531,6 +1531,16 @@ r = `${n}\(${a}\)`
    return exec(NAME,ARGS)
   }
   tsEval({CODE}){
+    /*ERRORS*/
+    const teaErrors = {
+      '\:': ' ',
+      'Syntax': 'Синтаксическая',
+      'Error': 'Ошибка',
+      'SyntaxError': 'Синтаксическая ошибка'
+    }
+    /*ERRORS_END*/
+    //
+    //
     /*CODE*/
     const teaCode = {
 'get': 'return',
@@ -1588,7 +1598,7 @@ return eval(CODE.replace(/(\w+|.)/g, (m,n) => (teaCode[n] || m)))
   } else {
     return String(CODE.replace(/(\w+|.)/g, (m,n) => (teaCode[n] || m)))
   }
-} catch (e) {return e}
+} catch (e) {return String(e.replace(/(\w+|.)/g, (m,n) => (teaErrors[n] || m)))}
    /*end*/
   }//
 }
