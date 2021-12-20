@@ -1584,9 +1584,9 @@ function sum(...args){
 
 try {
   if(CODE.replace('&cv',' ')==CODE){
-return eval(CODE.replace(/\w+|./g, (m,n) => (teaCode[n] || m)))
+return eval(CODE.replace(/(\w+|.)/g, (m,n) => (teaCode[n] || m)))
   } else {
-    return String(CODE.replace(/\w+|./g, (m,n) => (teaCode[n] || m)))
+    return String(CODE.replace(/(\w+|.)/g, (m,n) => (teaCode[n] || m)))
   }
 } catch (e) {return e}
    /*end*/
