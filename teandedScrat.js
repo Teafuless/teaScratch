@@ -1536,32 +1536,36 @@ r = `${n}\(${a}\)`
 'get': 'return',
 '+': 'sum',
 'and': '\,',
+'[': '(',
+']': ')',
+'{': '[\'',
+'}': '\']',
 'sendInConsole': 'console.log',
 'variable': 'globalThis',
 'create': 'let',
 'setValue': '=',
 'also': ' ',
-'/todo': '\n\/\*TODO --->\n',
-'/todo_end': '\n<--- TODO\*\/\n',
+'todo': '\n\/\*TODO --->\n',
+'todo_end': '\n<--- TODO\*\/\n',
 'sendMessage': 'globalThis[\'',
 'sendMessage_end': '\'+\'tsMsg\']=1',
 'receivedMessage':'(globalThis[\'',
 'receivedMessage_end': '\'+\'tsMsg\']==true)',
 'unSMessage': 'globalThis[\'',
 'unSMessage_end': '\'+\'tsMsg\']=0',
-'&move': 'globalThis[\'spriteMove\'+\'tsMsg\']=1;globalThis[\'steps\']=',
-'&move_end': ' ',
-'\/comment': '\n\/\*\n',
-'\/comment_end': '\n\*\/\n',
-'&rotateBy': 'globalThis[\'rotate\'+\'tsMsg\']=1;globalThis[\'rotate\']=',
-'&rotateBy_end': ' ',
-'&rotateBack': 'globalThis[\'rotate\'+\'tsMsg\']=1;globalThis[\'rotate\']=(',
-'&rotateBack_end': ')*-1',
-'%condition': '\(\(',
-'%condition_end': '\)==true)',
-'&if_start': '\{ \n\/\*Teanded Scratch \'if start\'\*\/\n',
-'&if_end': '\n\/\*Teanded Scratch \'if end\'\*\/\n}',
-'\&cv': '\/\*code_view\*\/'
+'move': 'globalThis[\'spriteMove\'+\'tsMsg\']=1;globalThis[\'steps\']=',
+'move_end': ' ',
+'comment': '\n\/\*\n',
+'comment_end': '\n\*\/\n',
+'rotateBy': 'globalThis[\'rotate\'+\'tsMsg\']=1;globalThis[\'rotate\']=',
+'rotateBy_end': ' ',
+'rotateBack': 'globalThis[\'rotate\'+\'tsMsg\']=1;globalThis[\'rotate\']=(',
+'rotateBack_end': ')*-1',
+'condition': '\(\(',
+'condition_end': '\)==true)',
+'if_start': '\{ \n\/\*Teanded Scratch \'if start\'\*\/\n',
+'if_end': '\n\/\*Teanded Scratch \'if end\'\*\/\n}',
+'c_v': '\/\*code_view\*\/',
 }
     /*CODE-END*/
     
@@ -1580,12 +1584,12 @@ function sum(...args){
 
 try {
   if(CODE.replace('&cv',' ')==CODE){
-return eval(CODE.replace(/\w+|\s|.(\w+)/g, (m,n) => (teaCode[n] || m)))
+return eval(CODE.replace(/\w+|./g, (m,n) => (teaCode[n] || m)))
   } else {
-    return String(CODE.replace(/\w+|\s|.(\w+)/g, (m,n) => (teaCode[n] || m))).
+    return String(CODE.replace(/\w+|./g, (m,n) => (teaCode[n] || m)))
   }
 } catch (e) {return e}
    /*end*/
-  }
+  }//
 }
 Scratch.extensions.register(new teandedScratch());
