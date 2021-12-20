@@ -1175,7 +1175,34 @@ VALUE: {
                 defaultValue: 'create {tea} setValue 5;variable{tea}'
               }
           }
-        }
+        },
+        {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Binary',
+        },
+              {
+          opcode: 'textToBin',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Перевести [TEXT] в бинарный код',
+          arguments: {
+              TEXT: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'teaful'
+              }
+          }
+        },
+           {
+          opcode: 'binToText',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Перевести [BIN] в текст',
+          arguments: {
+              BIN: {
+                  type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '01110100 01100101 01100001 01100110 01110101 01101100'
+              }
+          }
+        },
       ],
       menus: {
         teaMenu: {
