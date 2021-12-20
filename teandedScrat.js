@@ -1645,7 +1645,8 @@ return eval(CODE.replace(/(\w+|.)/g, (m,n) => (teaCode[n] || m)))
   }
   varExists({NAME}){
 try { 
-  globalThis[NAME] = globalThis[NAME]; return = true;
+  globalThis[NAME] = globalThis[NAME];
+  return true;
 } catch (e) { 
   return false;
 };
