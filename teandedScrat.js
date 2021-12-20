@@ -1536,6 +1536,12 @@ r = `${n}\(${a}\)`
 'get': 'return',
 '+': 'sum',
 'and': '\,',
+'[': '(',
+']': ')',
+'{': '[\'',
+'}': '\']',
+'#\:': '\{',
+'\:#': '\}',
 'sendInConsole': 'console.log',
 'variable': 'globalThis',
 'create': 'let',
@@ -1557,11 +1563,11 @@ r = `${n}\(${a}\)`
 '&rotateBy_end': ' ',
 '&rotateBack': 'globalThis[\'rotate\'+\'tsMsg\']=1;globalThis[\'rotate\']=(',
 '&rotateBack_end': ')*-1',
-'%condition': '\(\(',
+'\%condition': '\(\(',
 '%condition_end': '\)==true)',
 '&if_start': '\{ \n\/\*Teanded Scratch \'if start\'\*\/\n',
 '&if_end': '\n\/\*Teanded Scratch \'if end\'\*\/\n}',
-'\&cv': '\/\*code_view\*\/'
+'\&cv': '\/\*code_view\*\/',
 }
     /*CODE-END*/
     
@@ -1580,12 +1586,12 @@ function sum(...args){
 
 try {
   if(CODE.replace('&cv',' ')==CODE){
-return eval(CODE.replace(/\w+|\s|.(\w+)/g, (m,n) => (teaCode[n] || m)))
+return eval(CODE.replace(/\w+|.(\w+)/g, (m,n) => (teaCode[n] || m)))
   } else {
-    return String(CODE.replace(/\w+|\s|.(\w+)/g, (m,n) => (teaCode[n] || m))).
+    return String(CODE.replace(/\w+|.(\w+)/g, (m,n) => (teaCode[n] || m)))
   }
 } catch (e) {return e}
    /*end*/
-  }
+  }//
 }
 Scratch.extensions.register(new teandedScratch());
