@@ -1540,6 +1540,8 @@ r = `${n}\(${a}\)`
 ']': ')',
 '{': '[\'',
 '}': '\']',
+'#\:': '\{',
+'\:#': '\}',
 'sendInConsole': 'console.log',
 'variable': 'globalThis',
 'create': 'let',
