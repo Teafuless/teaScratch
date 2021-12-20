@@ -1542,7 +1542,7 @@ r = `${n}\(${a}\)`
 '}': '\']',
 'sendInConsole': 'console.log',
 'variable': 'globalThis',
-'create': 'let',
+'create': 'globalThis',
 'setValue': '=',
 'also': ' ',
 'todo': '\n\/\*TODO --->\n',
@@ -1583,10 +1583,10 @@ function sum(...args){
 }
 
 try {
-  if(CODE.replace('&cv',' ')==CODE){
-return eval(CODE.replace(/\w+|./g, (m,n) => (teaCode[n] || m)))
+  if(CODE.replace('c_v',' ')==CODE){
+return eval(CODE.replace(/(\w+|.)/g, (m,n) => (teaCode[n] || m)))
   } else {
-    return String(CODE.replace(/\w+|./g, (m,n) => (teaCode[n] || m)))
+    return String(CODE.replace(/(\w+|.)/g, (m,n) => (teaCode[n] || m)))
   }
 } catch (e) {return e}
    /*end*/
