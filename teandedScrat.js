@@ -1162,6 +1162,11 @@ VALUE: {
           }
         },
          {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'TS Code',
+        },
+         {
           opcode: 'tsEval',
           blockType: Scratch.BlockType.REPORTER,
           text: 'TS:[CODE]',
@@ -1548,7 +1553,18 @@ r = `${n}\(${a}\)`
 'unSendMessage': 'globalThis[\'',
 'unSendMessage_end': '\'+\'tsMsg\']=0',
 'move': 'globalThis[\'spriteMove\'+\'tsMsg\']=1;globalThis[\'steps\']=',
-'move_end': ' '
+'move_end': ' ',
+'comment': '\/\*',
+'comment_end': '\*\/',
+'rotate': 'globalThis[\'rotate\'+\'tsMsg\']=1;globalThis[\'rotate\']=',
+'rotate_end': ' ',
+'rotateBack': 'globalThis[\'rotate\'+\'tsMsg\']=1;globalThis[\'rotate\']=(',
+'rotateBack_end': ')*-1',
+'condition': '\(',
+'condition_end': '\)==true'
+'if_start': '\{ \n\/\*Teanded Scratch \'if start\'\*\/\n',
+'if_end': '\n\/\*Teanded Scratch \'if end\'\*\/\\n}',
+'\&cv': '\/\*code_view\*\/'
 }
     /*CODE-END*/
     
@@ -1566,7 +1582,9 @@ function sum(...args){
 }
 
 try {
+  if(CODE.replace('\&cv',' ')==CODE)){
 return eval(CODE.replace(/(\w+|.)/g, (m,n) => (teaCode[n] || m)))
+  } else return CODE.replace(/(\w+|.)/g, (m,n) => (teaCode[n] || m))
 } catch (e) {return e}
    /*end*/
   }
