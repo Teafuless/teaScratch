@@ -1186,17 +1186,6 @@ VALUE: {
                 defaultValue: 'create {tea} setValue 5;variable{tea}'
               }
           }
-        },
-                 {
-          opcode: 'pi',
-          blockType: Scratch.BlockType.REPORTER,
-          text: 'pi',
-          arguments: {
-              TEA: {
-                  type: Scratch.ArgumentType.STRING,
-                defaultValue: '0'
-              }
-          }
         }
       ],
       menus: {
@@ -1645,13 +1634,11 @@ return eval(CODE.replace(/(\w+|.)/g, (m,n) => (teaCode[n] || m)))
   }
   varExists({NAME}){
 try { 
-  globalThis[NAME] = globalThis[NAME]; return = true;
+  globalThis[NAME] = globalThis[NAME]; 
+  return = true;
 } catch (e) { 
   return false;
 };
-  }
-  pi({TEA}){
-    return '3,1415926535 8979323846 2643383279 5028841971 6939937510 5820974944 5923078164 0628620899 8628034825 3421170679 8214808651 3282306647 0938446095 5058223172 5359408128 4811174502 8410270193 8521105559 6446229489 5493038196 4428810975 6659334461 2847564823 3786783165 2712019091'
   }
 }
 Scratch.extensions.register(new teandedScratch());
