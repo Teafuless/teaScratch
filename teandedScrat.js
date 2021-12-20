@@ -1561,7 +1561,7 @@ r = `${n}\(${a}\)`
 'rotateBack': 'globalThis[\'rotate\'+\'tsMsg\']=1;globalThis[\'rotate\']=(',
 'rotateBack_end': ')*-1',
 'condition': '\(',
-'condition_end': '\)==true'
+'condition_end': '\)==true',
 'if_start': '\{ \n\/\*Teanded Scratch \'if start\'\*\/\n',
 'if_end': '\n\/\*Teanded Scratch \'if end\'\*\/\\n}',
 '\&cv': '\/\*code_view\*\/'
