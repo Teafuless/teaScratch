@@ -1197,6 +1197,17 @@ VALUE: {
                 defaultValue: '0'
               }
           }
+        },
+                        {
+          opcode: 'teaCmd',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'TS Command: [CMD]',
+          arguments: {
+              CMD: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'sum: 1+1'
+              }
+          }
         }
       ],
       menus: {
@@ -1665,6 +1676,76 @@ try {
   pi({TEA}){
     return '3.1415926535'
   }
+  
+  /* TEA CMD
+  BELOW: */
+            teaCmd({CMD}){
+let text = CMD.replace(/([\(\)])/g,'')
+let cmd = text.split(":")
+switch(cmd) {
+  case 'sum':
+    text = text.split("+")
+function sum(...args){
+  var result = 0;
+
+  for (var i = 0; i < arguments.length; i++) {
+    result += arguments[i];
+  }
+
+   result;
+} 
+    return sum(...text)
+    [break]
+
+  case 'sub':
+    text = text.split("-")
+function sub(...args){
+  var result = 0;
+
+  for (var i = 0; i < arguments.length; i++) {
+    result -= arguments[i];
+  }
+
+   result;
+} 
+    return sub(...text)
+    [break]
+    
+      case 'divide':
+    text = text.split("-")
+function divide(...args){
+  var result = 0;
+
+  for (var i = 0; i < arguments.length; i++) {
+    result = result / arguments[i]
+  }
+
+   result;
+} 
+    return divide(...text)
+    
+    [break]
+          case 'multi':
+    text = text.split("-")
+function multi(...args){
+  var result = 0;
+
+  for (var i = 0; i < arguments.length; i++) {
+    result = result * arguments[i]
+  }
+
+   result;
+} 
+    return multi(...text)
+    [break]
+    
+  default:
+    return 'Oops...'
+    [break]
+}
+  }
+  /*TEA CMD
+  END*/
   
 }
 Scratch.extensions.register(new teandedScratch());
