@@ -242,6 +242,28 @@ VALUE: {
             }
           }
         },
+                 {
+          opcode: 'toUpCase',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Преобразовать в верхний регистр [TEXT]',
+          arguments: {
+            TEXT: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'TeAFul'
+            }
+          }
+        },
+             {
+          opcode: 'toLowCase',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Преобразовать в нижний регистр [TEXT]',
+          arguments: {
+            TEXT: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'tEafUL'
+            }
+          }
+        },
          {
           opcode: 'replaceIn',
           blockType: Scratch.BlockType.REPORTER,
@@ -1255,7 +1277,7 @@ VALUE: {
               },
              TEXT: {
                   type: Scratch.ArgumentType.STRING,
-                defaultValue: 'text 123'
+                defaultValue: '\'text 123\''
               }
           }
         },
@@ -1282,6 +1304,36 @@ VALUE: {
              KEY: {
                   type: Scratch.ArgumentType.STRING,
                 defaultValue: 'key'
+              }
+          }
+        },
+         {
+          opcode: 'getKeyName',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Получить имя ключа со значением [VALUE] из объекта [OBJ]',
+          arguments: {
+              OBJ: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'obj'
+              },
+             VALUE: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'value'
+              }
+          }
+        },
+                 {
+          opcode: 'getKeyByIndex',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Получить имя ключа с индексом [INDEX] из объекта [OBJ]',
+          arguments: {
+              OBJ: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'obj'
+              },
+             INDEX: {
+                  type: Scratch.ArgumentType.NUMBR,
+                defaultValue: '0'
               }
           }
         },
@@ -1834,6 +1886,21 @@ function multi(...args){
   getObjKey({OBJ,KEY}){
       let res = `globalThis\[\'${OBJ}\'\]\.${KEY}`
   return eval(res)
+  }
+  getKeyName({OBJ,VALUE}){
+function getKey(obj, value) {
+   Object.keys(obj).find(key => obj[key] === value);
+}
+    return getKey(globalThis[OBJ],VALUE)
+  }
+  getKeyByIndex({OBJ,INDEX}){
+    return Object.keys(globalThis[OBJ])[INDEX]
+  }
+  toUpCase({TEXT}){
+    return String(TEXT).toUpperCase()
+  }
+    toLowCase({TEXT}){
+    return String(TEXT).toLowerCase()
   }
 }
 Scratch.extensions.register(new teandedScratch());
