@@ -1758,6 +1758,8 @@ try {
             teaCmd({CMD}){
 let text = CMD.replace(/([\(\)])/g,'')
 let cmd = text.split(":")
+text = cmd.replace(/([\(\)])/g,'')
+              cmd = cmd[0]
   if (cmd=='sum'){
     text = text.split("+")
 function sum(...args){
@@ -1824,7 +1826,7 @@ function multi(...args){
   eval(res)
  }
   replaceObj({OBJ,TEXT}){
-    return eval(String(TEXT).replace(/(\w+|.)/g, (m,n) => (globalThis[OBJ][n] || m)))
+    return String(eval(String(TEXT).replace(/(\w+|.)/g, (m,n) => (globalThis[OBJ][n] || m))))
   }
   getObj({OBJ}){
     return globalThis[OBJ]
