@@ -1208,7 +1208,83 @@ VALUE: {
                 defaultValue: 'sum: 1+1'
               }
           }
-        }
+        },
+          {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Объекты',
+        },
+                                {
+          opcode: 'createObj',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'Создать объект с названием [NAME]',
+          arguments: {
+              NAME: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'obj'
+              }
+          }
+        },
+        {
+          opcode: 'setObjKey',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'Установить ключу [KEY] из объекта [NAME] значение [VALUE]',
+          arguments: {
+              NAME: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'obj'
+              },
+             KEY: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'key'
+              },
+             VALUE: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: '5'
+              }
+          }
+        },
+         {
+          opcode: 'replaceObj',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Заменить все совпадения текста [TEXT] с объектом [OBJ]',
+          arguments: {
+              OBJ: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'obj'
+              },
+             TEXT: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'text 123'
+              }
+          }
+        },
+          {
+          opcode: 'getObj',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Получить объект [OBJ]',
+          arguments: {
+              OBJ: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'obj'
+              }
+          }
+        },
+          {
+          opcode: 'getObjKey',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Получить значение ключа [KEY] из объекта [OBJ]',
+          arguments: {
+              OBJ: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'obj'
+              },
+             KEY: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'key'
+              }
+          }
+        },
       ],
       menus: {
         teaMenu: {
@@ -1682,8 +1758,7 @@ try {
             teaCmd({CMD}){
 let text = CMD.replace(/([\(\)])/g,'')
 let cmd = text.split(":")
-switch(cmd) {
-  case 'sum':
+  if (cmd=='sum'){
     text = text.split("+")
 function sum(...args){
   var result = 0;
@@ -1695,9 +1770,8 @@ function sum(...args){
    result;
 } 
     return sum(...text)
-    [break]
 
-  case 'sub':
+  }else if (cmd == 'sub'){
     text = text.split("-")
 function sub(...args){
   var result = 0;
@@ -1709,9 +1783,9 @@ function sub(...args){
    result;
 } 
     return sub(...text)
-    [break]
+
     
-      case 'divide':
+  }else if (cmd=='divide'){
     text = text.split("-")
 function divide(...args){
   var result = 0;
@@ -1723,9 +1797,7 @@ function divide(...args){
    result;
 } 
     return divide(...text)
-    
-    [break]
-          case 'multi':
+  }else if(cmd== 'multi'){
     text = text.split("-")
 function multi(...args){
   var result = 0;
@@ -1737,15 +1809,29 @@ function multi(...args){
    result;
 } 
     return multi(...text)
-    [break]
-    
-  default:
+  }else {
     return 'Oops...'
-    [break]
 }
   }
   /*TEA CMD
   END*/
   
+ createObj({NAME}){
+   globalThis[NAME] = {}
+ }
+ setObjKey({NAME,KEY,VALUE}){
+  let res = `globalThis\[\'${NAME}\'\]\.${KEY} \= \`${VALUE}\``
+  eval(res)
+ }
+  replaceObj({OBJ,TEXT}){
+    return eval(String(TEXT).replace(/(\w+|.)/g, (m,n) => (globalThis[OBJ][n] || m)))
+  }
+  getObj({OBJ}){
+    return globalThis[OBJ]
+  }
+  getObjKey({OBJ,KEY}){
+      let res = `globalThis\[\'${NAME}\'\]\.${KEY}`
+  return eval(res)
+  }
 }
 Scratch.extensions.register(new teandedScratch());
