@@ -696,6 +696,25 @@ VALUE: {
           }
         },
         {
+          opcode: 'addTextMas',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'Разделить текст [TEXT] с разделителем [SYM] и добавить в массив [MAS]',
+          arguments: {
+              TEXT: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'tea\;is\;best'
+              },
+                 SYM: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: ';'
+              },
+                MAS: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'text'
+              },
+          }
+        },
+        {
           opcode: 'objLength',
           blockType: Scratch.BlockType.REPORTER,
           text: 'Получить длину массива [NAME]',
@@ -1337,6 +1356,55 @@ VALUE: {
               }
           }
         },
+                  {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Циклы',
+        },
+                         {
+          opcode: 'forC',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'Выполнить [START], повторять [CODE] и выполнять действие [STEP], пока [CON] верно',
+          arguments: {
+              CON: {
+                  type: Scratch.ArgumentType.BOOLEAN
+              },
+             STEP: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'globalThis[\'tea\'] += 1'
+              },
+                         START: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'globalThis[\'tea\'] = 0'
+              },
+                         CODE: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'globalThis[\'tea\']'
+              }
+          }
+        },
+                                 {
+          opcode: 'forC',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Выполнить [START], повторять [CODE] и выполнять действие [STEP], пока [CON] верно',
+          arguments: {
+              CON: {
+                  type: Scratch.ArgumentType.BOOLEAN
+              },
+             STEP: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'globalThis[\'tea\'] += 1'
+              },
+                         START: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'globalThis[\'tea\'] = 0'
+              },
+                         CODE: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'globalThis[\'tea\']'
+              }
+          }
+        },
       ],
       menus: {
         teaMenu: {
@@ -1901,6 +1969,22 @@ function getKey(obj, value) {
   }
     toLowCase({TEXT}){
     return String(TEXT).toLowerCase()
+  }
+  addTextMas({TEXT,SYM,MAS}){
+    let text = TEXT.split(SYM)
+    for (let i = 0;i < text.length;i++){
+      globalThis[MAS].push(text[i])
+    }
+  }
+  forC({CON,STEP,START,CODE}){
+    for (eval(START);(CON) != true;eval(STEP)){
+      eval(CODE)
+    }
+  }
+    forCR({CON,STEP,START,CODE}){
+    for (eval(START);(CON) != true;eval(STEP)){
+      return eval(CODE)
+    }
   }
 }
 Scratch.extensions.register(new teandedScratch());
