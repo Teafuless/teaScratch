@@ -1738,10 +1738,17 @@ ${c};
 \}`
   return r;
 };
-globalThis[NAME+'func'] = gen(NAME,CODE,ARGS);
+globalThis[NAME+'func'] = `gen(${NAME},${CODE},${ARGS})`;
 eval(globalThis[NAME+'func']);
   }
   execFunc({NAME,ARGS}){
+        function gen(n,c,a){
+  let r = '';
+  r = `function ${n}\(${a}\)\{
+${c};
+\}`
+  return r;
+};
     function exec(n,a){
   let r
 r = `${n}\(${a}\)`
