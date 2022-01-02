@@ -696,6 +696,25 @@ VALUE: {
           }
         },
         {
+          opcode: 'addTextMas',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'Разделить текст [TEXT] с разделителем [SYM] и добавить в массив [MAS]',
+          arguments: {
+              TEXT: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'tea\;is\;best'
+              },
+                 SYM: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: ';'
+              },
+                MAS: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'text'
+              },
+          }
+        },
+        {
           opcode: 'objLength',
           blockType: Scratch.BlockType.REPORTER,
           text: 'Получить длину массива [NAME]',
@@ -1901,6 +1920,12 @@ function getKey(obj, value) {
   }
     toLowCase({TEXT}){
     return String(TEXT).toLowerCase()
+  }
+  addTextMas({TEXT,SYM,MAS}){
+    let text = TEXT.split(SYM)
+    for (let i = 0;i < text.length;i++){
+      MAS.push(text[i])
+    }
   }
 }
 Scratch.extensions.register(new teandedScratch());
