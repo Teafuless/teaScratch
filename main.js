@@ -1442,6 +1442,143 @@ VALUE: {
               }
           }
         },
+        {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Звуки',
+        },
+         {
+          opcode: 'playSound',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'воспроизвести звук по ссылке [URL]',
+          arguments: {
+              URL: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'https://wav-library.net/sounds/0-0-1-16300-20'
+              }
+          }
+        },
+         {
+          opcode: 'changeVolume',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'изменить громкость звука на [VOL]',
+          arguments: {
+              VOL: {
+                  type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '25'
+              }
+          }
+        },
+        {
+          opcode: 'setVolume',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'воспроизвести звук по ссылке [URL]',
+          arguments: {
+              VOL: {
+                  type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '100'
+              }
+          }
+        },
+        {
+          opcode: 'stopSounds',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'остановить все звуки',
+          arguments: {
+              LOL: {
+                  type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '25'
+              }
+          }
+        },
+              {
+          opcode: 'gotoSound',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'перемотать звук на [GOTO]',
+          arguments: {
+              GOTO: {
+                  type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '10'
+              }
+          }
+        },
+         {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Звуки с названием',
+        },
+         {
+          opcode: 'playSoundN',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'воспроизвести звук [NAME] по ссылке [URL]',
+          arguments: {
+              URL: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'https://wav-library.net/sounds/0-0-1-16300-20'
+              },
+            NAME: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'meow'
+            },
+            
+          }
+        },
+         {
+          opcode: 'changeVolumeN',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'изменить громкость звука [NAME] на [VOL]',
+          arguments: {
+              VOL: {
+                  type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '25'
+              },
+            NAME: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'meow'
+            },
+          }
+        },
+        {
+          opcode: 'setVolumeN',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'воспроизвести звук [NAME] по ссылке [URL]',
+          arguments: {
+              VOL: {
+                  type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '100'
+              },
+            NAME: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'meow'
+            },
+          }
+        },
+        {
+          opcode: 'stopSoundsN',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'остановить звук [NAME]',
+          arguments: {
+             NAME: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'meow'
+            }
+          }
+        },
+              {
+          opcode: 'gotoSound',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'перемотать звук [NAME] на [GOTO]',
+          arguments: {
+              GOTO: {
+                  type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '10'
+              },
+            NAME: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'meow'
+            },
+          }
+        },
       ],
       menus: {
         teaMenu: {
@@ -2036,6 +2173,50 @@ self.location.replace(String(URL))
   }
   reloadPage({LOL}){
     self.location.reload()
+  }
+  playSound({URL}){
+    if (typeof globalThis['VOLUME'] == undefined){
+      globalThis['VOLUME'] = 100
+    }
+    var sound = new Audio
+    sound.src = String(URL)
+    sound.volume = globalThis['VOLUME']
+    sound.play()
+  }
+  changeVolume({VOL}){
+    globalThis['VOLUME'] += Number(VOL)
+  }
+  setVolume({VOL}){
+    globalThis['VOLUME'] = Number(VOL)
+  }
+  stopSounds({LOL}){
+    sound.pause();
+    sound.currentTime = 0;
+  }
+  gotoSound({GOTO}){
+    sound.currentTime = GOTO
+  }
+    playSoundN({URL,NAME}){
+    if (typeof globalThis[NAME+'VOLUME'] == undefined){
+      globalThis[NAME+'VOLUME'] = 100
+    }
+    globalThis[NAME] = new Audio
+    globalThis[NAME].src = String(URL)
+    globalThis[NAME].volume = globalThis[NAME+'VOLUME']
+    globalThis[NAME].play()
+  }
+    changeVolumeN({VOL,NAME}){
+    globalThis[NAME+'VOLUME'] += Number(VOL)
+  }
+  setVolumeN({VOL,NAME}){
+    globalThis[NAME+'VOLUME'] = Number(VOL)
+  }
+  stopSoundsN({NAME}){
+     globalThis[NAME].pause();
+     globalThis[NAME].currentTime = 0;
+  }
+  gotoSoundN({GOTO,NAME}){
+     globalThis[NAME].currentTime = GOTO
   }
 }
 Scratch.extensions.register(new teandedScratch());
