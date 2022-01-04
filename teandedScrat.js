@@ -1360,7 +1360,7 @@ VALUE: {
           opcode: 'test',
           blockType: Scratch.BlockType.BUTTON,
           text: 'Циклы',
-        },
+        },/*
                          {
           opcode: 'forC',
           blockType: Scratch.BlockType.COMMAND,
@@ -1404,7 +1404,7 @@ VALUE: {
                 defaultValue: 'globalThis\[\'tea\'\]'
               }
           }
-        },
+        },*/
       ],
       menus: {
         teaMenu: {
@@ -1982,7 +1982,7 @@ function getKey(obj, value) {
     for (let i = 0;i < text.length;i++){
       globalThis[MAS].push(text[i])
     }
-  }
+  }/*
   forC({CON,STEP,START,CODE}){
 let res = `for \(${START}\;${CON}\;${STEP}\)\{${CODE}\}`
 eval(res)
@@ -1990,7 +1990,7 @@ eval(res)
     forCR({CON,STEP,START,CODE}){
 let res = `for \(${START}\;${CON}\;${STEP}\)\{\n${CODE}\n\}`
 return eval(res)
-  }
+  }*/
   
 }
 Scratch.extensions.register(new teandedScratch());
