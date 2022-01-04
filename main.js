@@ -1668,7 +1668,7 @@ console.error(error)
   }
 catchError({CODE}){
     try {
-    return CODE
+    return eval(CODE)
 } catch(error) {
 return error
 }
