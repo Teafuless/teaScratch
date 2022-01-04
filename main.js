@@ -1413,23 +1413,16 @@ VALUE: {
         {
           opcode: 'openPage',
           blockType: Scratch.BlockType.COMMAND,
-          text: 'открыть страницу [URL] в новой вкладке',
+          text: 'открыть страницу [URL] в [TAB] вкладке',
           arguments: {
               URL: {
                   type: Scratch.ArgumentType.STRING,
                   defaultValue: 'https\:\\\\scratch\.mit\.edu\\'
-              }
-          }
-        },
-                {
-          opcode: 'replacePage',
-          blockType: Scratch.BlockType.COMMAND,
-          text: 'открыть страницу [URL] в этой вкладке',
-          arguments: {
-              URL: {
-                  type: Scratch.ArgumentType.STRING,
-                  defaultValue: 'https\:\\\\scratch\.mit\.edu\\'
-              }
+              },
+            TAB: {
+              type: Scratch.ArgumentType.STRING,
+              menu: 'tab'
+            }
           }
         },
          {
@@ -1453,6 +1446,9 @@ VALUE: {
         },
         charSet: {
         items: ['QWERTY','ЙЦУКЕН','0123456789']
+        },
+        tab:{
+          items: ['этой','новой']
         }
     }
     };
@@ -2028,11 +2024,12 @@ eval(res)
 let res = `for \(${START}\;${CON}\;${STEP}\)\{\n${CODE}\n\}`
 return eval(res)
   }*/
-  openPage({URL}){
+  openPage({URL,TAB}){
+    if (TAB=='этой'){
 self.open(String(URL), '_blank');
-  }
-    replacePage({URL}){
+    } else  {
 self.location.replace(String(URL))
+  }
   }
   reloadPage({LOL}){
     self.location.reload()
