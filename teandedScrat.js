@@ -2039,3 +2039,4 @@ self.location.replace(String(URL))
   }
 }
 Scratch.extensions.register(new teandedScratch());
+//
