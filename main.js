@@ -1442,6 +1442,22 @@ VALUE: {
               }
           }
         },
+        {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Звуки',
+        },
+         {
+          opcode: 'playSound',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'воспроизвести звук по ссылке [URL]',
+          arguments: {
+              URL: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'https://wav-library.net/sounds/0-0-1-16300-20'
+              }
+          }
+        },
       ],
       menus: {
         teaMenu: {
@@ -2036,6 +2052,11 @@ self.location.replace(String(URL))
   }
   reloadPage({LOL}){
     self.location.reload()
+  }
+  playSound({URL}){
+    var sound = new Audio
+    sound.src = String(URL)
+    sound.play()
   }
 }
 Scratch.extensions.register(new teandedScratch());
