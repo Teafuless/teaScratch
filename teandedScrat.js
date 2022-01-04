@@ -1355,12 +1355,12 @@ VALUE: {
                 defaultValue: '0'
               }
           }
-        },
+        },/*
                   {
           opcode: 'test',
           blockType: Scratch.BlockType.BUTTON,
           text: 'Циклы',
-        },/*
+        },
                          {
           opcode: 'forC',
           blockType: Scratch.BlockType.COMMAND,
@@ -1405,6 +1405,22 @@ VALUE: {
               }
           }
         },*/
+         {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Взаимодействия с браузером',
+        },
+        {
+          opcode: 'openPage',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'Открыть страницу [URL] в новой вкладке',
+          arguments: {
+              URL: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'https\:\\\\scratch\.mit\.edu\\'
+              }
+          }
+        },
       ],
       menus: {
         teaMenu: {
@@ -1991,6 +2007,8 @@ eval(res)
 let res = `for \(${START}\;${CON}\;${STEP}\)\{\n${CODE}\n\}`
 return eval(res)
   }*/
-  
+  openPage({URL}){
+open(String(URL), '_blank');
+  }
 }
 Scratch.extensions.register(new teandedScratch());
