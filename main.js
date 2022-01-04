@@ -12,7 +12,7 @@ menuIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/favico.png',
         {
           opcode: 'turnInToTea',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Превратить в чай [TEXT]',
+          text: 'превратить в чай [TEXT]',
           arguments: {
             TEXT: {
               type: Scratch.ArgumentType.STRING,
@@ -23,7 +23,7 @@ menuIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/favico.png',
          {
           opcode: 'onSomething',
           blockType: Scratch.BlockType.HAT,
-          text: 'Если условие [CONDITION] будет верно',
+          text: 'если условие [CONDITION] будет верно',
           arguments: {
             CONDITION: {
               type: Scratch.ArgumentType.STRING
@@ -35,12 +35,12 @@ menuIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/favico.png',
         {
           opcode: 'test',
           blockType: Scratch.BlockType.BUTTON,
-          text: 'Сообщения',
+          text: 'сообщения',
         },
          {
           opcode: 'sendMsgVar',
           blockType: Scratch.BlockType.COMMAND,
-          text: 'Отправить сообщение [MSG] спрайтам со значением [VALUE] переменной [VAR]',
+          text: 'отправить сообщение [MSG] спрайтам со значением [VALUE] переменной [VAR]',
           arguments: {
           MSG: {
               type: Scratch.ArgumentType.STRING,
@@ -59,7 +59,7 @@ menuIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/favico.png',
         {
           opcode: 'sendMsg',
           blockType: Scratch.BlockType.COMMAND,
-          text: 'Отправить сообщение [MSG]',
+          text: 'отправить сообщение [MSG]',
           arguments: {
           MSG: {
               type: Scratch.ArgumentType.STRING,
@@ -70,7 +70,7 @@ menuIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/favico.png',
         {
           opcode: 'recMsg',
           blockType: Scratch.BlockType.BOOLEAN,
-          text: 'Получено сообщение [MSG]?',
+          text: 'получено сообщение [MSG]?',
           arguments: {
           MSG: {
               type: Scratch.ArgumentType.STRING,
@@ -81,7 +81,7 @@ menuIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/favico.png',
         {
           opcode: 'recMsgVar',
           blockType: Scratch.BlockType.BOOLEAN,
-          text: 'Получено сообщение [MSG] со значением [VALUE] переменной [VAR]?',
+          text: 'получено сообщение [MSG] со значением [VALUE] переменной [VAR]?',
           arguments: {
           MSG: {
               type: Scratch.ArgumentType.STRING,
@@ -101,7 +101,7 @@ menuIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/favico.png',
         {
           opcode: 'onMsg',
           blockType: Scratch.BlockType.HAT,
-          text: 'Когда я получу сообщение [MSG]',
+          text: 'когда я получу сообщение [MSG]',
           arguments: {
           MSG: {
               type: Scratch.ArgumentType.STRING,
@@ -112,7 +112,7 @@ menuIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/favico.png',
         {
           opcode: 'onMsgVar',
           blockType: Scratch.BlockType.HAT,
-          text: 'Когда я получу сообщение [MSG] со значением [VALUE] переменной [VAR]',
+          text: 'когда я получу сообщение [MSG] со значением [VALUE] переменной [VAR]',
           arguments: {
           MSG: {
               type: Scratch.ArgumentType.STRING,
@@ -136,7 +136,7 @@ menuIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/favico.png',
          {
           opcode: 'newVar',
           blockType: Scratch.BlockType.COMMAND,
-          text: 'Создать переменную [NAME]',
+          text: 'создать переменную [NAME]',
           arguments: {
           NAME: {
               type: Scratch.ArgumentType.STRING,
@@ -147,7 +147,7 @@ menuIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/favico.png',
         {
           opcode: 'varExists',
           blockType: Scratch.BlockType.BOOLEAN,
-          text: 'Переменная [NAME] существует?',
+          text: 'переменная [NAME] существует?',
           arguments: {
           NAME: {
               type: Scratch.ArgumentType.STRING,
@@ -158,7 +158,7 @@ menuIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/favico.png',
 {
           opcode: 'getVar',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Получить значение переменной [NAME]',
+          text: 'получить значение переменной [NAME]',
           arguments: {
           NAME: {
               type: Scratch.ArgumentType.STRING,
@@ -169,7 +169,7 @@ menuIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/favico.png',
 {
           opcode: 'getLogicVar',
           blockType: Scratch.BlockType.BOOLEAN,
-          text: 'Получить логическое значение переменной [NAME]',
+          text: 'получить логическое значение переменной [NAME]',
           arguments: {
           NAME: {
               type: Scratch.ArgumentType.STRING,
@@ -180,7 +180,7 @@ menuIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/favico.png',
 {
           opcode: 'setVar',
           blockType: Scratch.BlockType.COMMAND,
-          text: 'Задать переменной [NAME] значение [VALUE]',
+          text: 'падать переменной [NAME] значение [VALUE]',
           arguments: {
           NAME: {
               type: Scratch.ArgumentType.STRING,
@@ -195,7 +195,7 @@ VALUE: {
         {
           opcode: 'changeVar',
           blockType: Scratch.BlockType.COMMAND,
-          text: 'Изменить переменной [NAME] значение на [VALUE]',
+          text: 'изменить переменной [NAME] значение на [VALUE]',
           arguments: {
           NAME: {
               type: Scratch.ArgumentType.STRING,
@@ -210,7 +210,7 @@ VALUE: {
 {
           opcode: 'setLogicVar',
           blockType: Scratch.BlockType.COMMAND,
-          text: 'Задать переменной [NAME] логическое значение [VALUE]',
+          text: 'задать переменной [NAME] логическое значение [VALUE]',
           arguments: {
           NAME: {
               type: Scratch.ArgumentType.STRING,
@@ -230,7 +230,7 @@ VALUE: {
          {
           opcode: 'randomText',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Выдать случайное слово [WORD] или [WORD2]',
+          text: 'выдать случайное слово [WORD] или [WORD2]',
           arguments: {
             WORD: {
               type: Scratch.ArgumentType.STRING,
@@ -245,7 +245,7 @@ VALUE: {
                  {
           opcode: 'toUpCase',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Преобразовать в верхний регистр [TEXT]',
+          text: 'преобразовать в верхний регистр [TEXT]',
           arguments: {
             TEXT: {
               type: Scratch.ArgumentType.STRING,
@@ -256,7 +256,7 @@ VALUE: {
              {
           opcode: 'toLowCase',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Преобразовать в нижний регистр [TEXT]',
+          text: 'преобразовать в нижний регистр [TEXT]',
           arguments: {
             TEXT: {
               type: Scratch.ArgumentType.STRING,
@@ -267,7 +267,7 @@ VALUE: {
          {
           opcode: 'replaceIn',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Заменить [WORD] в [TEXT] на [NEW]',
+          text: 'заменить [WORD] в [TEXT] на [NEW]',
           arguments: {
             TEXT: {
               type: Scratch.ArgumentType.STRING,
@@ -286,7 +286,7 @@ VALUE: {
         {
           opcode: 'replaceAll',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Заменить все [WORD] в [TEXT] на [NEW]',
+          text: 'заменить все [WORD] в [TEXT] на [NEW]',
           arguments: {
             TEXT: {
               type: Scratch.ArgumentType.STRING,
@@ -305,7 +305,7 @@ VALUE: {
         {
           opcode: 'replaceTimes',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Заменить [WORD] в [TEXT] на [NEW], [HM] раз',
+          text: 'заменить [WORD] в [TEXT] на [NEW], [HM] раз',
           arguments: {
             TEXT: {
               type: Scratch.ArgumentType.STRING,
@@ -329,7 +329,7 @@ VALUE: {
         {
           opcode: 'getPosDirection',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Получить направление позиции X: [X], Y: [Y] с симуляцией позиции X: [XX], Y: [YY]',
+          text: 'получить направление позиции X: [X], Y: [Y] с симуляцией позиции X: [XX], Y: [YY]',
           arguments: {
             X: {
               type: Scratch.ArgumentType.NUMBER,
@@ -364,7 +364,7 @@ VALUE: {
         {
           opcode: 'shortIf',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Если [CONDITION], то [THEN], иначе [ELSE]',
+          text: 'если [CONDITION], то [THEN], иначе [ELSE]',
           arguments: {
               CONDITION: {
                   type: Scratch.ArgumentType.BOOLEAN
@@ -387,7 +387,7 @@ VALUE: {
         {
           opcode: 'ostatok',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Остаток от деления [NUM1] на [NUM2]',
+          text: 'остаток от деления [NUM1] на [NUM2]',
           arguments: {
               NUM1: {
                   type: Scratch.ArgumentType.NUMBER,
@@ -402,7 +402,7 @@ VALUE: {
         {
           opcode: 'stepen',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Возвести [NUM1] в степень [NUM2]',
+          text: 'возвести [NUM1] в степень [NUM2]',
           arguments: {
               NUM1: {
                   type: Scratch.ArgumentType.NUMBER,
@@ -422,7 +422,7 @@ VALUE: {
                 {
           opcode: 'getAllAfter',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Получить текст после символа [SYMBOL] в тексте [TEXT], пропустив [IGNORE] символов',
+          text: 'получить текст после символа [SYMBOL] в тексте [TEXT], пропустив [IGNORE] символов',
           arguments: {
               TEXT: {
                   type: Scratch.ArgumentType.STRING,
@@ -441,7 +441,7 @@ VALUE: {
            {
           opcode: 'getAllBefore',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Получить текст до символа [SYMBOL] в тексте [TEXT], пропустив [IGNORE] символов',
+          text: 'получить текст до символа [SYMBOL] в тексте [TEXT], пропустив [IGNORE] символов',
           arguments: {
               TEXT: {
                   type: Scratch.ArgumentType.STRING,
@@ -460,7 +460,7 @@ VALUE: {
         {
           opcode: 'splitText',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Разделить текст [TEXT], с разделителем [SEPARATOR]',
+          text: 'разделить текст [TEXT], с разделителем [SEPARATOR]',
           arguments: {
               TEXT: {
                   type: Scratch.ArgumentType.STRING,
@@ -476,7 +476,7 @@ VALUE: {
          {
           opcode: 'getPart',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Получить часть текста [TEXT] с номером [NUM]',
+          text: 'получить часть текста [TEXT] с номером [NUM]',
           arguments: {
               TEXT: {
                   type: Scratch.ArgumentType.STRING,
@@ -492,7 +492,7 @@ VALUE: {
            {
           opcode: 'splitTextLimit',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Разделить текст [TEXT], с разделителем [SEPARATOR], с ограничением в [LIMIT] частей текста',
+          text: 'разделить текст [TEXT], с разделителем [SEPARATOR], с ограничением в [LIMIT] частей текста',
           arguments: {
               TEXT: {
                   type: Scratch.ArgumentType.STRING,
@@ -516,7 +516,7 @@ VALUE: {
          {
           opcode: 'evalSS',
           blockType: Scratch.BlockType.COMMAND,
-          text: 'eval [EVAL]',
+          text: 'evaluate [EVAL]',
           arguments: {
               EVAL: {
                   type: Scratch.ArgumentType.STRING,
@@ -527,7 +527,7 @@ VALUE: {
         {
           opcode: 'evalS',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'get eval [EVAL]',
+          text: 'return evaluated [EVAL]',
           arguments: {
               EVAL: {
                   type: Scratch.ArgumentType.STRING,
@@ -538,7 +538,7 @@ VALUE: {
         {
           opcode: 'evalSSS',
           blockType: Scratch.BlockType.BOOLEAN,
-          text: 'get LOGIC eval [EVAL]',
+          text: 'return logic evaluated value [EVAL]',
           arguments: {
               EVAL: {
                   type: Scratch.ArgumentType.STRING,
@@ -549,7 +549,7 @@ VALUE: {
         {
           opcode: 'joinsum',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Сложить строки [STRING1] и [STRING2]',
+          text: 'сложить строки [STRING1] и [STRING2]',
           arguments: {
               STRING1: {
                   type: Scratch.ArgumentType.STRING,
@@ -564,7 +564,7 @@ VALUE: {
          {
           opcode: 'sumvar',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Добавить [VALUE] к переменной [VAR]',
+          text: 'добавить [VALUE] к переменной [VAR]',
           arguments: {
               VALUE: {
                   type: Scratch.ArgumentType.STRING,
@@ -599,7 +599,7 @@ VALUE: {
               {
           opcode: 'newObject',
           blockType: Scratch.BlockType.COMMAND,
-          text: 'Создать новый пустой массив с названием [NAME]',
+          text: 'создать новый пустой массив с названием [NAME]',
           arguments: {
               NAME: {
                   type: Scratch.ArgumentType.STRING,
@@ -610,7 +610,7 @@ VALUE: {
          {
           opcode: 'pushObj',
           blockType: Scratch.BlockType.COMMAND,
-          text: 'Добавить значение [VALUE] в массив [NAME]',
+          text: 'добавить значение [VALUE] в массив [NAME]',
           arguments: {
               NAME: {
                   type: Scratch.ArgumentType.STRING,
@@ -625,7 +625,7 @@ VALUE: {
         {
           opcode: 'getObj',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Получить значение под номером [NUM] из массива [NAME]',
+          text: 'получить значение под номером [NUM] из массива [NAME]',
           arguments: {
               NAME: {
                   type: Scratch.ArgumentType.STRING,
@@ -641,7 +641,7 @@ VALUE: {
                {
           opcode: 'unshiftObj',
           blockType: Scratch.BlockType.COMMAND,
-          text: 'Добавить значение [VALUE] в начало массива [NAME]',
+          text: 'добавить значение [VALUE] в начало массива [NAME]',
           arguments: {
               NAME: {
                   type: Scratch.ArgumentType.STRING,
@@ -657,7 +657,7 @@ VALUE: {
                {
           opcode: 'editObj',
           blockType: Scratch.BlockType.COMMAND,
-          text: 'Изменить значение под номером [NUM] из массива [NAME] на [VALUE]',
+          text: 'изменить значение под номером [NUM] из массива [NAME] на [VALUE]',
           arguments: {
               NAME: {
                   type: Scratch.ArgumentType.STRING,
@@ -676,7 +676,7 @@ VALUE: {
           {
           opcode: 'shiftObj',
           blockType: Scratch.BlockType.COMMAND,
-          text: 'Удалить первое значение массива [NAME]',
+          text: 'удалить первое значение массива [NAME]',
           arguments: {
               NAME: {
                   type: Scratch.ArgumentType.STRING,
@@ -687,7 +687,7 @@ VALUE: {
           {
           opcode: 'popObj',
           blockType: Scratch.BlockType.COMMAND,
-          text: 'Удалить значение из конца массива [NAME]',
+          text: 'удалить значение из конца массива [NAME]',
           arguments: {
               NAME: {
                   type: Scratch.ArgumentType.STRING,
@@ -698,7 +698,7 @@ VALUE: {
         {
           opcode: 'addTextMas',
           blockType: Scratch.BlockType.COMMAND,
-          text: 'Разделить текст [TEXT] с разделителем [SYM] и добавить в массив [MAS]',
+          text: 'разделить текст [TEXT] с разделителем [SYM] и добавить в массив [MAS]',
           arguments: {
               TEXT: {
                   type: Scratch.ArgumentType.STRING,
@@ -717,7 +717,7 @@ VALUE: {
         {
           opcode: 'objLength',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Получить длину массива [NAME]',
+          text: 'получить длину массива [NAME]',
           arguments: {
               NAME: {
                   type: Scratch.ArgumentType.STRING,
@@ -728,7 +728,7 @@ VALUE: {
 {
           opcode: 'indexOfObj',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Получить номер значения [VALUE] из массива [NAME]',
+          text: 'получить номер значения [VALUE] из массива [NAME]',
           arguments: {
               NAME: {
                   type: Scratch.ArgumentType.STRING,
@@ -748,7 +748,7 @@ VALUE: {
         {
           opcode: 'newMap',
           blockType: Scratch.BlockType.COMMAND,
-          text: 'Создать новую карту ключей с названием [NAME]',
+          text: 'создать новую карту ключей с названием [NAME]',
           arguments: {
               NAME: {
                   type: Scratch.ArgumentType.STRING,
@@ -759,7 +759,7 @@ VALUE: {
         {
           opcode: 'mapSet',
           blockType: Scratch.BlockType.COMMAND,
-          text: 'Установить ключу [KEY] карты [NAME] значение [VALUE]',
+          text: 'установить ключу [KEY] карты [NAME] значение [VALUE]',
           arguments: {
               NAME: {
                   type: Scratch.ArgumentType.STRING,
@@ -778,7 +778,7 @@ VALUE: {
         {
           opcode: 'mapGet',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Получить значение ключа [KEY] из карты [NAME]',
+          text: 'получить значение ключа [KEY] из карты [NAME]',
           arguments: {
               NAME: {
                   type: Scratch.ArgumentType.STRING,
@@ -793,7 +793,7 @@ VALUE: {
         {
           opcode: 'mapHas',
           blockType: Scratch.BlockType.BOOLEAN,
-          text: 'Карта [NAME] содержит [KEY]?',
+          text: 'карта [NAME] содержит [KEY]?',
           arguments: {
               NAME: {
                   type: Scratch.ArgumentType.STRING,
@@ -809,7 +809,7 @@ VALUE: {
         {
           opcode: 'mapDelete',
           blockType: Scratch.BlockType.COMMAND,
-          text: 'Удалить ключ [KEY] из карты [NAME]',
+          text: 'удалить ключ [KEY] из карты [NAME]',
           arguments: {
               NAME: {
                   type: Scratch.ArgumentType.STRING,
@@ -824,7 +824,7 @@ VALUE: {
         {
           opcode: 'mapClear',
           blockType: Scratch.BlockType.COMMAND,
-          text: 'Очистить карту [NAME]',
+          text: 'очистить карту [NAME]',
           arguments: {
               NAME: {
                   type: Scratch.ArgumentType.STRING,
@@ -835,7 +835,7 @@ VALUE: {
         {
           opcode: 'mapSize',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Размер карты [NAME]',
+          text: 'размер карты [NAME]',
           arguments: {
               NAME: {
                   type: Scratch.ArgumentType.STRING,
@@ -846,7 +846,7 @@ VALUE: {
         {
           opcode: 'mapKeys',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Получить список ключей карты [NAME]',
+          text: 'получить список ключей карты [NAME]',
           arguments: {
               NAME: {
                   type: Scratch.ArgumentType.STRING,
@@ -857,7 +857,7 @@ VALUE: {
         {
           opcode: 'mapValues',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Получить список значений карты [NAME]',
+          text: 'получить список значений карты [NAME]',
           arguments: {
               NAME: {
                   type: Scratch.ArgumentType.STRING,
@@ -868,7 +868,7 @@ VALUE: {
          {
           opcode: 'divide',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Целое деление [NUM1] на [NUM2]',
+          text: 'целое деление [NUM1] на [NUM2]',
           arguments: {
               NUM1: {
                   type: Scratch.ArgumentType.NUMBER,
@@ -888,7 +888,7 @@ VALUE: {
          {
           opcode: 'tostr',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Превратить [TEXT] в строку',
+          text: 'превратить [TEXT] в строку',
           arguments: {
               TEXT: {
                   type: Scratch.ArgumentType.STRING,
@@ -899,7 +899,7 @@ VALUE: {
          {
           opcode: 'tonumber',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Превратить строку [TEXT] в число',
+          text: 'превратить строку [TEXT] в число',
           arguments: {
               TEXT: {
                   type: Scratch.ArgumentType.STRING,
@@ -915,7 +915,7 @@ VALUE: {
         {
           opcode: 'indexOfLetter',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Получить номер символа [LETTER] в тексте [TEXT]',
+          text: 'получить номер символа [LETTER] в тексте [TEXT]',
           arguments: {
               TEXT: {
                   type: Scratch.ArgumentType.STRING,
@@ -1039,7 +1039,7 @@ VALUE: {
         {
           opcode: 'getProcent',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Получить [PROCENT]% от числа [NUMBER1]',
+          text: 'получить [PROCENT]% от числа [NUMBER1]',
           arguments: {
               NUMBER1: {
                   type: Scratch.ArgumentType.NUMBER,
@@ -1054,7 +1054,7 @@ VALUE: {
          {
           opcode: 'getProcentFrom',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Сколько процентов число [NUMBER1] составляет от [NUMBER2]',
+          text: 'сколько процентов число [NUMBER1] составляет от [NUMBER2]',
           arguments: {
               NUMBER1: {
                   type: Scratch.ArgumentType.NUMBER,
@@ -1074,7 +1074,7 @@ VALUE: {
          {
           opcode: 'catchError',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Попробовать выполнить [CODE], записать ошибку в переменную [VARS]',
+          text: 'попробовать выполнить [CODE], записать ошибку в переменную [VARS]',
           arguments: {
               CODE: {
                   type: Scratch.ArgumentType.STRING
@@ -1088,7 +1088,7 @@ VALUE: {
          {
           opcode: 'catchErr',
           blockType: Scratch.BlockType.COMMAND,
-          text: 'Попробовать выполнить [CODE], записать ошибку в переменную [VARS]',
+          text: 'попробовать выполнить [CODE], записать ошибку в переменную [VARS]',
           arguments: {
               CODE: {
                   type: Scratch.ArgumentType.STRING
@@ -1147,7 +1147,7 @@ VALUE: {
         {
           opcode: 'randomString',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Случайная строка с набором символов [CHAR] длиной в [LEN] символов.',
+          text: 'случайная строка с набором символов [CHAR] длиной в [LEN] символов.',
           arguments: {
               LEN: {
                   type: Scratch.ArgumentType.NUMBER
@@ -1166,7 +1166,7 @@ VALUE: {
            {
           opcode: 'newFunc',
           blockType: Scratch.BlockType.COMMAND,
-          text: 'Создать функцию [NAME], с аргументами [ARGS], с кодом [CODE]',
+          text: 'создать функцию [NAME], с аргументами [ARGS], с кодом [CODE]',
           arguments: {
               NAME: {
                   type: Scratch.ArgumentType.STRING,
@@ -1185,7 +1185,7 @@ VALUE: {
         {
           opcode: 'execFunc',
           blockType: Scratch.BlockType.COMMAND,
-          text: 'Выполнить функцию [NAME], с аргументами [ARGS]',
+          text: 'выполнить функцию [NAME], с аргументами [ARGS]',
           arguments: {
               NAME: {
                   type: Scratch.ArgumentType.STRING,
@@ -1200,7 +1200,7 @@ VALUE: {
          {
           opcode: 'execFuncRep',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Выполнить функцию [NAME], с аргументами [ARGS]',
+          text: 'выполнить функцию [NAME], с аргументами [ARGS]',
           arguments: {
               NAME: {
                   type: Scratch.ArgumentType.STRING,
@@ -1258,7 +1258,7 @@ VALUE: {
                                 {
           opcode: 'createObj',
           blockType: Scratch.BlockType.COMMAND,
-          text: 'Создать объект с названием [NAME]',
+          text: 'создать объект с названием [NAME]',
           arguments: {
               NAME: {
                   type: Scratch.ArgumentType.STRING,
@@ -1269,7 +1269,7 @@ VALUE: {
         {
           opcode: 'setObjKey',
           blockType: Scratch.BlockType.COMMAND,
-          text: 'Установить ключу [KEY] из объекта [NAME] значение [VALUE]',
+          text: 'установить ключу [KEY] из объекта [NAME] значение [VALUE]',
           arguments: {
               NAME: {
                   type: Scratch.ArgumentType.STRING,
@@ -1288,7 +1288,7 @@ VALUE: {
          {
           opcode: 'replaceObj',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Заменить все совпадения текста [TEXT] с объектом [OBJ]',
+          text: 'заменить все совпадения текста [TEXT] с объектом [OBJ]',
           arguments: {
               OBJ: {
                   type: Scratch.ArgumentType.STRING,
@@ -1303,7 +1303,7 @@ VALUE: {
           {
           opcode: 'getMas',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Получить объект [OBJ]',
+          text: 'получить объект [OBJ]',
           arguments: {
               OBJ: {
                   type: Scratch.ArgumentType.STRING,
@@ -1314,7 +1314,7 @@ VALUE: {
           {
           opcode: 'getObjKey',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Получить значение ключа [KEY] из объекта [OBJ]',
+          text: 'получить значение ключа [KEY] из объекта [OBJ]',
           arguments: {
               OBJ: {
                   type: Scratch.ArgumentType.STRING,
@@ -1329,7 +1329,7 @@ VALUE: {
          {
           opcode: 'getKeyName',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Получить имя ключа со значением [VALUE] из объекта [OBJ]',
+          text: 'получить имя ключа со значением [VALUE] из объекта [OBJ]',
           arguments: {
               OBJ: {
                   type: Scratch.ArgumentType.STRING,
@@ -1344,7 +1344,7 @@ VALUE: {
                  {
           opcode: 'getKeyByIndex',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Получить имя ключа с индексом [INDEX] из объекта [OBJ]',
+          text: 'получить имя ключа с индексом [INDEX] из объекта [OBJ]',
           arguments: {
               OBJ: {
                   type: Scratch.ArgumentType.STRING,
@@ -1364,7 +1364,7 @@ VALUE: {
                          {
           opcode: 'forC',
           blockType: Scratch.BlockType.COMMAND,
-          text: 'Выполнить [START], повторять [CODE] и выполнять действие [STEP], пока [CON] верно',
+          text: 'выполнить [START], повторять [CODE] и выполнять действие [STEP], пока [CON] верно',
           arguments: {
               CON: {
                   type: Scratch.ArgumentType.BOOLEAN
@@ -1386,7 +1386,7 @@ VALUE: {
                                  {
           opcode: 'forCR',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Выполнить [START], повторять [CODE] и выполнять действие [STEP], пока [CON] верно',
+          text: 'выполнить [START], повторять [CODE] и выполнять действие [STEP], пока [CON] верно',
           arguments: {
               CON: {
                   type: Scratch.ArgumentType.BOOLEAN
@@ -1413,7 +1413,7 @@ VALUE: {
         {
           opcode: 'openPage',
           blockType: Scratch.BlockType.COMMAND,
-          text: 'Открыть страницу [URL] в новой вкладке',
+          text: 'открыть страницу [URL] в новой вкладке',
           arguments: {
               URL: {
                   type: Scratch.ArgumentType.STRING,
@@ -1424,7 +1424,7 @@ VALUE: {
                 {
           opcode: 'replacePage',
           blockType: Scratch.BlockType.COMMAND,
-          text: 'Открыть страницу [URL] в этой вкладке',
+          text: 'открыть страницу [URL] в этой вкладке',
           arguments: {
               URL: {
                   type: Scratch.ArgumentType.STRING,
@@ -1435,7 +1435,7 @@ VALUE: {
          {
           opcode: 'reloadPage',
           blockType: Scratch.BlockType.COMMAND,
-          text: 'Обновить страницу',
+          text: 'обновить страницу',
           arguments: {
               LOL: {
                   type: Scratch.ArgumentType.BOOLEAN
@@ -1668,7 +1668,7 @@ console.error(error)
   }
 catchError({CODE}){
     try {
-    return CODE
+    return eval(CODE)
 } catch(error) {
 return error
 }
