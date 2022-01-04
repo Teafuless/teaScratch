@@ -1355,12 +1355,12 @@ VALUE: {
                 defaultValue: '0'
               }
           }
-        },
+        },/*
                   {
           opcode: 'test',
           blockType: Scratch.BlockType.BUTTON,
           text: 'Циклы',
-        },/*
+        },
                          {
           opcode: 'forC',
           blockType: Scratch.BlockType.COMMAND,
@@ -1405,6 +1405,43 @@ VALUE: {
               }
           }
         },*/
+         {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Взаимодействия с браузером',
+        },
+        {
+          opcode: 'openPage',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'Открыть страницу [URL] в новой вкладке',
+          arguments: {
+              URL: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'https\:\\\\scratch\.mit\.edu\\'
+              }
+          }
+        },
+                {
+          opcode: 'replacePage',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'Открыть страницу [URL] в этой вкладке',
+          arguments: {
+              URL: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'https\:\\\\scratch\.mit\.edu\\'
+              }
+          }
+        },
+         {
+          opcode: 'reloadPage',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'Обновить страницу',
+          arguments: {
+              LOL: {
+                  type: Scratch.ArgumentType.BOOLEAN
+              }
+          }
+        },
       ],
       menus: {
         teaMenu: {
@@ -1991,6 +2028,14 @@ eval(res)
 let res = `for \(${START}\;${CON}\;${STEP}\)\{\n${CODE}\n\}`
 return eval(res)
   }*/
-  
+  openPage({URL}){
+self.open(String(URL), '_blank');
+  }
+    replacePage({URL}){
+self.location.replace(String(URL))
+  }
+  reloadPage({LOL}){
+    self.location.reload()
+  }
 }
 Scratch.extensions.register(new teandedScratch());
