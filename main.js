@@ -1444,23 +1444,16 @@ VALUE: {
         {
           opcode: 'openPage',
           blockType: Scratch.BlockType.COMMAND,
-          text: 'открыть страницу [URL] в новой вкладке',
+          text: 'открыть страницу [URL] в [TAB] вкладке',
           arguments: {
               URL: {
                   type: Scratch.ArgumentType.STRING,
                   defaultValue: 'https\:\\\\scratch\.mit\.edu\\'
-              }
-          }
-        },
-                {
-          opcode: 'replacePage',
-          blockType: Scratch.BlockType.COMMAND,
-          text: 'открыть страницу [URL] в этой вкладке',
-          arguments: {
-              URL: {
-                  type: Scratch.ArgumentType.STRING,
-                  defaultValue: 'https\:\\\\scratch\.mit\.edu\\'
-              }
+              },
+            TAB: {
+              type: Scratch.ArgumentType.STRING,
+              menu: 'tab'
+            }
           }
         },
          {
@@ -1493,6 +1486,18 @@ VALUE: {
           opcode: 'playSoundWU',
           blockType: Scratch.BlockType.COMMAND,
           text: 'воспроизвести звук',
+          arguments: {
+            NAME: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'meow'
+            },
+            
+          }
+        },
+                                 {
+          opcode: 'playSoundWU',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'воспроизвести звук и ждать',
           arguments: {
             NAME: {
                 type: Scratch.ArgumentType.STRING,
@@ -1621,6 +1626,22 @@ VALUE: {
           opcode: 'playSoundN',
           blockType: Scratch.BlockType.COMMAND,
           text: 'воспроизвести звук [NAME] по ссылке [URL]',
+          arguments: {
+              URL: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'https://wav-library.net/sounds/0-0-1-16300-20'
+              },
+            NAME: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'meow'
+            },
+            
+          }
+        },
+                {
+          opcode: 'playSoundAndWaitN',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'воспроизвести звук [NAME] и ждать',
           arguments: {
               URL: {
                   type: Scratch.ArgumentType.STRING,
@@ -1784,7 +1805,7 @@ VALUE: {
           arguments: {
             URL: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'https://raw.githack.com/Teafuless/teaScratch/v1.17.1/text.txt'
+                defaultValue: 'https://raw.githack.com/Teafuless/teaScratch/v1.17.1/text.js'
             },
           }
         },
@@ -1810,6 +1831,71 @@ VALUE: {
             },
           }
         },
+        {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Счётчик',
+        },
+                                                {
+          opcode: 'Counter',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'получить значение счётчика',
+          arguments: {
+            COUNTER: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'i'
+            },
+          }
+        },
+                                                        {
+          opcode: 'iCounter',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'увеличить счётчик [COUNTER]',
+          arguments: {
+            COUNTER: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'i'
+            },
+          }
+        },
+                                                                {
+          opcode: 'dCounter',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'уменьшить счётчик [COUNTER]',
+          arguments: {
+            COUNTER: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'i'
+            },
+          }
+        },
+                                                                {
+          opcode: 'rCounter',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'сбросить счётчик [COUNTER]',
+          arguments: {
+            COUNTER: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'i'
+            },
+          }
+        },
+                {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Цвета',
+        },
+                                                                        {
+          opcode: 'getColor',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'цвет [COLOR]',
+          arguments: {
+            COLOR: {
+                type: Scratch.ArgumentType.COLOR,
+                defaultValue: '#6bd1b8'
+            },
+          }
+        },
       ],
       menus: {
         teaMenu: {
@@ -1821,6 +1907,9 @@ VALUE: {
         },
         charSet: {
         items: ['QWERTY','ЙЦУКЕН','0123456789']
+        },
+          tab:{
+          items: ['этой','новой']
         }
     }
     };
@@ -2402,11 +2491,12 @@ eval(res)
 let res = `for \(${START}\;${CON}\;${STEP}\)\{\n${CODE}\n\}`
 return eval(res)
   }*/
-  openPage({URL}){
+  openPage({URL,TAB}){
+    if (TAB=='этой'){
 self.open(String(URL), '_blank');
-  }
-    replacePage({URL}){
+    } else  {
 self.location.replace(String(URL))
+  }
   }
   reloadPage({LOL}){
     self.location.reload()
@@ -2477,6 +2567,24 @@ self.location.replace(String(URL))
     globalThis[NAME] = new Audio
     globalThis[NAME].src = String(URL)
   }
+        playSoundAndWaitN({URL,NAME}){
+          function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+        
+    if (typeof globalThis[NAME+'VOLUME'] == undefined){
+      globalThis[NAME+'VOLUME'] = 100/100
+    }
+                if (globalThis[NAME+'VOLUME']>1) {
+          globalThis[NAME+'VOLUME'] = 0+globalThis[NAME+'VOLUME']-1
+        }
+        if (globalThis[NAME+'VOLUME']<0) {
+          globalThis[NAME+'VOLUME'] = 1+globalThis[NAME+'VOLUME']
+        }
+    globalThis[NAME].volume = globalThis[NAME+'VOLUME']
+    globalThis[NAME].play()
+         sleep(globalThis[NAME].duration*1000)
+  }
       playSoundWUN({URL,NAME}){
     if (typeof globalThis[NAME+'VOLUME'] == undefined){
       globalThis[NAME+'VOLUME'] = 100/100
@@ -2507,6 +2615,25 @@ self.location.replace(String(URL))
    globalThis['sound'] = new Audio
    globalThis['sound'].src = String(URL)
   }
+  
+   playSoundAndWait({URL,NAME}){
+     function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+    if (typeof globalThis['VOLUME'] == undefined){
+      globalThis['VOLUME'] = 100/100
+    }
+        if (globalThis['VOLUME']>1) {
+          globalThis['VOLUME'] = 0+globalThis['VOLUME']-1
+        }
+        if (globalThis['VOLUME']<0) {
+          globalThis['VOLUME'] = 1+globalThis['VOLUME']
+        }
+        globalThis['sound'].volume = globalThis[NAME+'VOLUME']
+    globalThis['sound'].play()
+     sleep(globalThis['sound'].duration*1000)
+  }
+  
       playSoundWU({URL,NAME}){
     if (typeof globalThis['VOLUME'] == undefined){
       globalThis['VOLUME'] = 100/100
@@ -2546,6 +2673,24 @@ let r = fetch(`${URL}`).then(response => response.text()).then(text => eval(text
 let r = fetch(`${URL}`).then(response => response.text()).then(text => eval(text))
     r
 
+  }
+  getColor({COLOR}){
+    return String(COLOR)
+  }
+  iCounter({COUNTER}){
+    globalThis['COUNTER'] = COUNTER
+globalThis[COUNTER]++
+  }
+    dCounter({COUNTER}){
+      globalThis['COUNTER'] = COUNTER
+globalThis[COUNTER]--
+  }
+    rCounter({COUNTER}){
+      globalThis['COUNTER'] = COUNTER
+globalThis[COUNTER]=0
+  }
+  Counter({COUNTER}){
+    return globalThis[globalThis['COUNTER']]
   }
 }
 Scratch.extensions.register(new teandedScratch());
