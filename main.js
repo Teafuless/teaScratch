@@ -2362,7 +2362,7 @@ self.location.replace(String(URL))
     return globalThis[NAME].duration
   }
     getVolumeN({NAME}){
-    return globalThis[NAME+'VOLUME']
+    return globalThis[NAME+'VOLUME']*100
   }
   setSoundN({URL,NAME}){
     globalThis[NAME] = new Audio
@@ -2385,7 +2385,7 @@ self.location.replace(String(URL))
     return globalThis['sound'].duration
   }
     getVolume({NAME}){
-    return globalThis['VOLUME']
+    return globalThis['VOLUME']*100
   }
   setSound({NAME}){
    globalThis['sound'] = new Audio
