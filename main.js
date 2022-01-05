@@ -2614,8 +2614,8 @@ window.location.replace(String(URL))
     globalThis[NAME+'VOLUME'] = Number(VOL)/100
   }
   stopSoundsN({NAME}){
-        globalThis['sound'].pause();
-    globalThis['sound'].currentTime = 0;
+        globalThis[NAME].pause();
+    globalThis[NAME].currentTime = 0;
   }
   gotoSoundN({GOTO,NAME}){
      globalThis[NAME].currentTime = GOTO
