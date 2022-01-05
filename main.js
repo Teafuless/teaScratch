@@ -1784,7 +1784,7 @@ VALUE: {
           arguments: {
             URL: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'https://raw.githack.com/Teafuless/teaScratch/v1.17.2/text.txt'
+                defaultValue: 'https://raw.githack.com/Teafuless/teaScratch/v1.17.1/text.txt'
             },
           }
         },
@@ -1795,7 +1795,7 @@ VALUE: {
           arguments: {
             URL: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'https://raw.githack.com/Teafuless/teaScratch/v1.17.2/test.js'
+                defaultValue: 'https://raw.githack.com/Teafuless/teaScratch/v1.17.1/test.js'
             },
           }
         },
@@ -1806,7 +1806,7 @@ VALUE: {
           arguments: {
             URL: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'https://raw.githack.com/Teafuless/teaScratch/v1.17.2/test.js'
+                defaultValue: 'https://raw.githack.com/Teafuless/teaScratch/v1.17.1/test.js'
             },
           }
         },
