@@ -1458,6 +1458,30 @@ VALUE: {
               }
           }
         },
+                         {
+          opcode: 'playSoundWU',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'воспроизвести звук',
+          arguments: {
+            NAME: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'meow'
+            },
+            
+          }
+        },
+                 {
+          opcode: 'setSound',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'установить звуку значение в [URL]',
+          arguments: {
+              URL: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'https://wav-library.net/sounds/0-0-1-16300-20'
+              }
+            
+          }
+        },
          {
           opcode: 'changeVolume',
           blockType: Scratch.BlockType.COMMAND,
@@ -1472,7 +1496,7 @@ VALUE: {
         {
           opcode: 'setVolume',
           blockType: Scratch.BlockType.COMMAND,
-          text: 'воспроизвести звук по ссылке [URL]',
+          text: 'установить громкость звука в [VOL]',
           arguments: {
               VOL: {
                   type: Scratch.ArgumentType.NUMBER,
@@ -1491,6 +1515,28 @@ VALUE: {
               }
           }
         },
+  {
+          opcode: 'pauseSounds',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'приостановить звук',
+          arguments: {
+             NAME: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'meow'
+            }
+          }
+        },
+        {
+          opcode: 'resumeSounds',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'возобновить звук',
+          arguments: {
+             NAME: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'meow'
+            }
+          }
+        },
               {
           opcode: 'gotoSound',
           blockType: Scratch.BlockType.COMMAND,
@@ -1502,6 +1548,28 @@ VALUE: {
               }
           }
         },
+        {
+          opcode: 'soundLength',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'получить длину звука',
+          arguments: {
+            NAME: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'meow'
+            },
+          }
+        },
+                {
+          opcode: 'getVolume',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'получить громкость звука',
+          arguments: {
+            NAME: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'meow'
+            },
+          }
+        },
          {
           opcode: 'test',
           blockType: Scratch.BlockType.BUTTON,
@@ -1511,6 +1579,34 @@ VALUE: {
           opcode: 'playSoundN',
           blockType: Scratch.BlockType.COMMAND,
           text: 'воспроизвести звук [NAME] по ссылке [URL]',
+          arguments: {
+              URL: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'https://wav-library.net/sounds/0-0-1-16300-20'
+              },
+            NAME: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'meow'
+            },
+            
+          }
+        },
+                 {
+          opcode: 'playSoundWUN',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'воспроизвести звук [NAME]',
+          arguments: {
+            NAME: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'meow'
+            },
+            
+          }
+        },
+                 {
+          opcode: 'setSoundN',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'установить звуку [NAME] значение в [URL]',
           arguments: {
               URL: {
                   type: Scratch.ArgumentType.STRING,
@@ -1541,7 +1637,7 @@ VALUE: {
         {
           opcode: 'setVolumeN',
           blockType: Scratch.BlockType.COMMAND,
-          text: 'воспроизвести звук [NAME] по ссылке [URL]',
+          text: 'установить громкость звука [NAME] в [VOL]',
           arguments: {
               VOL: {
                   type: Scratch.ArgumentType.NUMBER,
@@ -1564,8 +1660,30 @@ VALUE: {
             }
           }
         },
+         {
+          opcode: 'pauseSoundsN',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'приостановить звук [NAME]',
+          arguments: {
+             NAME: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'meow'
+            }
+          }
+        },
+        {
+          opcode: 'resumeSoundsN',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'возобновить звук [NAME]',
+          arguments: {
+             NAME: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'meow'
+            }
+          }
+        },
               {
-          opcode: 'gotoSound',
+          opcode: 'gotoSoundN',
           blockType: Scratch.BlockType.COMMAND,
           text: 'перемотать звук [NAME] на [GOTO]',
           arguments: {
@@ -1573,6 +1691,28 @@ VALUE: {
                   type: Scratch.ArgumentType.NUMBER,
                 defaultValue: '10'
               },
+            NAME: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'meow'
+            },
+          }
+        },
+              {
+          opcode: 'soundLengthN',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'получить длину звука [NAME]',
+          arguments: {
+            NAME: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'meow'
+            },
+          }
+        },
+        {
+          opcode: 'getVolumeN',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'получить громкость звука [NAME]',
+          arguments: {
             NAME: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'meow'
@@ -2175,8 +2315,8 @@ self.location.replace(String(URL))
     self.location.reload()
   }
   playSound({URL}){
-    if (typeof globalThis['VOLUME'] == undefined){
-      globalThis['VOLUME'] = 100
+    if (typeof globalThis['VOLUME'] == undefined||globalThis['VOLUME'] == undefined){
+      globalThis['VOLUME'] = 100/100
     }
     var sound = new Audio
     sound.src = String(URL)
@@ -2184,10 +2324,10 @@ self.location.replace(String(URL))
     sound.play()
   }
   changeVolume({VOL}){
-    globalThis['VOLUME'] += Number(VOL)
+    globalThis['VOLUME'] += Number(VOL)/100
   }
   setVolume({VOL}){
-    globalThis['VOLUME'] = Number(VOL)
+    globalThis['VOLUME'] = Number(VOL)/100
   }
   stopSounds({LOL}){
     sound.pause();
@@ -2198,7 +2338,7 @@ self.location.replace(String(URL))
   }
     playSoundN({URL,NAME}){
     if (typeof globalThis[NAME+'VOLUME'] == undefined){
-      globalThis[NAME+'VOLUME'] = 100
+      globalThis[NAME+'VOLUME'] = 100/100
     }
     globalThis[NAME] = new Audio
     globalThis[NAME].src = String(URL)
@@ -2206,10 +2346,10 @@ self.location.replace(String(URL))
     globalThis[NAME].play()
   }
     changeVolumeN({VOL,NAME}){
-    globalThis[NAME+'VOLUME'] += Number(VOL)
+    globalThis[NAME+'VOLUME'] += Number(VOL)/100
   }
   setVolumeN({VOL,NAME}){
-    globalThis[NAME+'VOLUME'] = Number(VOL)
+    globalThis[NAME+'VOLUME'] = Number(VOL)/100
   }
   stopSoundsN({NAME}){
      globalThis[NAME].pause();
@@ -2217,6 +2357,52 @@ self.location.replace(String(URL))
   }
   gotoSoundN({GOTO,NAME}){
      globalThis[NAME].currentTime = GOTO
+  }
+    soundLengthN({NAME}){
+    return globalThis[NAME].duration
+  }
+    getVolumeN({NAME}){
+    return globalThis[NAME+'VOLUME']
+  }
+  setSoundN({URL,NAME}){
+    globalThis[NAME] = new Audio
+    globalThis[NAME].src = String(URL)
+  }
+      playSoundWUN({URL,NAME}){
+    if (typeof globalThis[NAME+'VOLUME'] == undefined){
+      globalThis[NAME+'VOLUME'] = 100/100
+    }
+    globalThis[NAME].volume = globalThis[NAME+'VOLUME']
+    globalThis[NAME].play()
+  }
+    pauseSoundsN({NAME}){
+    globalThis[NAME].pause()
+  }
+  resumeSoundsN({NAME}){
+    globalThis[NAME].resume()
+  }
+      soundLength({NAME}){
+    return globalThis['sound'].duration
+  }
+    getVolume({NAME}){
+    return globalThis['VOLUME']
+  }
+  setSound({NAME}){
+   globalThis['sound'] = new Audio
+   globalThis['sound'].src = String(URL)
+  }
+      playSoundWU({URL,NAME}){
+    if (typeof globalThis['VOLUME'] == undefined){
+      globalThis['VOLUME'] = 100/100
+    }
+   globalThis['sound'].volume = globalThis[NAME+'VOLUME']
+    globalThis['sound'].play()
+  }
+    pauseSounds({NAME}){
+   globalThis['sound'].pause()
+  }
+  resumeSounds({NAME}){
+       globalThis['sound'].resume()
   }
 }
 Scratch.extensions.register(new teandedScratch());
