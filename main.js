@@ -740,6 +740,21 @@ VALUE: {
               }
           }
         },
+        {
+          opcode: 'lastIndexOfObj',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'получить последний номер значения [VALUE] из массива [NAME]',
+          arguments: {
+              NAME: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              },
+            VALUE: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              }
+          }
+        },
            {
           opcode: 'test',
           blockType: Scratch.BlockType.BUTTON,
@@ -916,6 +931,21 @@ VALUE: {
           opcode: 'indexOfLetter',
           blockType: Scratch.BlockType.REPORTER,
           text: 'получить номер символа [LETTER] в тексте [TEXT]',
+          arguments: {
+              TEXT: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'tea'
+              },
+            LETTER: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'e'
+              }
+          }
+        },
+                {
+          opcode: 'lastIndexOfLetter',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'получить последний номер символа [LETTER] в тексте [TEXT]',
           arguments: {
               TEXT: {
                   type: Scratch.ArgumentType.STRING,
@@ -1405,6 +1435,7 @@ VALUE: {
               }
           }
         },*/
+        
          {
           opcode: 'test',
           blockType: Scratch.BlockType.BUTTON,
@@ -1570,6 +1601,17 @@ VALUE: {
             },
           }
         },
+        {
+          opcode: 'cTime',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'прошло времени с момента воспроизведения звука',
+          arguments: {
+            NAME: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'meow'
+            },
+          }
+        },
          {
           opcode: 'test',
           blockType: Scratch.BlockType.BUTTON,
@@ -1719,6 +1761,55 @@ VALUE: {
             },
           }
         },
+                {
+          opcode: 'cTimeN',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'прошло времени с момента воспроизведения звука [NAME]',
+          arguments: {
+            NAME: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'meow'
+            },
+          }
+        },
+                 {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Ссылки',
+        },
+                        {
+          opcode: 'fetch',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'получить текст по ссылке [URL]',
+          arguments: {
+            URL: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'https://raw.githubusercontent.com/Teafuless/teaScratch/v1.17.1/text.txt'
+            },
+          }
+        },
+                                {
+          opcode: 'fetchEval',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'выполнить код по ссылке [URL]',
+          arguments: {
+            URL: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'https://raw.githubusercontent.com/Teafuless/teaScratch/v1.17.1/test.js'
+            },
+          }
+        },
+                                        {
+          opcode: 'fetchEvalC',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'выполнить код по ссылке [URL]',
+          arguments: {
+            URL: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'https://raw.githubusercontent.com/Teafuless/teaScratch/v1.17.1/test.js'
+            },
+          }
+        },
       ],
       menus: {
         teaMenu: {
@@ -1861,6 +1952,9 @@ newObject({NAME}) {
   indexOfObj({NAME,VALUE}){
     return globalThis[NAME].indexOf([VALUE])
   }
+    lastIndexOfObj({NAME,VALUE}){
+    return globalThis[NAME].lastIndexOf([VALUE])
+  }
   newMap({NAME}){
     globalThis[NAME] = new Map()
   }
@@ -1899,6 +1993,9 @@ newObject({NAME}) {
   }
   indexOfLetter({LETTER,TEXT}){
   return TEXT.indexOf(LETTER)
+  }
+    lastIndexOfLetter({LETTER,TEXT}){
+  return TEXT.lastIndexOf(LETTER)
   }
   between({NUM1,NUM2,NUM3}){
     if(NUM2<NUM3) {
@@ -2318,6 +2415,12 @@ self.location.replace(String(URL))
     if (typeof globalThis['VOLUME'] == undefined||globalThis['VOLUME'] == undefined){
       globalThis['VOLUME'] = 100/100
     }
+                    if (globalThis['VOLUME']>1) {
+          globalThis['VOLUME'] = 0+globalThis['VOLUME']-1
+        }
+        if (globalThis['VOLUME']<0) {
+          globalThis['VOLUME'] = 1+globalThis['VOLUME']
+        }
     var sound = new Audio
     sound.src = String(URL)
     sound.volume = globalThis['VOLUME']
@@ -2340,6 +2443,12 @@ self.location.replace(String(URL))
     if (typeof globalThis[NAME+'VOLUME'] == undefined){
       globalThis[NAME+'VOLUME'] = 100/100
     }
+                      if (globalThis[NAME+'VOLUME']>1) {
+          globalThis[NAME+'VOLUME'] = 0+globalThis[NAME+'VOLUME']-1
+        }
+        if (globalThis[NAME+'VOLUME']<0) {
+          globalThis[NAME+'VOLUME'] = 1+globalThis[NAME+'VOLUME']
+        }
     globalThis[NAME] = new Audio
     globalThis[NAME].src = String(URL)
     globalThis[NAME].volume = globalThis[NAME+'VOLUME']
@@ -2362,7 +2471,7 @@ self.location.replace(String(URL))
     return globalThis[NAME].duration
   }
     getVolumeN({NAME}){
-    return globalThis[NAME+'VOLUME']
+    return globalThis[NAME+'VOLUME']*100
   }
   setSoundN({URL,NAME}){
     globalThis[NAME] = new Audio
@@ -2372,8 +2481,15 @@ self.location.replace(String(URL))
     if (typeof globalThis[NAME+'VOLUME'] == undefined){
       globalThis[NAME+'VOLUME'] = 100/100
     }
+                if (globalThis[NAME+'VOLUME']>1) {
+          globalThis[NAME+'VOLUME'] = 0+globalThis[NAME+'VOLUME']-1
+        }
+        if (globalThis[NAME+'VOLUME']<0) {
+          globalThis[NAME+'VOLUME'] = 1+globalThis[NAME+'VOLUME']
+        }
     globalThis[NAME].volume = globalThis[NAME+'VOLUME']
     globalThis[NAME].play()
+        
   }
     pauseSoundsN({NAME}){
     globalThis[NAME].pause()
@@ -2385,7 +2501,7 @@ self.location.replace(String(URL))
     return globalThis['sound'].duration
   }
     getVolume({NAME}){
-    return globalThis['VOLUME']
+    return globalThis['VOLUME']*100
   }
   setSound({NAME}){
    globalThis['sound'] = new Audio
@@ -2395,6 +2511,12 @@ self.location.replace(String(URL))
     if (typeof globalThis['VOLUME'] == undefined){
       globalThis['VOLUME'] = 100/100
     }
+        if (globalThis['VOLUME']>1) {
+          globalThis['VOLUME'] = 0+globalThis['VOLUME']-1
+        }
+        if (globalThis['VOLUME']<0) {
+          globalThis['VOLUME'] = 1+globalThis['VOLUME']
+        }
    globalThis['sound'].volume = globalThis[NAME+'VOLUME']
     globalThis['sound'].play()
   }
@@ -2403,6 +2525,21 @@ self.location.replace(String(URL))
   }
   resumeSounds({NAME}){
        globalThis['sound'].resume()
+  }
+  cTimeN({NAME}){
+    return globalThis[NAME].currentTime
+  }
+    cTime({NAME}){
+    return globalThis['sound'].currentTime
+  }
+  fetch({URL}){
+   return fetch(`${URL}`)   .then(response => response.text())   .then(text => return text)
+  }
+    fetchEval({URL}){
+   return eval(fetch(`${URL}`)   .then(response => response.text())   .then(text => text))
+  }
+      fetchEvalC({URL}){
+    eval(fetch(`${URL}`)   .then(response => response.text())   .then(text => text))
   }
 }
 Scratch.extensions.register(new teandedScratch());
