@@ -1570,6 +1570,17 @@ VALUE: {
             },
           }
         },
+        {
+          opcode: 'cTime',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'прошло времени с момента воспроизведения звука',
+          arguments: {
+            NAME: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'meow'
+            },
+          }
+        },
          {
           opcode: 'test',
           blockType: Scratch.BlockType.BUTTON,
@@ -1712,6 +1723,17 @@ VALUE: {
           opcode: 'getVolumeN',
           blockType: Scratch.BlockType.REPORTER,
           text: 'получить громкость звука [NAME]',
+          arguments: {
+            NAME: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'meow'
+            },
+          }
+        },
+                {
+          opcode: 'cTimeN',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'прошло времени с момента воспроизведения звука [NAME]',
           arguments: {
             NAME: {
                 type: Scratch.ArgumentType.STRING,
@@ -2318,6 +2340,12 @@ self.location.replace(String(URL))
     if (typeof globalThis['VOLUME'] == undefined||globalThis['VOLUME'] == undefined){
       globalThis['VOLUME'] = 100/100
     }
+                    if (globalThis['VOLUME']>1) {
+          globalThis['VOLUME'] = 0+globalThis['VOLUME']-1
+        }
+        if (globalThis['VOLUME']<0) {
+          globalThis['VOLUME'] = 1+globalThis['VOLUME']
+        }
     var sound = new Audio
     sound.src = String(URL)
     sound.volume = globalThis['VOLUME']
@@ -2340,6 +2368,12 @@ self.location.replace(String(URL))
     if (typeof globalThis[NAME+'VOLUME'] == undefined){
       globalThis[NAME+'VOLUME'] = 100/100
     }
+                      if (globalThis[NAME+'VOLUME']>1) {
+          globalThis[NAME+'VOLUME'] = 0+globalThis[NAME+'VOLUME']-1
+        }
+        if (globalThis[NAME+'VOLUME']<0) {
+          globalThis[NAME+'VOLUME'] = 1+globalThis[NAME+'VOLUME']
+        }
     globalThis[NAME] = new Audio
     globalThis[NAME].src = String(URL)
     globalThis[NAME].volume = globalThis[NAME+'VOLUME']
@@ -2362,7 +2396,7 @@ self.location.replace(String(URL))
     return globalThis[NAME].duration
   }
     getVolumeN({NAME}){
-    return globalThis[NAME+'VOLUME']
+    return globalThis[NAME+'VOLUME']*100
   }
   setSoundN({URL,NAME}){
     globalThis[NAME] = new Audio
@@ -2372,8 +2406,15 @@ self.location.replace(String(URL))
     if (typeof globalThis[NAME+'VOLUME'] == undefined){
       globalThis[NAME+'VOLUME'] = 100/100
     }
+                if (globalThis[NAME+'VOLUME']>1) {
+          globalThis[NAME+'VOLUME'] = 0+globalThis[NAME+'VOLUME']-1
+        }
+        if (globalThis[NAME+'VOLUME']<0) {
+          globalThis[NAME+'VOLUME'] = 1+globalThis[NAME+'VOLUME']
+        }
     globalThis[NAME].volume = globalThis[NAME+'VOLUME']
     globalThis[NAME].play()
+        
   }
     pauseSoundsN({NAME}){
     globalThis[NAME].pause()
@@ -2385,7 +2426,7 @@ self.location.replace(String(URL))
     return globalThis['sound'].duration
   }
     getVolume({NAME}){
-    return globalThis['VOLUME']
+    return globalThis['VOLUME']*100
   }
   setSound({NAME}){
    globalThis['sound'] = new Audio
@@ -2395,6 +2436,12 @@ self.location.replace(String(URL))
     if (typeof globalThis['VOLUME'] == undefined){
       globalThis['VOLUME'] = 100/100
     }
+        if (globalThis['VOLUME']>1) {
+          globalThis['VOLUME'] = 0+globalThis['VOLUME']-1
+        }
+        if (globalThis['VOLUME']<0) {
+          globalThis['VOLUME'] = 1+globalThis['VOLUME']
+        }
    globalThis['sound'].volume = globalThis[NAME+'VOLUME']
     globalThis['sound'].play()
   }
@@ -2403,6 +2450,12 @@ self.location.replace(String(URL))
   }
   resumeSounds({NAME}){
        globalThis['sound'].resume()
+  }
+  cTimeN({NAME}){
+    return globalThis[NAME].currentTime
+  }
+    cTime({NAME}){
+    return globalThis['sound'].currentTime
   }
 }
 Scratch.extensions.register(new teandedScratch());
