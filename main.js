@@ -1505,7 +1505,7 @@ VALUE: {
           }
         },
                                  {
-          opcode: 'playSoundWU',
+          opcode: 'playSoundAndWait',
           blockType: Scratch.BlockType.COMMAND,
           text: 'воспроизвести звук и ждать',
           arguments: {
@@ -1917,7 +1917,7 @@ VALUE: {
           text: 'указатель мыши',
           arguments: {
             URL: {
-                type: Scratch.ArgumentType.COLOR,
+                type: Scratch.ArgumentType.STRING,
                 defaultValue: 'https://ani.cursors-4u.net/others/oth-9/oth931.cur'
             },
           }
@@ -1928,7 +1928,7 @@ VALUE: {
           text: 'сбросить указатель мыши',
           arguments: {
             URL: {
-                type: Scratch.ArgumentType.COLOR,
+                type: Scratch.ArgumentType.STRING,
                 defaultValue: 'https://ani.cursors-4u.net/others/oth-9/oth931.cur'
             },
           }
@@ -1939,7 +1939,7 @@ VALUE: {
           text: 'изменить указатель мыши на [URL]',
           arguments: {
             URL: {
-                type: Scratch.ArgumentType.COLOR,
+                type: Scratch.ArgumentType.STRING,
                 defaultValue: 'https://ani.cursors-4u.net/others/oth-9/oth931.cur'
             },
           }
@@ -1950,7 +1950,7 @@ VALUE: {
           text: 'скрыть указатель мыши',
           arguments: {
             URL: {
-                type: Scratch.ArgumentType.COLOR,
+                type: Scratch.ArgumentType.STRING,
                 defaultValue: 'https://ani.cursors-4u.net/others/oth-9/oth931.cur'
             },
           }
@@ -2574,10 +2574,10 @@ window.location.replace(String(URL))
         if (globalThis['VOLUME']<0) {
           globalThis['VOLUME'] = 1+globalThis['VOLUME']
         }
-    var sound = new Audio
-    sound.src = String(URL)
-    sound.volume = globalThis['VOLUME']
-    sound.play()
+   globalThis['sound'] = new Audio
+    globalThis['sound'].src = String(URL)
+    globalThis['sound'].volume = globalThis['VOLUME']
+    globalThis['sound'].play()
   }
   changeVolume({VOL}){
     globalThis['VOLUME'] += Number(VOL)/100
@@ -2586,11 +2586,11 @@ window.location.replace(String(URL))
     globalThis['VOLUME'] = Number(VOL)/100
   }
   stopSounds({LOL}){
-    sound.pause();
-    sound.currentTime = 0;
+    globalThis['sound'].pause();
+    globalThis['sound'].currentTime = 0;
   }
   gotoSound({GOTO}){
-    sound.currentTime = GOTO
+    globalThis['sound'].currentTime = GOTO
   }
     playSoundN({URL,NAME}){
     if (typeof globalThis[NAME+'VOLUME'] == undefined){
@@ -2614,8 +2614,8 @@ window.location.replace(String(URL))
     globalThis[NAME+'VOLUME'] = Number(VOL)/100
   }
   stopSoundsN({NAME}){
-     globalThis[NAME].pause();
-     globalThis[NAME].currentTime = 0;
+        globalThis['sound'].pause();
+    globalThis['sound'].currentTime = 0;
   }
   gotoSoundN({GOTO,NAME}){
      globalThis[NAME].currentTime = GOTO
@@ -2646,7 +2646,7 @@ window.location.replace(String(URL))
         }
     globalThis[NAME].volume = globalThis[NAME+'VOLUME']
     globalThis[NAME].play()
-         sleep(globalThis[NAME].duration*1000)
+          sleep(30+globalThis[NAME].duration*1000)
   }
       playSoundWUN({URL,NAME}){
     if (typeof globalThis[NAME+'VOLUME'] == undefined){
@@ -2663,10 +2663,14 @@ window.location.replace(String(URL))
         
   }
     pauseSoundsN({NAME}){
+      globalThis[NAME+'pausedTime'] = globalThis[NAME].currentTime
     globalThis[NAME].pause()
+globalThis[NAME].currentTime = 0;
   }
   resumeSoundsN({NAME}){
-    globalThis[NAME].resume()
+    globalThis[NAME].play()
+    globalThis[NAME].currentTime = globalThis[NAME+'pausedTime']
+    globalThis[NAME+'pausedTime']=0
   }
       soundLength({NAME}){
     return globalThis['sound'].duration
@@ -2694,7 +2698,7 @@ window.location.replace(String(URL))
         }
         globalThis['sound'].volume = globalThis[NAME+'VOLUME']
     globalThis['sound'].play()
-     sleep(globalThis['sound'].duration*1000)
+     sleep(30+globalThis['sound'].duration*1000)
   }
   
       playSoundWU({URL,NAME}){
@@ -2710,11 +2714,14 @@ window.location.replace(String(URL))
    globalThis['sound'].volume = globalThis[NAME+'VOLUME']
     globalThis['sound'].play()
   }
-    pauseSounds({NAME}){
-   globalThis['sound'].pause()
+    pauseSoundsN({NAME}){
+      globalThis['sound_pausedTime'] = globalThis['sound'].currentTime
+    globalThis['sound'].stop()
   }
-  resumeSounds({NAME}){
-       globalThis['sound'].resume()
+  resumeSoundsN({NAME}){
+    globalThis['sound'].play()
+    globalThis['sound'].currentTime = globalThis['sound_pausedTime']
+    globalThis['sound_pausedTime']=0
   }
   cTimeN({NAME}){
     return globalThis[NAME].currentTime
