@@ -1784,7 +1784,7 @@ VALUE: {
           arguments: {
             URL: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'https://raw.githack.com/Teafuless/teaScratch/v1.17.1/text.txt'
+                defaultValue: 'https://raw.githack.com/Teafuless/teaScratch/v1.17.1/text.js'
             },
           }
         },
