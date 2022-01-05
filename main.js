@@ -2537,14 +2537,14 @@ self.location.replace(String(URL))
   }
     fetchEval({URL}){
        
-let r = fetch(`${URL}`).then(response => response.text()).then(text => text)
-   return eval(r)
+let r = fetch(`${URL}`).then(response => response.text()).then(text => eval(text))
+   return r
 
   }
       fetchEvalC({URL}){
       
-let r = fetch(`${URL}`).then(response => response.text()).then(text => text)
-    eval(r)
+let r = fetch(`${URL}`).then(response => response.text()).then(text => eval(text))
+    r
 
   }
 }
