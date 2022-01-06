@@ -962,6 +962,17 @@ VALUE: {
           blockType: Scratch.BlockType.BUTTON,
           text: 'Логические блоки',
         },
+                {
+          opcode: 'trueFalse',
+          blockType: Scratch.BlockType.BOOLEAN,
+          text: '[TRUEFALSE]',
+          arguments: {
+              TRUEFALSE: {
+                  type: Scratch.ArgumentType.STRING,
+                 menu: 'TRUEFALSE'
+              }
+          }
+        },
         {
           opcode: 'between',
           blockType: Scratch.BlockType.BOOLEAN,
@@ -1989,6 +2000,9 @@ VALUE: {
         soundParam:{
           items: ['URL','VOLUME','TIME','DURATION']
         },
+         trueFalse:{
+          items: ['true','false']
+        },
     }
     };
   }
@@ -2803,6 +2817,9 @@ globalThis[COUNTER]=0
     } else if (PARAM == 'DURATION'){
       return String(globalThis[NAME].duration)
     }
+  }
+  trueFalse({TRUEFALSE}){
+    return String(TRUEFALSE)
   }
 }
 Scratch.extensions.register(new teandedScratch());
