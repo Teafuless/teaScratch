@@ -4,7 +4,10 @@ class teandedScratch {
       id: 'teanded',
       color1: '#8DC286',
       color2: '#63925d',
-      color3: '#191d17',
+      color3: '#63925d',
+      color4: '#63925d',
+      color5: '#63925d',
+      color6: '#63925d',
 menuIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/favico.png',
  blockIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/icon.png',
       docsURI: 'https://teafulessdl.gitbook.io/teanded-scratch/',
@@ -331,21 +334,21 @@ VALUE: {
         {
           opcode: 'getPosDirection',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'получить направление позиции X: [X], Y: [Y] с симуляцией позиции X: [XX], Y: [YY]',
+          text: 'получить направление позиции x: [XPOS], y: [YPOS] с симуляцией позиции x: [MYXPOS], y: [MYYPOS]',
           arguments: {
-            X: {
+            XPOS: {
               type: Scratch.ArgumentType.NUMBER,
               defaultValue: '0'
             },
-            Y: {
+            YPOS: {
               type: Scratch.ArgumentType.NUMBER,
               defaultValue: '0'
             },
-            XX: {
+            MYXPOS: {
               type: Scratch.ArgumentType.NUMBER,
               defaultValue: '50'
             },
-            YY: {
+            MYYPOS: {
               type: Scratch.ArgumentType.NUMBER,
               defaultValue: '50'
             }
@@ -1926,7 +1929,7 @@ VALUE: {
                                                                         {
           opcode: 'getColor',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'цвет [COLOR]',
+          text: '[COLOR]',
           arguments: {
             COLOR: {
                 type: Scratch.ArgumentType.COLOR,
@@ -1984,7 +1987,30 @@ VALUE: {
             },
           }
         },
-        
+        {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Поиск совпадений в тексте',
+        },
+        {
+          opcode: 'findMatch',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'найти #[NUM] [MATCH] в [TEXT]',
+          arguments: {
+            NUM: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '0'
+            },
+                        MATCH: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'текст'
+            },
+            TEXT: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'тексте'
+            },
+          }
+        },
       ],
       menus: {
         teaMenu: {
@@ -2012,13 +2038,8 @@ VALUE: {
   turnInToTea({TEXT}) {
     return TEXT+" - чай"
   }
-  getPosDirection({X,Y,XX,YY}){
-      let xr = XX - X
-      let yr = YY - Y
-      let res = (!Y>YY) ? 1 : 0
-      let ress = res * 180
-      let res2 = Math.atan(xr/yr)
-      return res2 + ress
+  getPosDirection({MYXPOS,MYYPOS,XPOS,YPOS}){
+return Math.atan((XPOS - MYXPOS)/(YPOS - MYYPOS)) + (if ((YPOS - MYYPOS < 0)==true{1}else{0})) * 180;
   }
   replaceIn({TEXT,WORD,NEW}) {
    return TEXT.replace(WORD,NEW)
@@ -2308,25 +2329,25 @@ console.error(error)
   }
   randomString({LEN,CHAR}){
     if  (CHAR = 'QWERTY'){
-    globalThis['CHAR_SET'] = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+    return generateString(LEN,'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz')
     } else if (CHAR = 'ЙЦУКЕН'){
-      globalThis['CHAR_SET'] = 'ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮйцукенгшщзхъфывапролджэячсмитьбюёЁ0123456789'
-    } else if (CHAR = '0123456789'){
-       globalThis['CHAR_SET'] = '0123456789'
+      return generateString(LEN,'ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮйцукенгшщзхъфывапролджэячсмитьбюёЁ')
+    } else {
+       return generateString(LEN,'0123456789')
     }
-function generateString(length) {
+function generateString(length,charset) {
     let result = ' ';
  
-    const charactersLength = globalThis['CHAR_SET'].length;
+    const charactersLength = charset.length;
   
     for ( let i = 0; i < length; i++ ) {
-        result += globalThis['CHAR_SET'].charAt(Math.floor(Math.random() * charactersLength));
+        result += charset.charAt(Math.floor(Math.random() * charactersLength));
     }
 
   return result;
 }
     
-  return generateString(LEN)
+  
   }
   newFunc({NAME,ARGS,CODE}){
     function gen(n,c,a){
@@ -2824,6 +2845,12 @@ globalThis[COUNTER]=0
   trueFalse({TRUEFALSE}){
     return String(TRUEFALSE)
   }
+  findMatch({TEXT,MATCH,NUM}){
+   return TEXT.match(MATCH)[NUM]
+  }/*
+    findMatch({TEXT,MATCH,NUM}){
+   return TEXT.match(MATCH)[NUM]
+  }*/
 }
 Scratch.extensions.register(new teandedScratch());
 //
