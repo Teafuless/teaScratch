@@ -5,6 +5,9 @@ class teandedScratch {
       color1: '#8DC286',
       color2: '#63925d',
       color3: '#191d17',
+      color4: '#1e211d',
+      color5: '#1e211d',
+      color6: '#1e211d',
 menuIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/favico.png',
  blockIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/icon.png',
       docsURI: 'https://teafulessdl.gitbook.io/teanded-scratch/',
@@ -1926,7 +1929,7 @@ VALUE: {
                                                                         {
           opcode: 'getColor',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'цвет [COLOR]',
+          text: '[COLOR]',
           arguments: {
             COLOR: {
                 type: Scratch.ArgumentType.COLOR,
