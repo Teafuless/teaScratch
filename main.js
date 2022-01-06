@@ -1858,6 +1858,32 @@ VALUE: {
           blockType: Scratch.BlockType.BUTTON,
           text: 'Ссылки',
         },
+         {
+          opcode: 'isURL',
+          blockType: Scratch.BlockType.BOOLEAN,
+          text: 'это ссылка? [LINK]',
+          arguments: {
+            LINK: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'https://raw.githack.com/Teafuless/teaScratch/v1.17.1/text.js'
+            }
+          }
+        },
+                    {
+          opcode: 'getURL',
+          blockType: Scratch.BlockType.REPORTER,
+          text: '[PARAM] от [LINK]',
+          arguments: {
+            LINK: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'https://raw.githack.com/Teafuless/teaScratch/v1.17.1/text.js'
+            },
+            PARAM: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'urlParam'
+            },
+          }
+        },
                         {
           opcode: 'fetch',
           blockType: Scratch.BlockType.REPORTER,
@@ -2061,6 +2087,9 @@ VALUE: {
         },
          trueFalse:{
           items: ['true','false']
+        },
+        urlParam:{
+          items: ['DOMAIN','ORIGIN']
         },
       }
     };
@@ -2884,6 +2913,29 @@ globalThis[COUNTER]=0
   getFrom({TEXT,NUM,SEP}){
     let res = TEXT.split(String(SEP))
     return String(res[NUM])
+  }
+  isURL({LINK}){
+    function isURL(str) {
+      let link
+  try {
+    link = new URL(str)
+    return String(link.protocol === "http:" || link.protocol === "https:")
+  } catch (e) {
+    return false
+  }
+
+  return String(link.protocol === "http:" || link.protocol === "https:")
+}
+    return String(isURL(LINK))
+  }
+  
+  getURL({LINK,PARAM}){
+    let link = (new URL(LINK))
+    if (PARAM=='DOMAIN'){
+      return link.hostname
+    } else if (PARAM=='ORIGIN'){
+      return link.origin
+    }
   }
 }
 Scratch.extensions.register(new teandedScratch());
