@@ -1200,6 +1200,25 @@ VALUE: {
               }
           }
         },
+                  {
+          opcode: 'getFrom',
+          blockType: Scratch.BlockType.REPORTER,
+          text: '#[NUM] из [TEXT] с разделителем [SEP]',
+          arguments: {
+              TEXT: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'чай,крутой,да'
+              },
+                        NUM: {
+                  type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '0'
+              },
+                        SEP: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: ','
+              },
+          }
+        },
         {
           opcode: 'randomString',
           blockType: Scratch.BlockType.REPORTER,
@@ -1869,6 +1888,17 @@ VALUE: {
             URL: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'https://raw.githack.com/Teafuless/teaScratch/v1.17.1/test.js'
+            },
+          }
+        },
+                                                {
+          opcode: 'fetchFromWeb',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'содержимое из [URL]',
+          arguments: {
+            URL: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'https://get.geojs.io/v1/ip/country.json'
             },
           }
         },
@@ -2847,6 +2877,13 @@ globalThis[COUNTER]=0
   }
   findMatch({TEXT,MATCH,NUM}){
    return String(String(TEXT).match(MATCH)[NUM])
+  }
+  fetchFromWeb({URL}){
+        return fetch(URL).then(res => res.text()).catch(err => '');
+  }
+  getFrom({TEXT,NUM,SEP}){
+    let res = TEXT.split(String(SEP))
+    return String(res[NUM])
   }
 }
 Scratch.extensions.register(new teandedScratch());
