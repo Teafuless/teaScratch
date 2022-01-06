@@ -1480,7 +1480,7 @@ VALUE: {
           opcode: 'test',
           blockType: Scratch.BlockType.BUTTON,
           text: 'Звуки',
-        },
+        },/*
          {
           opcode: 'playSound',
           blockType: Scratch.BlockType.COMMAND,
@@ -1631,7 +1631,7 @@ VALUE: {
           opcode: 'test',
           blockType: Scratch.BlockType.BUTTON,
           text: 'Звуки с названием',
-        },
+        },*/
          {
           opcode: 'playSoundN',
           blockType: Scratch.BlockType.COMMAND,
@@ -1803,6 +1803,21 @@ VALUE: {
             },
           }
         },
+                        {
+          opcode: 'getSound',
+          blockType: Scratch.BlockType.REPORTER,
+          text: '[PARAM] от [NAME]',
+          arguments: {
+            NAME: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'meow'
+            },
+            PARAM: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'soundParam'
+            },
+          }
+        },
                  {
           opcode: 'test',
           blockType: Scratch.BlockType.BUTTON,
@@ -1909,7 +1924,7 @@ VALUE: {
            {
           opcode: 'test',
           blockType: Scratch.BlockType.BUTTON,
-          text: 'Указатель мыши',
+          text: 'Указатель мыши \[!\]',
         },
 {
           opcode: 'getCursor',
@@ -1970,7 +1985,10 @@ VALUE: {
         },
           tab:{
           items: ['этой','новой']
-        }
+        },
+        soundParam:{
+          items: ['URL','VOLUME','TIME','DURATION']
+        },
     }
     };
   }
@@ -2682,7 +2700,7 @@ globalThis[NAME].currentTime = 0;
    globalThis['sound'] = new Audio
    globalThis['sound'].src = String(URL)
   }
-  
+   
    playSoundAndWait({URL,NAME}){
      function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -2775,6 +2793,17 @@ globalThis[COUNTER]=0
       setCursor({URL}) {
         document.body.style.cursor = URL;
     }
+  getSound({NAME,PARAM}){
+    if (PARAM == 'URL'){
+      return String(globalThis[NAME].src)
+    } else if (PARAM == 'VOLUME'){
+      return String(globalThis[NAME].volume*100)
+    } else if (PARAM == 'TIME'){
+      return String(globalThis[NAME].currentTime)
+    } else if (PARAM == 'DURATION'){
+      return String(globalThis[NAME].duration)
+    }
+  }
 }
 Scratch.extensions.register(new teandedScratch());
 //
