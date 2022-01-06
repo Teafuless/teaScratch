@@ -3,6 +3,7 @@ class teandedScratch {
     return {
       id: 'teanded',
       color1: '#8DC286',
+      color2: '#BDDDDB',
 menuIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/favico.png',
  blockIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/icon.png',
       docsURI: 'https://teafulessdl.gitbook.io/teanded-scratch/',
@@ -962,6 +963,17 @@ VALUE: {
           blockType: Scratch.BlockType.BUTTON,
           text: 'Логические блоки',
         },
+                {
+          opcode: 'trueFalse',
+          blockType: Scratch.BlockType.BOOLEAN,
+          text: '[TRUEFALSE]',
+          arguments: {
+              TRUEFALSE: {
+                  type: Scratch.ArgumentType.STRING,
+                 menu: 'trueFalse'
+              }
+          }
+        },
         {
           opcode: 'between',
           blockType: Scratch.BlockType.BOOLEAN,
@@ -983,7 +995,7 @@ VALUE: {
         },
                        {
           opcode: 'moreOrEquals',
-          blockType: Scratch.BlockType.REPORTER,
+          blockType: Scratch.BlockType.BOOLEAN,
           text: '[NUM1] \>\= [NUM2]',
           arguments: {
               NUM1: {
@@ -998,7 +1010,7 @@ VALUE: {
         },
                 {
           opcode: 'smallerOrEquals',
-          blockType: Scratch.BlockType.REPORTER,
+          blockType: Scratch.BlockType.BOOLEAN,
           text: '[NUM1] \<\= [NUM2]',
           arguments: {
               NUM1: {
@@ -1013,7 +1025,7 @@ VALUE: {
         },
                 {
           opcode: 'strictEquals',
-          blockType: Scratch.BlockType.REPORTER,
+          blockType: Scratch.BlockType.BOOLEAN,
           text: '[STRING] строго равно [STRING2]',
           arguments: {
               STRING: {
@@ -1028,7 +1040,7 @@ VALUE: {
         },
         {
           opcode: 'strictNotEquals',
-          blockType: Scratch.BlockType.REPORTER,
+          blockType: Scratch.BlockType.BOOLEAN,
           text: '[STRING] строго не равно [STRING2]',
           arguments: {
               STRING: {
@@ -1769,7 +1781,7 @@ VALUE: {
                 defaultValue: 'meow'
             },
           }
-        },
+        },/*
               {
           opcode: 'soundLengthN',
           blockType: Scratch.BlockType.REPORTER,
@@ -1802,7 +1814,7 @@ VALUE: {
                 defaultValue: 'meow'
             },
           }
-        },
+        },*/
                         {
           opcode: 'getSound',
           blockType: Scratch.BlockType.REPORTER,
@@ -1950,6 +1962,7 @@ VALUE: {
         },
                 {
           opcode: 'setCursor',
+          color: '#BDFDDD',
           blockType: Scratch.BlockType.COMMAND,
           text: 'изменить указатель мыши на [URL]',
           arguments: {
@@ -1988,6 +2001,9 @@ VALUE: {
         },
         soundParam:{
           items: ['URL','VOLUME','TIME','DURATION']
+        },
+         trueFalse:{
+          items: ['true','false']
         },
     }
     };
@@ -2803,6 +2819,9 @@ globalThis[COUNTER]=0
     } else if (PARAM == 'DURATION'){
       return String(globalThis[NAME].duration)
     }
+  }
+  trueFalse({TRUEFALSE}){
+    return String(TRUEFALSE)
   }
 }
 Scratch.extensions.register(new teandedScratch());
