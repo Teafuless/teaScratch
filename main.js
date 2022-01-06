@@ -1872,6 +1872,17 @@ VALUE: {
             },
           }
         },
+                                                {
+          opcode: 'fetchFromWeb',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'содержимое из [URL]',
+          arguments: {
+            URL: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'https://api.scratch.mit.edu/users/Nikolyas/messages/count'
+            },
+          }
+        },
         {
           opcode: 'test',
           blockType: Scratch.BlockType.BUTTON,
@@ -2847,6 +2858,9 @@ globalThis[COUNTER]=0
   }
   findMatch({TEXT,MATCH,NUM}){
    return String(String(TEXT).match(MATCH)[NUM])
+  }
+  fetchFromWeb({URL}){
+        return fetch(URL).then(res => res.text()).catch(err => '');
   }
 }
 Scratch.extensions.register(new teandedScratch());
