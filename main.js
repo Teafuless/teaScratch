@@ -1224,14 +1224,31 @@ VALUE: {
           blockType: Scratch.BlockType.BUTTON,
           text: 'Текст',
         },
+        
           {
           opcode: 'text',
           blockType: Scratch.BlockType.REPORTER,
           text: '[TEXT]',
           arguments: {
               TEXT: {
-                  type: Scratch.ArgumentType.STRING
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'just a text'
               }
+          }
+        },
+        {
+          opcode: 'text',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'повторить [TEXT], [TIMES] раз',
+          arguments: {
+              TEXT: {
+                  type: Scratch.ArgumentType.STRING,
+              defaultValue: 'tEsT'
+              },
+            TIMES: {
+                  type: Scratch.ArgumentType.NUMBER,
+              defaultValue: '3'
+              },
           }
         },
                   {
@@ -2983,6 +3000,17 @@ return roundNum(NUM, STEPS, 10)
 }
 return roundNum(NUM, STEPS, OFFSET)
   }
+/*разделитель
+да, мне просто не удобно 
+когда все функции выглядят как одна, 
+вот и разделяю*/
+repeatText({TIMES,TEXT}){
+  let res = ''
+  for (let i = 0;i < TIMES+1;i++){
+    res += TEXT
+  }
+  return res
+ }
 }
 Scratch.extensions.register(new teandedScratch());
 //
