@@ -3011,6 +3011,12 @@ repeatText({TIMES,TEXT}){
   }
   return res
  }
+  curUrl({URL}){
+    return String(window.location.href)
+  }
+  sliceText({TEXT,NUM1,NUM2}){
+    return String(String(TEXT).slice(NUM1,NUM2))
+  }
 }
 Scratch.extensions.register(new teandedScratch());
 //
