@@ -2160,11 +2160,11 @@ VALUE: {
           arguments: {
             CUR: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '08/01/2022'
+                defaultValue: 'гггг/мм/дд'
             },
             DATE: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '09\.01\.2022'
+                defaultValue: 'гггг/мм/дд'
             },
           }
         },
@@ -2175,7 +2175,7 @@ VALUE: {
           arguments: {
             DATE: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '15\,03\,2024'
+                defaultValue: 'гггг/мм/дд'
             },
           }
         },
@@ -3086,12 +3086,12 @@ repeatText({TIMES,TEXT}){
   }
   daysUntil({CUR,DATE}){
     let res = 24 * 60 * 60 * 1000
-    let curday = new Date(CUR.split('/').split('.').split(','))
-    let date = new Date(DATE.split('/').split('.').split(','))
-    return Math.round(Math.abs((curday - date) / res));
+    let curday = new Date(CUR)
+    let date = new Date(DATE)
+    return String(Math.round(Math.abs((curday - date) / res)))
  }
   getDate({DATE}){
-    let date = new Date(DATE.split('/').split('.'))
+    let date = new Date(DATE)
     return String(date)
  }
 }
