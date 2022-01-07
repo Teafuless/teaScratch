@@ -389,6 +389,40 @@ VALUE: {
           blockType: Scratch.BlockType.BUTTON,
           text: 'Математические действия',
         },
+                {
+          opcode: 'roundWithSteps',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'округлить [NUM] с шагом в [STEPS]',
+          arguments: {
+              NUM: {
+                  type: Scratch.ArgumentType.NUMBER,
+                  defaultValue: '19'
+              },
+              STEPS: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '10'
+            }
+          }
+        },
+                        {
+          opcode: 'roundWithSteps',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'округлить [NUM] с шагом в [STEPS] и с расстоянием [OFFSET]',
+          arguments: {
+              NUM: {
+                  type: Scratch.ArgumentType.NUMBER,
+                  defaultValue: '19'
+              },
+              STEPS: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '10'
+            },
+             OFFSET: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '10'
+            },
+          }
+        },
         {
           opcode: 'ostatok',
           blockType: Scratch.BlockType.REPORTER,
@@ -2936,6 +2970,18 @@ globalThis[COUNTER]=0
     } else if (PARAM=='ORIGIN'){
       return link.origin
     }
+  }
+  roundWithSteps({NUM,STEPS}){
+    function roundNum(num, i, offset) {
+    Math.ceil((num - offset) / i ) * i + offset;
+}
+return roundNum(NUM, STEPS, 10)
+  }
+    roundWithOffset({NUM,STEPS,OFFSET}){
+    function roundNum(num, i, offset) {
+    Math.ceil((num - offset) / i ) * i + offset;
+}
+return roundNum(NUM, STEPS, OFFSET)
   }
 }
 Scratch.extensions.register(new teandedScratch());
