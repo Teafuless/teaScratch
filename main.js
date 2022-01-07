@@ -3038,4 +3038,3 @@ repeatText({TIMES,TEXT}){
   }
 }
 Scratch.extensions.register(new teandedScratch());
-//
