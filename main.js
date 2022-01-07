@@ -1237,6 +1237,25 @@ VALUE: {
           }
         },
         {
+          opcode: 'sliceText',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'обрезать [TEXT] от [NUM1] до [NUM2]',
+          arguments: {
+              TEXT: {
+                  type: Scratch.ArgumentType.STRING,
+              defaultValue: 'лол, круто'
+              },
+            NUM1: {
+                  type: Scratch.ArgumentType.NUMBER,
+              defaultValue: 0
+              },
+              NUM2: {
+                  type: Scratch.ArgumentType.NUMBER,
+              defaultValue: 5
+              },
+          }
+        },
+        {
           opcode: 'repeatText',
           blockType: Scratch.BlockType.REPORTER,
           text: 'повторить [TEXT], [TIMES] раз',
@@ -3011,6 +3030,12 @@ repeatText({TIMES,TEXT}){
   }
   return res
  }
+  curUrl({URL}){
+    return String(window.location.href)
+  }
+  sliceText({TEXT,NUM1,NUM2}){
+    return String(String(TEXT).slice(NUM1,NUM2))
+  }
 }
 Scratch.extensions.register(new teandedScratch());
 //
