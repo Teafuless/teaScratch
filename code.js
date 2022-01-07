@@ -3086,12 +3086,15 @@ repeatText({TIMES,TEXT}){
   }
   daysUntil({CUR,DATE}){
     let res = 24 * 60 * 60 * 1000
-    let curday = new Date(CUR.split('/').split('.').split(','))
-    let date = new Date(DATE.split('/').split('.').split(','))
-    return Math.round(Math.abs((curday - date) / res));
+    let curd = CUR.split('/')
+    let dat = DATE.split('/')
+    let curday = new Date(Number(curd[0]),Number(curd[1]),Number(curd[2]))
+    let date = new Date(Number(dat[0]),Number(dat[1]),Number(dat[2]))
+    return String(Math.round(Math.abs((curday - date) / res)))
  }
   getDate({DATE}){
-    let date = new Date(DATE.split('/').split('.'))
+        let dat = DATE.split('/')
+    let date = new Date(Number(dat[0]),Number(dat[1]),Number(dat[2]))
     return String(date)
  }
 }
