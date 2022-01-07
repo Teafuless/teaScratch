@@ -2137,6 +2137,22 @@ VALUE: {
             },
           }
         },
+          {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Дата',
+        },
+        {
+          opcode: 'getCurrentMS',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'текущие ms',
+          arguments: {
+            TEXT: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'тексте'
+            },
+          }
+        },
       ],
       menus: {
         teaMenu: {
@@ -3023,6 +3039,9 @@ return roundNum(NUM, STEPS, OFFSET)
 да, мне просто не удобно 
 когда все функции выглядят как одна, 
 вот и разделяю*/
+  getLetters({TEXT,NUM1,NUM2}){
+    return TEXT.slice(Math.max(1, NUM1) - 1, Math.min(TEXT.length, NUM2));
+  }
 repeatText({TIMES,TEXT}){
   let res = ''
   for (let i = 0;i < TIMES;i++){
@@ -3036,5 +3055,9 @@ repeatText({TIMES,TEXT}){
   sliceText({TEXT,NUM1,NUM2}){
     return String(String(TEXT).slice(NUM1,NUM2))
   }
+  getCurrentMS({TEXT}){
+    return Date.now() % 1000
+  }
+  
 }
 Scratch.extensions.register(new teandedScratch());
