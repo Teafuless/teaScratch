@@ -2153,6 +2153,32 @@ VALUE: {
             },
           }
         },
+                {
+          opcode: 'daysUntil',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'дней с [CUR] до [DATE]',
+          arguments: {
+            CUR: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '08/01/2022'
+            },
+            DATE: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '09\.01\.2022'
+            },
+          }
+        },
+         {
+          opcode: 'getDate',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'получить дату [DATE]',
+          arguments: {
+            DATE: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '15\,03\,2024'
+            },
+          }
+        },
       ],
       menus: {
         teaMenu: {
@@ -3058,6 +3084,15 @@ repeatText({TIMES,TEXT}){
   getCurrentMS({TEXT}){
     return Date.now() % 1000
   }
-  
+  daysUntil({CUR,DATE}){
+    let res = 24 * 60 * 60 * 1000
+    let curday = new Date(CUR.split('/').split('.').split(','))
+    let date = new Date(DATE.split('/').split('.').split(','))
+    return Math.round(Math.abs((curday - date) / res));
+ }
+  getDate({DATE}){
+    let date = new Date(DATE.split('/').split('.'))
+    return String(date)
+ }
 }
 Scratch.extensions.register(new teandedScratch());
