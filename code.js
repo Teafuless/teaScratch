@@ -2180,6 +2180,25 @@ VALUE: {
           }
         },
         {
+          opcode: 'untilDate',
+          blockType: Scratch.BlockType.REPORTER,
+          text: '[PARAM] с [DATE] до [UNTIL]',
+          arguments: {
+            DATE: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'гггг/мм/дд'
+            },
+            UNTIL: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'гггг/мм/дд'
+            },
+            PARAM: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'untilDateParam'
+            },
+          }
+        },
+        {
           opcode: 'getFromDate',
           blockType: Scratch.BlockType.REPORTER,
           text: '[PARAM] от [DATE]',
@@ -2191,6 +2210,26 @@ VALUE: {
             PARAM: {
                 type: Scratch.ArgumentType.STRING,
                 menu: 'dateParam'
+            },
+          }
+        },
+        {
+          opcode: 'setFromDate',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'установить [PARAM] от [DATE] в [STR]',
+          arguments: {
+            DATE: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'гггг/мм/дд'
+            },
+            PARAM: {
+                type: Scratch.ArgumentType.STRING,
+              menu: 'setDateParam',
+                defaultValue: 'HOURS'
+            },
+            STR: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '5'
             },
           }
         },
@@ -2230,8 +2269,14 @@ VALUE: {
           items: ['DOMAIN','ORIGIN']
         },
         dateParam:{
-          items: ['YEAR','MONTH','DAY OF THE WEEK','DAY','HOURS','MINUTES','SECONDS','MS']
+          items: ['YEAR','MONTH','DAY OF THE WEEK','DAY','HOURS','MINUTES','SECONDS','MS','FULL YEAR','TIME SINCE THE UNIX EPOCH','UTC FULL YEAR','UTC MONTH', 'UTC DAY OF THE WEEK','UTC DAY','UTC HOURS','UTC MINUTES','UTC SECONDS','UTC MS','TIMEZONE OFFSET']
         },
+        untilDateParam:{
+          items: ['лет','месяцев','часов','минут','секунд','MS']
+        },
+            setDateParam:{
+          items: ['YEAR','MONTH','DAY OF THE WEEK','DAY','HOURS','MINUTES','SECONDS','MS','FULL YEAR','TIME SINCE THE UNIX EPOCH','UTC FULL YEAR','UTC MONTH', 'UTC DAY OF THE WEEK','UTC DAY','UTC HOURS','UTC MINUTES','UTC SECONDS','UTC MS']
+            },
       }
     };
   }
@@ -3141,6 +3186,85 @@ repeatText({TIMES,TEXT}){
       return String(date.getDate())
     } else if (PARAM == 'MS'){
       return String(date.getMilliseconds())
+    } else if (PARAM == 'FULL YEAR'){
+      return String(date.getFullYear())
+    } else if (PARAM == 'TIME SINCE THE UNIX EPOCH'){
+      return String(date.getTime())
+    } else if (PARAM == 'TIMEZONE OFFSET'){
+      return String(date.getTimezoneOffset())
+    } else if (PARAM == 'UTC DAY'){
+      return String(date.getUTCDate())
+    } else if (PARAM == 'UTC DAY OF THE WEEK'){
+      return String(date.getUTCDay())
+    } else if (PARAM == 'UTC FULL YEAR'){
+      return String(date.getUTCFullYear())
+    } else if (PARAM == 'UTC HOURS'){
+      return String(date.getUTCHours())
+    } else if (PARAM == 'UTC MS'){
+      return String(date.getUTCMilliseconds())
+    } else if (PARAM == 'UTC MINUTES'){
+      return String(date.getUTCMinutes())
+    } else if (PARAM == 'UTC MONTH'){
+      return String(date.getUTCMonth())
+    } else if (PARAM == 'UTC SECONDS'){
+      return String(date.getUTCSeconds())
+    }
+ }
+   setFromDate({DATE,PARAM,STR}){
+    let date = new Date(DATE)
+    if (PARAM == 'YEAR'){
+      return String(date.setYear(STR))
+    } else if (PARAM == 'MONTH'){
+      return String(date.setMonth(STR))
+    } else if (PARAM == 'DAY OF THE WEEK'){
+      return String(date.setDay(STR))
+    } else if (PARAM == 'HOURS'){
+      return String(date.setHours(STR))
+    } else if (PARAM == 'MINUTES'){
+      return String(date.setMinutes(STR))
+    } else if (PARAM == 'SECONDS'){
+      return String(date.setSeconds(STR))
+    } else if (PARAM == 'DAY'){
+      return String(date.setDate(STR))
+    } else if (PARAM == 'MS'){
+      return String(date.setMilliseconds(STR))
+    } else if (PARAM == 'FULL YEAR'){
+      return String(date.setFullYear(STR))
+    } else if (PARAM == 'TIME SINCE THE UNIX EPOCH'){
+      return String(date.setTime(STR))
+    } else if (PARAM == 'UTC DAY'){
+      return String(date.setUTCDate(STR))
+    } else if (PARAM == 'UTC DAY OF THE WEEK'){
+      return String(date.setUTCDay(STR))
+    } else if (PARAM == 'UTC FULL YEAR'){
+      return String(date.setUTCFullYear(STR))
+    } else if (PARAM == 'UTC HOURS'){
+      return String(date.setUTCHours(STR))
+    } else if (PARAM == 'UTC MS'){
+      return String(date.setUTCMilliseconds(STR))
+    } else if (PARAM == 'UTC MINUTES'){
+      return String(date.setUTCMinutes(STR))
+    } else if (PARAM == 'UTC MONTH'){
+      return String(date.setUTCMonth(STR))
+    } else if (PARAM == 'UTC SECONDS'){
+      return String(date.setUTCSeconds(STR))
+    }
+ }
+    untilDate({DATE,UNTIL,PARAM}){
+    let date = new Date(DATE)
+    let until = new Date(UNTIL)
+    if (PARAM == 'лет'){
+      return String(Number(until.getYear())-Number(date.getYear()))
+    } else if (PARAM == 'месяцев'){
+      return String(Number(until.getMonth())-Number(date.getMonth()))
+    } else if (PARAM == 'часов'){
+      return String(Number(until.getHours())-Number(date.getHours()))
+    } else if (PARAM == 'минут'){
+      return String(Number(until.getMinutes())-Number(date.getMinutes()))
+    } else if (PARAM == 'секунд'){
+      return String(Number(until.getSeconds())-Number(date.getSeconds()))
+    } else if (PARAM == 'MS'){
+      return String(Number(until.getMilliseconds())-Number(date.getMilliseconds()))
     }
  }
   getToday({DATE}){
