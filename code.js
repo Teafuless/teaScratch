@@ -2180,6 +2180,25 @@ VALUE: {
           }
         },
         {
+          opcode: 'untilDate',
+          blockType: Scratch.BlockType.REPORTER,
+          text: '[PARAM] с [DATE] до [UNTIL]',
+          arguments: {
+            DATE: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'гггг/мм/дд'
+            },
+            UNTIL: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'гггг/мм/дд'
+            },
+            PARAM: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'untilDateParam'
+            },
+          }
+        },
+        {
           opcode: 'getFromDate',
           blockType: Scratch.BlockType.REPORTER,
           text: '[PARAM] от [DATE]',
@@ -2231,6 +2250,9 @@ VALUE: {
         },
         dateParam:{
           items: ['YEAR','MONTH','DAY OF THE WEEK','DAY','HOURS','MINUTES','SECONDS','MS']
+        },
+        untilDateParam:{
+          items: ['лет','месяцев','часов','минут','секунд','MS']
         },
       }
     };
@@ -3141,6 +3163,23 @@ repeatText({TIMES,TEXT}){
       return String(date.getDate())
     } else if (PARAM == 'MS'){
       return String(date.getMilliseconds())
+    }
+ }
+    untilDate({DATE,UNTIL,PARAM}){
+    let date = new Date(DATE)
+    let until = new Date(UNTIL)
+    if (PARAM == 'YEAR'){
+      return String(until.getYear()-date.getYear())
+    } else if (PARAM == 'MONTH'){
+      return String(until.getMonth()-date.getMonth())
+    } else if (PARAM == 'HOURS'){
+      return String(until.getHours()-date.getHours())
+    } else if (PARAM == 'MINUTES'){
+      return String(until.getMinutes()-date.getMinutes())
+    } else if (PARAM == 'SECONDS'){
+      return String(until.getSeconds()-date.getSeconds())
+    } else if (PARAM == 'MS'){
+      return String(until.getMilliseconds()-date.getMilliseconds())
     }
  }
   getToday({DATE}){
