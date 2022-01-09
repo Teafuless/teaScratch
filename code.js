@@ -1237,6 +1237,34 @@ VALUE: {
           }
         },
         {
+          opcode: 'mixWords',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'перемешать слова в [TEXT], [REPEAT]',
+          arguments: {
+              TEXT: {
+                  type: Scratch.ArgumentType.STRING,
+              defaultValue: 'а б в г д е ё ж з и й к л м н о п р с т у ф, а дальше я забыл'
+              },
+            REPEAT: {
+                  type: Scratch.ArgumentType.BOOLEAN
+              }
+          }
+        },
+                {
+          opcode: 'mixLetters',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'перемешать символы в [TEXT], [REPEAT]',
+          arguments: {
+              TEXT: {
+                  type: Scratch.ArgumentType.STRING,
+              defaultValue: 'абвгдеёжзийклмнопрстуф'
+              },
+            REPEAT: {
+                  type: Scratch.ArgumentType.BOOLEAN
+              }
+          }
+        },
+        {
           opcode: 'sliceText',
           blockType: Scratch.BlockType.REPORTER,
           text: 'обрезать [TEXT] от [NUM1] до [NUM2]',
@@ -3291,5 +3319,108 @@ return String(date.getUTCHours())
     let date = new Date()
     return String(date)
  }
+    mixLettersTimes({TEXT,REPEAT,TIMES}){
+    let res = ''
+    if (REPEAT=='true'||REPEAT==true){
+             function random(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+       }
+      for (let i = 0;i<TIMES;i++){
+        res += TEXT.charAt(random(0,TEXT.length-1))
+      }
+    } else {
+      let unusedText = TEXT
+      let num;
+    function random(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+       }
+            for (let i = 0;i<TIMES;i++){
+              num = random(0,unusedText.length-1)
+              res += unusedText.charAt(num)
+              unusedText = unusedText.replace(unusedText.charAt(num),'')
+      }
+    }
+return String(res)
+  }
+  mixLetters({TEXT,REPEAT}){
+    let res = ''
+    if (REPEAT=='true'||REPEAT==true){
+             function random(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+       }
+      for (let i = 0;i<TEXT.length;i++){
+        res += TEXT.charAt(random(0,TEXT.length-1))
+      }
+    } else {
+      let unusedText = TEXT
+      let num;
+    function random(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+       }
+            for (let i = 0;i<TEXT.length;i++){
+              num = random(0,unusedText.length-1)
+              res += unusedText.charAt(num)
+              unusedText = unusedText.replace(unusedText.charAt(num),'')
+      }
+    }
+return String(res)
+  }
+    mixWordsTimes({TEXT,REPEAT,TIMES}){
+    let res = ''
+    let text = String(TEXT).split(' ')
+    function random(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    if (REPEAT=='true'||REPEAT==true){
+      for (let i = 0;i<TIMES;i++){
+        res += String(text[Number(random(0,text.length-1))])+' '
+      }
+    } else {
+      let unusedText = text.concat()
+      let num
+      for (let i = 0;i<TIMES;i++){
+        for (;text[i]===undefined;){
+        num = Number(random(0,text.length-1))
+        }
+        res += String(text[num])+' '
+        delete unusedText[Object.keys(unusedText)[i]]
+      }
+    }
+    return String(res)
+  }
+  mixWords({TEXT,REPEAT}){
+    let res = ''
+    let text = String(TEXT).split(' ')
+    function random(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    if (REPEAT=='true'||REPEAT==true){
+      for (let i = 0;i<text.length;i++){
+        res += String(text[Number(random(0,text.length-1))])+' '
+      }
+    } else {
+      let unusedText = text.concat()
+      let num
+      for (let i = 0;i<text.length;i++){
+        for (let i = 0;text[i]===undefined;i++)
+        num = Number(random(0,text.length-1))
+        res += String(text[num])+' '
+        delete unusedText[Object.keys(unusedText)[i]]
+      }
+    }
+    return String(res)
+  }
 }
 Scratch.extensions.register(new teandedScratch());
