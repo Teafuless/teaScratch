@@ -1300,6 +1300,17 @@ VALUE: {
               }
           }
         },
+         {
+          opcode: 'reverseText',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'перевернуть [TEXT]',
+          arguments: {
+              TEXT: {
+                  type: Scratch.ArgumentType.STRING,
+              defaultValue: 'привет'
+              }
+          }
+        },
         {
           opcode: 'sliceText',
           blockType: Scratch.BlockType.REPORTER,
@@ -3506,6 +3517,13 @@ return String(res)
         delete unusedText[Object.keys(unusedText)[num]]
       }
     }
+    return String(res)
+  }
+  reverseText({TEXT}){
+    let res = ''
+    for (let i = TEXT.length;i>-1;i--){
+      res += String(TEXT.charAt(i))
+   }
     return String(res)
   }
 }
