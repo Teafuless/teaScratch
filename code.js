@@ -3909,7 +3909,7 @@ return String(res)
   новые блоки:*/
   
   reverseArr({ARR}){
-return String(ARR.reverse())
+return String(globalThis[ARR].reverse())
   }
   reverseWords({TEXT}){
     let res = ''
@@ -3974,7 +3974,7 @@ return String(ARR.reverse())
   }
   newLine({TIMES}){
     let res = ''
-    for (let i = 0;i<TIMES;i++){
+    for (let i = 0;i<TIMES+1;i++){
       res+='\n'
     }
     return res
