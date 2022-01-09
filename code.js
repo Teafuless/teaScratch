@@ -6,8 +6,6 @@ class teandedScratch {
       color2: '#63925d',
       color3: '#63925d',
       color4: '#63925d',
-      color5: '#63925d',
-      color6: '#63925d',
 menuIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/favico.png',
  blockIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/icon.png',
       docsURI: 'https://teafulessdl.gitbook.io/teanded-scratch/',
@@ -3491,7 +3489,7 @@ return String(res)
       for (let i = 0;i<TIMES;i++){
         num = Number(random(0,unusedText.length-1))
         res += String(unusedText[num])+' '
-        delete unusedText[Object.keys(unusedText)[num]]
+        unusedText = unusedText.splice(num,num)
       }
     }
     return String(res)
@@ -3514,7 +3512,7 @@ return String(res)
       for (let i = 0;i<text.length;i++){
         num = Number(random(0,unusedText.length-1))
         res += String(unusedText[num])+' '
-        delete unusedText[Object.keys(unusedText)[num]]
+        unusedText = unusedText.splice(num,num)
       }
     }
     return String(res)
@@ -3524,6 +3522,25 @@ return String(res)
     for (let i = TEXT.length;i>-1;i--){
       res += String(TEXT.charAt(i))
    }
+    return String(res)
+  }
+    getUniqueLetters({TEXT}){
+    let res = []
+    let text = TEXT.split(' ')
+    for (let i = 0;i<text.length;i++){
+      if (res.includes(text[i])==false){
+        res.push(text[i])
+      }
+    }
+    return String(res)
+  }
+  getUniqueLetters({TEXT}){
+    let res = []
+    for (let i = 0;i<TEXT.length;i++){
+      if (res.includes(TEXT.charAt(i))==false){
+        res.push(TEXT.charAt(i))
+      }
+    }
     return String(res)
   }
 }
