@@ -1237,6 +1237,34 @@ VALUE: {
           }
         },
         {
+          opcode: 'mixWords',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'перемешать слова в [TEXT], [REPEAT]',
+          arguments: {
+              TEXT: {
+                  type: Scratch.ArgumentType.STRING,
+              defaultValue: 'а б в г д е ё ж з и й к л м н о п р с т у ф, а дальше я забыл'
+              },
+            REPEAT: {
+                  type: Scratch.ArgumentType.BOOLEAN
+              }
+          }
+        },
+                {
+          opcode: 'mixLetters',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'перемешать символы в [TEXT], [REPEAT]',
+          arguments: {
+              TEXT: {
+                  type: Scratch.ArgumentType.STRING,
+              defaultValue: 'абвгдеёжзийклмнопрстуф'
+              },
+            REPEAT: {
+                  type: Scratch.ArgumentType.BOOLEAN
+              }
+          }
+        },
+        {
           opcode: 'sliceText',
           blockType: Scratch.BlockType.REPORTER,
           text: 'обрезать [TEXT] от [NUM1] до [NUM2]',
@@ -3291,5 +3319,54 @@ return String(date.getUTCHours())
     let date = new Date()
     return String(date)
  }
+  mixLetters({TEXT,REPEAT}){
+    let res = ''
+    if (REPEAT=='true'||REPEAT==true){
+             function random(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+       }
+      for (let i = 0;i<TEXT;i++){
+        res += TEXT[random(1,TEXT.length)]
+      }
+    } else {
+      let unusedText = TEXT
+      let num;
+    function random(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+       }
+            for (let i = 0;i<TEXT;i++){
+              num = random(1,unusedText.length)
+              res += unusedText[num]
+              unusedText = unusedText.replace(unusedText[num])
+      }
+      return String(res)
+    }
+  }
+  mixWords({TEXT,REPEAT}){
+    let res = ''
+    let text = TEXT.split(' ')
+    function random(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    if (REPEAT=='true'||REPEAT==true){
+      for (let i = 0;i<text.length;i++){
+        res += text[random(1,text.length)]
+      }
+    } else {
+      let unusedText = text
+      let num
+      for (let i = 0;i<text.length;i++){
+        num = random(1,text.length)
+        res += text[num]+' '
+        delete unusedText[Object.keys(unusedText)[i]]
+      }
+    }
+  }
 }
 Scratch.extensions.register(new teandedScratch());
