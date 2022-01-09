@@ -5,9 +5,7 @@ class teandedScratch {
       color1: '#8DC286',
       color2: '#63925d',
       color3: '#63925d',
-      color4: '#63925d',
-      color5: '#63925d',
-      color6: '#63925d',
+      color4: '#8DC286',
 menuIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/favico.png',
  blockIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/icon.png',
       docsURI: 'https://teafulessdl.gitbook.io/teanded-scratch/',
@@ -647,6 +645,195 @@ VALUE: {
           }
         },
          {
+          opcode: 'joinArr',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'объединить элементы [ARR] с помощью [SEP]',
+          arguments: {
+              ARR: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              },
+            SEP: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: ' - '
+              }
+          }
+        },
+                 {
+          opcode: 'forEachElemC',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'для каждого [ELEM] из [ARR], [FUNC]',
+          arguments: {
+              ARR: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              },
+            ELEM: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'elem'
+              },
+            FUNC: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'tea+=elem'
+              }
+          }
+        },
+         {
+          opcode: 'forEachElem',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'для каждого [ELEM] из [ARR], [FUNC]',
+          arguments: {
+              ARR: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              },
+            ELEM: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'elem'
+              },
+            FUNC: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'tea+=elem'
+              }
+          }
+        },
+         {
+          opcode: 'filterArr',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'совпадающие с [CON], [ELEM] из [ARR]',
+          arguments: {
+              ARR: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              },
+            ELEM: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'elem'
+              },
+            CON: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'elem==1'
+              }
+          }
+        },
+                {
+          opcode: 'fillArrFrom',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'заполнить [ARR] с [VAL], от [POS1] до [POS2]',
+          arguments: {
+              ARR: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              },
+            VAL: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: '0'
+              },
+            POS1: {
+                  type: Scratch.ArgumentType.NUMBER,
+                  defaultValue: 0
+              },
+             POS2: {
+                  type: Scratch.ArgumentType.NUMBER,
+                  defaultValue: 2
+              },
+          }
+        },
+                {
+          opcode: 'fillArr',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'заполнить [ARR] с [VAL]',
+          arguments: {
+              ARR: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              },
+            VAL: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: '0'
+              }
+          }
+        },
+                {
+          opcode: 'someElem',
+          blockType: Scratch.BlockType.BOOLEAN,
+          text: 'любой [ELEM] из [ARR] совпадает с [CON]?',
+          arguments: {
+              ARR: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              },
+            CON: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'elem!=1'
+              },
+            ELEM: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'elem'
+              },
+          }
+        },
+        {
+          opcode: 'everyElem',
+          blockType: Scratch.BlockType.BOOLEAN,
+          text: 'все [ELEM] из [ARR] совпадают с [CON]?',
+          arguments: {
+              ELEM: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'elem'
+              },
+            CON: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'elem>=5'
+              },
+            ARR: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              },
+          }
+        },
+        {
+          opcode: 'copyTo',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'скопировать [ARR1] в [ARR2]',
+          arguments: {
+              ARR1: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              },
+            ARR2: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool2'
+              }
+          }
+        },
+         {
+          opcode: 'copyToR',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'скопировать [ARR1] в [ARR2]',
+          arguments: {
+              ARR1: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              },
+            ARR2: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool2'
+              }
+          }
+        },
+        {
+          opcode: 'reverseArr',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'перевернуть массив [ARR]',
+          arguments: {
+              ARR: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              }
+          }
+        },
+         {
           opcode: 'pushObj',
           blockType: Scratch.BlockType.COMMAND,
           text: 'добавить значение [VALUE] в массив [NAME]',
@@ -1001,6 +1188,28 @@ VALUE: {
           blockType: Scratch.BlockType.BUTTON,
           text: 'Логические блоки',
         },
+        {
+          opcode: 'isNaNNum',
+          blockType: Scratch.BlockType.BOOLEAN,
+          text: 'isNaN [NUM]?',
+          arguments: {
+              NUM: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: NaN
+              }
+          }
+        },
+        {
+          opcode: 'isFiniteNum',
+          blockType: Scratch.BlockType.BOOLEAN,
+          text: 'isFinite [NUM]?',
+          arguments: {
+              NUM: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: Infinity
+              }
+          }
+        },
                 {
           opcode: 'trueFalse',
           blockType: Scratch.BlockType.BOOLEAN,
@@ -1234,6 +1443,28 @@ VALUE: {
                   type: Scratch.ArgumentType.STRING,
                 defaultValue: 'just a text'
               }
+          }
+        },
+         {
+          opcode: 'newLine',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'новая строка',
+          arguments: {
+              TIMES: {
+                  type: Scratch.ArgumentType.NUMBER,
+                  defaultValue: 3
+              },
+          }
+        },
+                 {
+          opcode: 'reverseWords',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'перевернуть текст [TEXT]',
+          arguments: {
+              TEXT: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool tea is always cool'
+              },
           }
         },
         {
@@ -2212,6 +2443,28 @@ VALUE: {
             },
           }
         },
+                 {
+          opcode: 'getUniqueWords',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'уникальные слова в [TEXT]',
+          arguments: {
+            TEXT: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'чай чай выручай'
+            },
+          }
+        },
+         {
+          opcode: 'getUniqueLetters',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'уникальные символы в [TEXT]',
+          arguments: {
+            TEXT: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'тттттаттттотттттатттттааааоооотт'
+            },
+          }
+        },
           {
           opcode: 'test',
           blockType: Scratch.BlockType.BUTTON,
@@ -2333,35 +2586,44 @@ VALUE: {
       ],
       menus: {
         teaMenu: {
-            items: ['teaful','tealess','teafuless']
+            items: ['teaful','tealess','teafuless'],
+          acceptReporters: true
         },
         
         varsMenu: {
             items: ['consoleErr']
         },
         charSet: {
-        items: ['QWERTY','ЙЦУКЕН','0123456789']
+        items: ['QWERTY','ЙЦУКЕН','0123456789'],
+          acceptReporters: true
         },
           tab:{
-          items: ['этой','новой']
+          items: ['этой','новой'],
+          acceptReporters: true
         },
         soundParam:{
-          items: ['URL','VOLUME','TIME','DURATION']
+          items: ['URL','VOLUME','TIME','DURATION'],
+          acceptReporters: true
         },
          trueFalse:{
-          items: ['true','false']
+          items: ['true','false'],
+          acceptReporters: true
         },
         urlParam:{
-          items: ['DOMAIN','ORIGIN']
+          items: ['DOMAIN','ORIGIN'],
+          acceptReporters: true
         },
         dateParam:{
-          items: ['YEAR','MONTH','DAY OF THE WEEK','DAY','HOURS','MINUTES','SECONDS','MS','FULL YEAR','TIME SINCE THE UNIX EPOCH','UTC FULL YEAR','UTC MONTH', 'UTC DAY OF THE WEEK','UTC DAY','UTC HOURS','UTC MINUTES','UTC SECONDS','UTC MS','TIMEZONE OFFSET']
+          items: ['YEAR','MONTH','DAY OF THE WEEK','DAY','HOURS','MINUTES','SECONDS','MS','FULL YEAR','TIME SINCE THE UNIX EPOCH','UTC FULL YEAR','UTC MONTH', 'UTC DAY OF THE WEEK','UTC DAY','UTC HOURS','UTC MINUTES','UTC SECONDS','UTC MS','TIMEZONE OFFSET'],
+          acceptReporters: true
         },
         untilDateParam:{
-          items: ['лет','месяцев','часов','минут','секунд','MS']
+          items: ['лет','месяцев','часов','минут','секунд','MS'],
+          acceptReporters: true
         },
             setDateParam:{
-          items: ['YEAR','MONTH','DAY OF THE WEEK','DAY','HOURS','MINUTES','SECONDS','MS','FULL YEAR','TIME SINCE THE UNIX EPOCH','UTC FULL YEAR','UTC MONTH', 'UTC DAY OF THE WEEK','UTC DAY','UTC HOURS','UTC MINUTES','UTC SECONDS','UTC MS']
+          items: ['YEAR','MONTH','DAY OF THE WEEK','DAY','HOURS','MINUTES','SECONDS','MS','FULL YEAR','TIME SINCE THE UNIX EPOCH','UTC FULL YEAR','UTC MONTH', 'UTC DAY OF THE WEEK','UTC DAY','UTC HOURS','UTC MINUTES','UTC SECONDS','UTC MS'],
+          acceptReporters: true
             },
       }
     };
@@ -2486,10 +2748,10 @@ newObject({NAME}) {
     return globalThis[NAME].length
   }
   indexOfObj({NAME,VALUE}){
-    return globalThis[NAME].indexOf([VALUE])
+    return globalThis[NAME].indexOf(VALUE)
   }
     lastIndexOfObj({NAME,VALUE}){
-    return globalThis[NAME].lastIndexOf([VALUE])
+    return globalThis[NAME].lastIndexOf(VALUE)
   }
   newMap({NAME}){
     globalThis[NAME] = new Map()
@@ -3491,7 +3753,7 @@ return String(res)
       for (let i = 0;i<TIMES;i++){
         num = Number(random(0,unusedText.length-1))
         res += String(unusedText[num])+' '
-        delete unusedText[Object.keys(unusedText)[num]]
+        unusedText = unusedText.splice(num,num)
       }
     }
     return String(res)
@@ -3514,17 +3776,125 @@ return String(res)
       for (let i = 0;i<text.length;i++){
         num = Number(random(0,unusedText.length-1))
         res += String(unusedText[num])+' '
-        delete unusedText[Object.keys(unusedText)[num]]
+        unusedText = unusedText.splice(num,num)
       }
     }
     return String(res)
   }
-  reverseText({TEXT}){
+
+    getUniqueWords({TEXT}){
+    let res = []
+    let text = TEXT.split(' ')
+    for (let i = 0;i<text.length;i++){
+      if (res.includes(text[i])==false){
+        res.push(text[i])
+      }
+    }
+    return String(res)
+  }
+  getUniqueLetters({TEXT}){
+    let res = []
+    for (let i = 0;i<TEXT.length;i++){
+      if (res.includes(TEXT.charAt(i))==false){
+        res.push(TEXT.charAt(i))
+      }
+    }
+    return String(res)
+  }
+    reverseText({TEXT}){
     let res = ''
     for (let i = TEXT.length;i>-1;i--){
       res += String(TEXT.charAt(i))
    }
     return String(res)
   }
+  /*v0.0.2.3-full
+  новые блоки:*/
+  
+  reverseArr({ARR}){
+return String(ARR.reverse())
+  }
+  reverseWords({TEXT}){
+    let res = ''
+    let text = TEXT.split(' ')
+    for (let i = text.length;i>-1;i--){
+      res += String(text[i])
+   }
+    return String(res)
+  }
+  copyToR({ARR1,ARR2}){
+    try {
+    return globalThis[ARR1].concat(globalThis[ARR2])
+         } catch(e) {
+       globalThis[ARR1].concat()
+     }
+  }
+   copyTo({ARR1,ARR2}){
+     try {
+    globalThis[ARR1].concat(globalThis[ARR2])
+     } catch(e) {
+       globalThis[ARR1].concat()
+     }
+  }
+  everyElem({ELEM,CON,ARR}){
+   let res = `globalThis\[\'${ARR}\'\]\.every\(${ELEM} => ${CON}\)`
+   return String(eval(res))
+  }
+    someElem({ELEM,CON,ARR}){
+   let res = `globalThis\[\'${ARR}\'\]\.some\(${ELEM} => ${CON}\)`
+   return String(eval(res))
+  }
+  fillArr({ARR,VAL}){
+    return String(globalThis[ARR].fill(VAL))
+  }
+  fillArrFrom({ARR,VAL,POS1,POS2}){
+    return String(globalThis[ARR].fill(VAL,POS1,POS2))
+  }
+  filterArr({ELEM,ARR,CON}){
+   let res = `globalThis\[\'${ARR}\'\]\.filter\(${ELEM} => ${CON}\)`
+   return String(eval(res))
+  }
+    forEachElemC({ELEM,ARR,FUNC}){
+   let res = `globalThis\[\'${ARR}\'\]\.forEach\(${ELEM} => ${FUNC}\)`
+    String(eval(res))
+  }
+  forEachElem({ELEM,ARR,FUNC}){
+   let res = `globalThis\[\'${ARR}\'\]\.forEach\(${ELEM} => ${FUNC}\)`
+   return String(eval(res))
+  }
+  joinArr({ARR,SEP}){
+    return String(globalThis[ARR].join(SEP))
+  }
+  newLine({TIMES}){
+    let res = ''
+    for (let i = 0;i<TIMES;i++){
+      res+='\n'
+    }
+    return res
+  }
+  isFiniteNum({NUM}){
+    return isFinite(NUM)
+  }
+  isNaNNum({NUM}){
+    return isNaN(NUM)
+  }
+  
+  /* // возможно добавлю позже, но не сейчас.
+  bitwiseNot({ARG}){
+    return String(~ARG)
+  }
+  bitwiseLS({NUM1,NUM2}){
+    return String(NUM1<<NUM2)
+  }
+  bitwiseRS({NUM1,NUM2}){
+    return String(NUM1>>NUM2)
+  }
+    bitwiseunSignedRS({NUM1,NUM2}){
+    return String(NUM1>>>NUM2)
+  }
+  nullish({NUM1,NUM2}){
+    return String(NUM1??NUM2)
+  }*/
+
 }
 Scratch.extensions.register(new teandedScratch());
