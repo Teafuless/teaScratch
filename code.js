@@ -6,8 +6,6 @@ class teandedScratch {
       color2: '#63925d',
       color3: '#63925d',
       color4: '#63925d',
-      color5: '#63925d',
-      color6: '#63925d',
 menuIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/favico.png',
  blockIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/icon.png',
       docsURI: 'https://teafulessdl.gitbook.io/teanded-scratch/',
@@ -2212,6 +2210,28 @@ VALUE: {
             },
           }
         },
+                 {
+          opcode: 'getUniqueWords',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'уникальные слова в [TEXT]',
+          arguments: {
+            TEXT: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'чай чай выручай'
+            },
+          }
+        },
+         {
+          opcode: 'getUniqueLetters',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'уникальные символы в [TEXT]',
+          arguments: {
+            TEXT: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'тттттаттттотттттатттттааааоооотт'
+            },
+          }
+        },
           {
           opcode: 'test',
           blockType: Scratch.BlockType.BUTTON,
@@ -2333,35 +2353,44 @@ VALUE: {
       ],
       menus: {
         teaMenu: {
-            items: ['teaful','tealess','teafuless']
+            items: ['teaful','tealess','teafuless'],
+          acceptReporters: true
         },
         
         varsMenu: {
             items: ['consoleErr']
         },
         charSet: {
-        items: ['QWERTY','ЙЦУКЕН','0123456789']
+        items: ['QWERTY','ЙЦУКЕН','0123456789'],
+          acceptReporters: true
         },
           tab:{
-          items: ['этой','новой']
+          items: ['этой','новой'],
+          acceptReporters: true
         },
         soundParam:{
-          items: ['URL','VOLUME','TIME','DURATION']
+          items: ['URL','VOLUME','TIME','DURATION'],
+          acceptReporters: true
         },
          trueFalse:{
-          items: ['true','false']
+          items: ['true','false'],
+          acceptReporters: true
         },
         urlParam:{
-          items: ['DOMAIN','ORIGIN']
+          items: ['DOMAIN','ORIGIN'],
+          acceptReporters: true
         },
         dateParam:{
-          items: ['YEAR','MONTH','DAY OF THE WEEK','DAY','HOURS','MINUTES','SECONDS','MS','FULL YEAR','TIME SINCE THE UNIX EPOCH','UTC FULL YEAR','UTC MONTH', 'UTC DAY OF THE WEEK','UTC DAY','UTC HOURS','UTC MINUTES','UTC SECONDS','UTC MS','TIMEZONE OFFSET']
+          items: ['YEAR','MONTH','DAY OF THE WEEK','DAY','HOURS','MINUTES','SECONDS','MS','FULL YEAR','TIME SINCE THE UNIX EPOCH','UTC FULL YEAR','UTC MONTH', 'UTC DAY OF THE WEEK','UTC DAY','UTC HOURS','UTC MINUTES','UTC SECONDS','UTC MS','TIMEZONE OFFSET'],
+          acceptReporters: true
         },
         untilDateParam:{
-          items: ['лет','месяцев','часов','минут','секунд','MS']
+          items: ['лет','месяцев','часов','минут','секунд','MS'],
+          acceptReporters: true
         },
             setDateParam:{
-          items: ['YEAR','MONTH','DAY OF THE WEEK','DAY','HOURS','MINUTES','SECONDS','MS','FULL YEAR','TIME SINCE THE UNIX EPOCH','UTC FULL YEAR','UTC MONTH', 'UTC DAY OF THE WEEK','UTC DAY','UTC HOURS','UTC MINUTES','UTC SECONDS','UTC MS']
+          items: ['YEAR','MONTH','DAY OF THE WEEK','DAY','HOURS','MINUTES','SECONDS','MS','FULL YEAR','TIME SINCE THE UNIX EPOCH','UTC FULL YEAR','UTC MONTH', 'UTC DAY OF THE WEEK','UTC DAY','UTC HOURS','UTC MINUTES','UTC SECONDS','UTC MS'],
+          acceptReporters: true
             },
       }
     };
@@ -2486,10 +2515,10 @@ newObject({NAME}) {
     return globalThis[NAME].length
   }
   indexOfObj({NAME,VALUE}){
-    return globalThis[NAME].indexOf([VALUE])
+    return globalThis[NAME].indexOf(VALUE)
   }
     lastIndexOfObj({NAME,VALUE}){
-    return globalThis[NAME].lastIndexOf([VALUE])
+    return globalThis[NAME].lastIndexOf(VALUE)
   }
   newMap({NAME}){
     globalThis[NAME] = new Map()
@@ -3491,7 +3520,7 @@ return String(res)
       for (let i = 0;i<TIMES;i++){
         num = Number(random(0,unusedText.length-1))
         res += String(unusedText[num])+' '
-        delete unusedText[Object.keys(unusedText)[num]]
+        unusedText = unusedText.splice(num,num)
       }
     }
     return String(res)
@@ -3514,7 +3543,7 @@ return String(res)
       for (let i = 0;i<text.length;i++){
         num = Number(random(0,unusedText.length-1))
         res += String(unusedText[num])+' '
-        delete unusedText[Object.keys(unusedText)[num]]
+        unusedText = unusedText.splice(num,num)
       }
     }
     return String(res)
@@ -3526,5 +3555,40 @@ return String(res)
    }
     return String(res)
   }
+    getUniqueWords({TEXT}){
+    let res = []
+    let text = TEXT.split(' ')
+    for (let i = 0;i<text.length;i++){
+      if (res.includes(text[i])==false){
+        res.push(text[i])
+      }
+    }
+    return String(res)
+  }
+  getUniqueLetters({TEXT}){
+    let res = []
+    for (let i = 0;i<TEXT.length;i++){
+      if (res.includes(TEXT.charAt(i))==false){
+        res.push(TEXT.charAt(i))
+      }
+    }
+    return String(res)
+  }
+    sort({TEXT}){
+    let res = []
+    for (let i = 0;i<TEXT.length;i++){
+      if (res.includes(TEXT.charAt(i))==false){
+        res.push(TEXT.charAt(i))
+      }
+    }
+    return String(res)
+  }
+  copyToR({ARR1,ARR2}){
+    return globalThis[ARR1].concat(ARR2)
+  }
+   copyTo({ARR1,ARR2}){
+    globalThis[ARR1].concat(ARR2)
+  }
+  
 }
 Scratch.extensions.register(new teandedScratch());
