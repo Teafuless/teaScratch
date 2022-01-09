@@ -2680,6 +2680,21 @@ VALUE: {
             },
           }
         },
+         {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Матрица',
+        },
+                {
+          opcode: 'getMatrix',
+          blockType: Scratch.BlockType.REPORTER,
+          text: '[MAT]',
+          arguments: {
+            MAT: {
+                type: Scratch.ArgumentType.MATRIX
+            }
+          }
+        },
       ],
       menus: {
         teaMenu: {
@@ -4003,6 +4018,9 @@ return String(globalThis[ARR].reverse())
   }
   replaceArr({ARR,TEXT}){
     return String(TEXT.replace(/(\w+|.)/g, (m,n) => (globalThis[ARR][n] || m)))
+  }
+  getMatrix({MAT}){
+    return MAT
   }
 }
 Scratch.extensions.register(new teandedScratch());
