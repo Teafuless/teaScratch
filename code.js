@@ -1237,6 +1237,70 @@ VALUE: {
           }
         },
         {
+          opcode: 'mixWordsTimes',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'перемешать слова в [TEXT], [TIMES] раз, [REPEAT]',
+          arguments: {
+              TEXT: {
+                  type: Scratch.ArgumentType.STRING,
+              defaultValue: 'а б в г д е ё ж з и й к л м н о п р с т у ф, а дальше я забыл'
+              },
+            REPEAT: {
+                  type: Scratch.ArgumentType.BOOLEAN
+              },
+            TIMES: {
+                  type: Scratch.ArgumentType.NUMBER,
+              defaultValue: 5
+              },
+          }
+        },
+                {
+          opcode: 'mixLettersTimes',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'перемешать символы в [TEXT], [TIMES] раз, [REPEAT]',
+          arguments: {
+              TEXT: {
+                  type: Scratch.ArgumentType.STRING,
+              defaultValue: 'абвгдеёжзийклмнопрстуф'
+              },
+            REPEAT: {
+                  type: Scratch.ArgumentType.BOOLEAN
+              },
+              TIMES: {
+                  type: Scratch.ArgumentType.NUMBER,
+              defaultValue: 5
+              },
+          }
+        },
+        {
+          opcode: 'mixWords',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'перемешать слова в [TEXT], [REPEAT]',
+          arguments: {
+              TEXT: {
+                  type: Scratch.ArgumentType.STRING,
+              defaultValue: 'а б в г д е ё ж з и й к л м н о п р с т у ф, а дальше я забыл'
+              },
+            REPEAT: {
+                  type: Scratch.ArgumentType.BOOLEAN
+              }
+          }
+        },
+                {
+          opcode: 'mixLetters',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'перемешать символы в [TEXT], [REPEAT]',
+          arguments: {
+              TEXT: {
+                  type: Scratch.ArgumentType.STRING,
+              defaultValue: 'абвгдеёжзийклмнопрстуф'
+              },
+            REPEAT: {
+                  type: Scratch.ArgumentType.BOOLEAN
+              }
+          }
+        },
+        {
           opcode: 'sliceText',
           blockType: Scratch.BlockType.REPORTER,
           text: 'обрезать [TEXT] от [NUM1] до [NUM2]',
@@ -2244,6 +2308,17 @@ VALUE: {
             },
           }
         },
+        {
+          opcode: 'getCurDate',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'текущий [PARAM]',
+          arguments: {
+            PARAM: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'dateParam'
+            },
+          }
+        },
       ],
       menus: {
         teaMenu: {
@@ -3210,6 +3285,48 @@ repeatText({TIMES,TEXT}){
       return String(date.getUTCSeconds())
     }
  }
+   getCurDate({PARAM}){
+    let date = new Date()
+    if (PARAM == 'YEAR'){
+      return String(date.getYear())
+    } else if (PARAM == 'MONTH'){
+      return String(date.getMonth())
+    } else if (PARAM == 'DAY OF THE WEEK'){
+      return String(date.getDay())
+    } else if (PARAM == 'HOURS'){
+      return String(date.getHours())
+    } else if (PARAM == 'MINUTES'){
+      return String(date.getMinutes())
+    } else if (PARAM == 'SECONDS'){
+      return String(date.getSeconds())
+    } else if (PARAM == 'DAY'){
+      return String(date.getDate())
+    } else if (PARAM == 'MS'){
+      return String(date.getMilliseconds())
+    } else if (PARAM == 'FULL YEAR'){
+      return String(date.getFullYear())
+    } else if (PARAM == 'TIME SINCE THE UNIX EPOCH'){
+      return String(date.getTime())
+    } else if (PARAM == 'TIMEZONE OFFSET'){
+      return String(date.getTimezoneOffset())
+    } else if (PARAM == 'UTC DAY'){
+      return String(date.getUTCDate())
+    } else if (PARAM == 'UTC DAY OF THE WEEK'){
+      return String(date.getUTCDay())
+    } else if (PARAM == 'UTC FULL YEAR'){
+      return String(date.getUTCFullYear())
+    } else if (PARAM == 'UTC HOURS'){
+      return String(date.getUTCHours())
+    } else if (PARAM == 'UTC MS'){
+      return String(date.getUTCMilliseconds())
+    } else if (PARAM == 'UTC MINUTES'){
+      return String(date.getUTCMinutes())
+    } else if (PARAM == 'UTC MONTH'){
+      return String(date.getUTCMonth())
+    } else if (PARAM == 'UTC SECONDS'){
+      return String(date.getUTCSeconds())
+    }
+ }
    setFromDate({DATE,PARAM,STR}){
     let date = new Date(DATE)
     if (PARAM == 'YEAR'){
@@ -3291,5 +3408,105 @@ return String(date.getUTCHours())
     let date = new Date()
     return String(date)
  }
+    mixLettersTimes({TEXT,REPEAT,TIMES}){
+    let res = ''
+    if (REPEAT=='true'||REPEAT==true){
+             function random(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+       }
+      for (let i = 0;i<TIMES;i++){
+        res += TEXT.charAt(random(0,TEXT.length-1))
+      }
+    } else {
+      let unusedText = TEXT
+      let num;
+    function random(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+       }
+            for (let i = 0;i<TIMES;i++){
+              num = random(0,unusedText.length-1)
+              res += unusedText.charAt(num)
+              unusedText = unusedText.replace(unusedText.charAt(num),'')
+      }
+    }
+return String(res)
+  }
+  mixLetters({TEXT,REPEAT}){
+    let res = ''
+    if (REPEAT=='true'||REPEAT==true){
+             function random(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+       }
+      for (let i = 0;i<TEXT.length;i++){
+        res += TEXT.charAt(random(0,TEXT.length-1))
+      }
+    } else {
+      let unusedText = TEXT
+      let num;
+    function random(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+       }
+            for (let i = 0;i<TEXT.length;i++){
+              num = random(0,unusedText.length-1)
+              res += unusedText.charAt(num)
+              unusedText = unusedText.replace(unusedText.charAt(num),'')
+      }
+    }
+return String(res)
+  }
+    mixWordsTimes({TEXT,REPEAT,TIMES}){
+    let res = ''
+    let text = String(TEXT).split(' ')
+    function random(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    if (REPEAT=='true'||REPEAT==true){
+      for (let i = 0;i<TIMES;i++){
+        res += String(text[Number(random(0,text.length-1))])+' '
+      }
+    } else {
+      let unusedText = text.concat()
+      let num
+      for (let i = 0;i<TIMES;i++){
+        num = Number(random(0,unusedText.length-1))
+        res += String(unusedText[num])+' '
+        delete unusedText[Object.keys(unusedText)[num]]
+      }
+    }
+    return String(res)
+  }
+  mixWords({TEXT,REPEAT}){
+    let res = ''
+    let text = String(TEXT).split(' ')
+    function random(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    if (REPEAT=='true'||REPEAT==true){
+      for (let i = 0;i<text.length;i++){
+        res += String(text[Number(random(0,text.length-1))])+' '
+      }
+    } else {
+      let unusedText = text.concat()
+      let num
+      for (let i = 0;i<text.length;i++){
+        num = Number(random(0,unusedText.length-1))
+        res += String(unusedText[num])+' '
+        delete unusedText[Object.keys(unusedText)[num]]
+      }
+    }
+    return String(res)
+  }
 }
 Scratch.extensions.register(new teandedScratch());
