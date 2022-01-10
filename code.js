@@ -2944,12 +2944,8 @@ newObject({NAME}) {
     console.log(TEXT);
   }
   consoleError({CODE}){
-    try {
-    CODE
-} catch(error) {
-  globalThis.consoleErr = String(error)
-console.error(error)
-}
+  globalThis.consoleErr = String(CODE)
+  throw (console.error(CODE))
   }
 catchError({CODE}){
     try {
