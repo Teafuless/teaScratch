@@ -22,7 +22,7 @@ menuIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/favico.png',
               defaultValue: 'Teaful'
             }
           }
-        },
+        },//
          {
           opcode: 'onSomething',
           blockType: Scratch.BlockType.HAT,
