@@ -2727,6 +2727,17 @@ VALUE: {
             },
           }
         },
+                {
+          opcode: 'getDir',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'направление [DIR]',
+          arguments: {
+            DIR: {
+                type: Scratch.ArgumentType.DIRECTION,
+                defaultValue: '228'
+            }
+          }
+        },
          {
           opcode: 'test',
           blockType: Scratch.BlockType.BUTTON,
@@ -4082,6 +4093,9 @@ return String(globalThis[ARR].reverse())
       } catch (e) {
         console.error(e)
    }
+  }
+        forEachElemMC({DIR}){
+return Number(DIR)
   }
 }
 Scratch.extensions.register(new teandedScratch());
