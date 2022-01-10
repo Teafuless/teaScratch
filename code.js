@@ -671,11 +671,11 @@ VALUE: {
                           ARR2: {
                   type: Scratch.ArgumentType.STRING,
                   defaultValue: 'cool2'
-              },
+              },/*
             ELEM: {
                   type: Scratch.ArgumentType.STRING,
                   defaultValue: 'elem'
-              },
+              },*/
             FUNC: {
                   type: Scratch.ArgumentType.STRING,
                   defaultValue: 'tea+=elem'
@@ -685,7 +685,7 @@ VALUE: {
                  {
           opcode: 'forEachElemM',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'для каждого [ELEM] из [ARR], [FUNC] записать в [ARR2]',
+          text: 'для каждого из [ARR], [FUNC] записать в [ARR2]',
           arguments: {
               ARR: {
                   type: Scratch.ArgumentType.STRING,
@@ -694,11 +694,11 @@ VALUE: {
                           ARR2: {
                   type: Scratch.ArgumentType.STRING,
                   defaultValue: 'cool2'
-              },
+              },/*
             ELEM: {
                   type: Scratch.ArgumentType.STRING,
                   defaultValue: 'elem'
-              },
+              },*/
             FUNC: {
                   type: Scratch.ArgumentType.STRING,
                   defaultValue: 'tea+=elem'
@@ -708,7 +708,7 @@ VALUE: {
                  {
           opcode: 'forEachElemC',
           blockType: Scratch.BlockType.COMMAND,
-          text: 'для каждого [ELEM] из [ARR], [FUNC]',
+          text: 'для каждого из [ARR], [FUNC]',
           arguments: {
               ARR: {
                   type: Scratch.ArgumentType.STRING,
