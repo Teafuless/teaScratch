@@ -659,6 +659,52 @@ VALUE: {
               }
           }
         },
+                                 {
+          opcode: 'forEachElemMC',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'для каждого [ELEM] из [ARR], [FUNC] записать в [ARR2]',
+          arguments: {
+              ARR: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              },
+                          ARR2: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool2'
+              },
+            ELEM: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'elem'
+              },
+            FUNC: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'tea+=elem'
+              },
+          }
+        },
+                 {
+          opcode: 'forEachElemM',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'для каждого [ELEM] из [ARR], [FUNC] записать в [ARR2]',
+          arguments: {
+              ARR: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              },
+                          ARR2: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool2'
+              },
+            ELEM: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'elem'
+              },
+            FUNC: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'tea+=elem'
+              },
+          }
+        },
                  {
           opcode: 'forEachElemC',
           blockType: Scratch.BlockType.COMMAND,
@@ -678,6 +724,7 @@ VALUE: {
               }
           }
         },
+
          {
           opcode: 'forEachElem',
           blockType: Scratch.BlockType.REPORTER,
@@ -3967,9 +4014,8 @@ return String(globalThis[ARR].reverse())
    let res = `globalThis\[\'${ARR}\'\]\.forEach\(${ELEM} => ${FUNC}\)`
        try {
      String(eval(res))
-     return true
    } catch (e) {
-     return e
+     console.error(e)
    }
   }
   forEachElem({ELEM,ARR,FUNC}){
@@ -4018,6 +4064,24 @@ return String(globalThis[ARR].reverse())
   }
   getMatrix({MAT}){
     return MAT
+  }
+    forEachElemM({ELEM,ARR,FUNC,ARR2}){
+   let res = `globalThis\[\'${ARR}\'\]\.map\(${FUNC}\)`
+      try {
+     globalThis[ARR2] = eval(res)
+     return true
+     
+   } catch (e) {
+     return e
+   }
+  }
+      forEachElemMC({ELEM,ARR,FUNC,ARR2}){
+   let res = `globalThis\[\'${ARR}\'\]\.map\(${FUNC}\)`
+      try {
+     globalThis[ARR2] = eval(res)
+      } catch (e) {
+        console.error(e)
+   }
   }
 }
 Scratch.extensions.register(new teandedScratch());
