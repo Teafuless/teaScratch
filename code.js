@@ -1,4 +1,5 @@
 class teandedScratch {
+  varsMenu = ['моя переменная']
   getInfo() {
     return {
       id: 'teanded',
@@ -165,7 +166,8 @@ menuIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/favico.png',
           arguments: {
           NAME: {
               type: Scratch.ArgumentType.STRING,
-              defaultValue: 'Tea' //
+              menu: 'varMenu'
+              //defaultValue: 'Tea' //
             }
           }
         }, 
@@ -176,7 +178,8 @@ menuIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/favico.png',
           arguments: {
           NAME: {
               type: Scratch.ArgumentType.STRING,
-              defaultValue: 'Tea' //
+              menu: 'varMenu'
+              //defaultValue: 'Tea' //
             }
           }
         }, 
@@ -187,7 +190,8 @@ menuIconURI: 'https://raw.githack.com/Teafuless/teaScratch/main/favico.png',
           arguments: {
           NAME: {
               type: Scratch.ArgumentType.STRING,
-              defaultValue: 'Tea' //
+              menu: 'varMenu'
+              //defaultValue: 'Tea' //
             },
 VALUE: {
               type: Scratch.ArgumentType.STRING,
@@ -202,7 +206,8 @@ VALUE: {
           arguments: {
           NAME: {
               type: Scratch.ArgumentType.STRING,
-              defaultValue: 'Tea' //
+              menu: 'varMenu'
+              //defaultValue: 'Tea' //
             },
 VALUE: {
               type: Scratch.ArgumentType.STRING,
@@ -217,7 +222,8 @@ VALUE: {
           arguments: {
           NAME: {
               type: Scratch.ArgumentType.STRING,
-              defaultValue: 'Tea' //
+              menu: 'varMenu'
+              //defaultValue: 'Tea' //
             },
 VALUE: {
               type: Scratch.ArgumentType.BOOLEAN,
@@ -2705,6 +2711,9 @@ VALUE: {
         
         varsMenu: {
             items: ['consoleErr']
+        },
+        varMenu: {
+            items: globalThis['varsMenu']
         },
         charSet: {
         items: ['QWERTY','ЙЦУКЕН','0123456789'],
