@@ -1672,60 +1672,6 @@ VALUE: {
               }
           }
         },
-        {
-          opcode: 'test',
-          blockType: Scratch.BlockType.BUTTON,
-          text: 'Функции',
-        },
-           {
-          opcode: 'newFunc',
-          blockType: Scratch.BlockType.COMMAND,
-          text: 'создать функцию [NAME], с аргументами [ARGS], с кодом [CODE]',
-          arguments: {
-              NAME: {
-                  type: Scratch.ArgumentType.STRING,
-                defaultValue: 'tea'
-              },
-             ARGS: {
-                  type: Scratch.ArgumentType.STRING,
-               defaultValue:'text'
-              },
-              CODE: {
-                  type: Scratch.ArgumentType.STRING,
-               defaultValue: 'return text'
-              }
-          }
-        },
-        {
-          opcode: 'execFunc',
-          blockType: Scratch.BlockType.COMMAND,
-          text: 'выполнить функцию [NAME], с аргументами [ARGS]',
-          arguments: {
-              NAME: {
-                  type: Scratch.ArgumentType.STRING,
-                defaultValue: 'tea'
-              },
-             ARGS: {
-                  type: Scratch.ArgumentType.STRING,
-               defaultValue: '\'привет\''
-              }
-          }
-        },
-         {
-          opcode: 'execFuncRep',
-          blockType: Scratch.BlockType.REPORTER,
-          text: 'выполнить функцию [NAME], с аргументами [ARGS]',
-          arguments: {
-              NAME: {
-                  type: Scratch.ArgumentType.STRING,
-                defaultValue: 'tea'
-              },
-             ARGS: {
-                  type: Scratch.ArgumentType.STRING,
-               defaultValue: '\'привет\''
-              }
-          }
-        },
          {
           opcode: 'test',
           blockType: Scratch.BlockType.BUTTON,
@@ -1869,56 +1815,7 @@ VALUE: {
                 defaultValue: '0'
               }
           }
-        },/*
-                  {
-          opcode: 'test',
-          blockType: Scratch.BlockType.BUTTON,
-          text: 'Циклы',
         },
-                         {
-          opcode: 'forC',
-          blockType: Scratch.BlockType.COMMAND,
-          text: 'выполнить [START], повторять [CODE] и выполнять действие [STEP], пока [CON] верно',
-          arguments: {
-              CON: {
-                  type: Scratch.ArgumentType.BOOLEAN
-              },
-             STEP: {
-                  type: Scratch.ArgumentType.STRING,
-                defaultValue: 'globalThis[\'tea\'] += 1'
-              },
-                         START: {
-                  type: Scratch.ArgumentType.STRING,
-                defaultValue: 'globalThis[\'tea\'] = 0'
-              },
-                         CODE: {
-                  type: Scratch.ArgumentType.STRING,
-                defaultValue: 'globalThis[\'tea\']'
-              }
-          }
-        },
-                                 {
-          opcode: 'forCR',
-          blockType: Scratch.BlockType.REPORTER,
-          text: 'выполнить [START], повторять [CODE] и выполнять действие [STEP], пока [CON] верно',
-          arguments: {
-              CON: {
-                  type: Scratch.ArgumentType.BOOLEAN
-              },
-             STEP: {
-                  type: Scratch.ArgumentType.STRING,
-                defaultValue: 'globalThis\[\'tea\'\] \+\= 1'
-              },
-                         START: {
-                  type: Scratch.ArgumentType.STRING,
-                defaultValue: 'globalThis\[\'tea\'\] \= 0'
-              },
-                         CODE: {
-                  type: Scratch.ArgumentType.STRING,
-                defaultValue: 'globalThis\[\'tea\'\]'
-              }
-          }
-        },*/
         
          {
           opcode: 'test',
@@ -2754,6 +2651,111 @@ VALUE: {
             }
           }
         },
+                          {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Циклы',
+        },
+                         {
+          opcode: 'forC',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'выполнить [START], повторять [CODE] и выполнять действие [STEP], пока [CON] верно',
+          arguments: {
+              CON: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'globalThis[\'tea\'] < 5'
+              },
+             STEP: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'globalThis[\'tea\'] += 1'
+              },
+                         START: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'globalThis[\'tea\'] = 0'
+              },
+                         CODE: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'globalThis[\'tea\']'
+              }
+          }
+        },
+                                 {
+          opcode: 'forCR',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'выполнить [START], повторять [CODE] и выполнять действие [STEP], пока [CON] верно',
+          arguments: {
+              CON: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'globalThis[\'tea\'] < 5'
+              },
+             STEP: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'globalThis\[\'tea\'\] \+\= 1'
+              },
+                         START: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'globalThis\[\'tea\'\] \= 0'
+              },
+                         CODE: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'globalThis\[\'tea\'\]'
+              }
+          }
+        },
+               {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Функции',
+        },
+           {
+          opcode: 'newFunc',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'создать функцию [NAME], с аргументами [ARGS], с кодом [CODE]',
+          arguments: {
+              NAME: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'isTea'
+              },
+             ARGS: {
+                  type: Scratch.ArgumentType.STRING,
+               defaultValue: '\'tea\''
+              },
+              CODE: {
+                  type: Scratch.ArgumentType.STRING,
+               defaultValue: '\'return tea + " - чай"\''
+              }
+          }
+        },
+        {
+          opcode: 'execFunc',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'выполнить функцию [NAME], с аргументами [ARGS]',
+          arguments: {
+              NAME: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'isTea'
+              },
+             ARGS: {
+                  type: Scratch.ArgumentType.STRING,
+               defaultValue: '"я"'
+              }
+          }
+        },
+         {
+          opcode: 'execFuncRep',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'выполнить функцию [NAME], с аргументами [ARGS]',
+          arguments: {
+              NAME: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'isTea'
+              },
+             ARGS: {
+                  type: Scratch.ArgumentType.STRING,
+               defaultValue: '"я"'
+              }
+          }
+        },
       ],
       menus: {
         teaMenu: {
@@ -3110,40 +3112,17 @@ function generateString(length,charset) {
   
   }
   newFunc({NAME,ARGS,CODE}){
-    function gen(n,c,a){
-  let r = '';
-  r = `function ${n}\(${a}\)\{
-${c};
-\}`
-  return r;
-};
-globalThis[NAME+'func'] = `gen(${NAME},${CODE},${ARGS})`;
-eval(globalThis[NAME+'func']);
+let res = `globalThis["${NAME}"] \= new Function(${ARGS},${CODE})`
+eval(res)
   }
   execFunc({NAME,ARGS}){
-        function gen(n,c,a){
-  let r = '';
-  r = `function ${n}\(${a}\)\{
-${c};
-\}`
-  return r;
-};
-    function exec(n,a){
-  let r
-r = `${n}\(${a}\)`
-  eval(r)
-}
-eval(globalThis[NAME+'func'])
-   exec(NAME,ARGS)
+let res = `${NAME}(${ARGS})`
+eval(res)
+
   }
   execFuncRep({NAME,ARGS}){
-    function exec(n,a){
-  let r
-r = `${n}\(${a}\)`
-  eval(r)
-}
- eval(globalThis[NAME+'func'])
-   return exec(NAME,ARGS)
+let res = `${NAME}(${ARGS})`
+return eval(res)
   }
   tsEval({CODE}){
     /*ERRORS*/
@@ -3361,15 +3340,25 @@ function getKey(obj, value) {
     for (let i = 0;i < text.length;i++){
       globalThis[MAS].push(text[i])
     }
-  }/*
+  }
   forC({CON,STEP,START,CODE}){
+    
 let res = `for \(${START}\;${CON}\;${STEP}\)\{${CODE}\}`
+try {
 eval(res)
+} catch(e) {
+  console.error(e)
+}
   }
     forCR({CON,STEP,START,CODE}){
 let res = `for \(${START}\;${CON}\;${STEP}\)\{\n${CODE}\n\}`
-return eval(res)
-  }*/
+try {
+eval(res)
+  return true
+} catch(e) {
+  return e
+}
+  }
   openPage({URL,TAB}){
     if (TAB=='этой'){
 window.open(String(URL), '_blank');
