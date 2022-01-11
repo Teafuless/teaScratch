@@ -1511,7 +1511,7 @@ VALUE: {
          {
           opcode: 'newLine',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'новая строка',
+          text: 'новая строка [TIMES] раз',
           arguments: {
               TIMES: {
                   type: Scratch.ArgumentType.NUMBER,
@@ -2754,6 +2754,79 @@ VALUE: {
                   type: Scratch.ArgumentType.STRING,
                defaultValue: '"я"'
               }
+          }
+        },
+        {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Классы',
+        },
+        {
+          opcode: 'Construct',
+          blockType: Scratch.BlockType.COMMAND,
+          text: '',
+          arguments: {
+              CON: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'Join'
+              },
+             VAR: {
+                  type: Scratch.ArgumentType.STRING,
+               defaultValue: 'teaful'
+              },
+            CODE: {
+                  type: Scratch.ArgumentType.STRING,
+               defaultValue: '("Teaful"," жив")'
+              },
+          }
+        },
+                {
+          opcode: 'ConstructR',
+          blockType: Scratch.BlockType.REPORTER,
+          text: '',
+          arguments: {
+              CON: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'Join'
+              },
+             VAR: {
+                  type: Scratch.ArgumentType.STRING,
+               defaultValue: 'teaful'
+              },
+            CODE: {
+                  type: Scratch.ArgumentType.STRING,
+               defaultValue: '("Teaful"," жив")'
+              },
+          }
+        },
+                {
+          opcode: 'newClass',
+          blockType: Scratch.BlockType.COMMAND,
+          text: '',
+          arguments: {
+             CLASS: {
+                  type: Scratch.ArgumentType.STRING,
+               defaultValue: 'Join'
+              },
+            CODE: {
+                  type: Scratch.ArgumentType.STRING,
+               defaultValue: 'constructor(text,text2)\{return String(text)+String(text2)\}'
+              },
+          }
+        },
+                        {
+          opcode: 'newClassR',
+          blockType: Scratch.BlockType.REPORTER,
+          text: '',
+          arguments: {
+             CLASS: {
+                  type: Scratch.ArgumentType.STRING,
+               defaultValue: 'Join'
+              },
+            CODE: {
+                  type: Scratch.ArgumentType.STRING,
+               defaultValue: 'constructor(text,text2)\{return String(text)+String(text2)\}'
+              },
           }
         },
       ],
@@ -4085,6 +4158,22 @@ return String(globalThis[ARR].reverse())
   }
         getDir({DIRECT}){
 return isNaN(Number(DIRECT)) ? 0 : Number(DIRECT)
+  }
+  Construct({CON,VAR,CODE}){
+    let res = `globalThis['${VAR}'] = new ${CON}${CODE}`
+    eval(res)
+  }
+    ConstructR({CON,VAR,CODE}){
+    let res = `globalThis['${VAR}'] = new ${CON}${CODE}`
+    return eval(res)
+  }
+    newClass({CLASS,CODE}){
+    let res = `globalThis['${CLASS}'] = class ${CLASS}\{\}`
+    eval(res)
+  }
+      newClassR({CLASS,CODE}){
+    let res = `globalThis['${CLASS}'] = class ${CLASS}\{\}`
+    return eval(res)
   }
 }
 Scratch.extensions.register(new teandedScratch());
