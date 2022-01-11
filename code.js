@@ -2764,7 +2764,7 @@ VALUE: {
         {
           opcode: 'Construct',
           blockType: Scratch.BlockType.COMMAND,
-          text: '',
+          text: 'let [VAR] = new [CON]([CODE])',
           arguments: {
               CON: {
                   type: Scratch.ArgumentType.STRING,
@@ -2783,7 +2783,7 @@ VALUE: {
                 {
           opcode: 'ConstructR',
           blockType: Scratch.BlockType.REPORTER,
-          text: '',
+          text: 'let [VAR] = new [CON]([CODE])',
           arguments: {
               CON: {
                   type: Scratch.ArgumentType.STRING,
@@ -2802,7 +2802,7 @@ VALUE: {
                 {
           opcode: 'newClass',
           blockType: Scratch.BlockType.COMMAND,
-          text: '',
+          text: 'class [CLASS] \{[CODE]\}',
           arguments: {
              CLASS: {
                   type: Scratch.ArgumentType.STRING,
@@ -2817,7 +2817,7 @@ VALUE: {
                         {
           opcode: 'newClassR',
           blockType: Scratch.BlockType.REPORTER,
-          text: '',
+          text: 'class [CLASS] \{[CODE]\}',
           arguments: {
              CLASS: {
                   type: Scratch.ArgumentType.STRING,
