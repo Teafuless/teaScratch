@@ -230,6 +230,21 @@ VALUE: {
           blockType: Scratch.BlockType.BUTTON,
           text: 'Текстовые манипуляции',
         },
+                                {
+          opcode: 'codeBase',
+          blockType: Scratch.BlockType.REPORTER,
+          text: '[PARAM] Base64 [TEXT]',
+          arguments: {
+             PARAM: {
+                  type: Scratch.ArgumentType.STRING,
+              menu: 'baseParam'
+              },
+            TEXT: {
+                  type: Scratch.ArgumentType.STRING,
+               defaultValue: 'tea'
+              },
+          }
+        },
          {
           opcode: 'randomText',
           blockType: Scratch.BlockType.REPORTER,
@@ -2764,7 +2779,7 @@ VALUE: {
         {
           opcode: 'Construct',
           blockType: Scratch.BlockType.COMMAND,
-          text: '',
+          text: 'let [VAR] = new [CON]([CODE])',
           arguments: {
               CON: {
                   type: Scratch.ArgumentType.STRING,
@@ -2783,7 +2798,7 @@ VALUE: {
                 {
           opcode: 'ConstructR',
           blockType: Scratch.BlockType.REPORTER,
-          text: '',
+          text: 'let [VAR] = new [CON]([CODE])',
           arguments: {
               CON: {
                   type: Scratch.ArgumentType.STRING,
@@ -2802,7 +2817,7 @@ VALUE: {
                 {
           opcode: 'newClass',
           blockType: Scratch.BlockType.COMMAND,
-          text: '',
+          text: 'class [CLASS] \{[CODE]\}',
           arguments: {
              CLASS: {
                   type: Scratch.ArgumentType.STRING,
@@ -2817,7 +2832,7 @@ VALUE: {
                         {
           opcode: 'newClassR',
           blockType: Scratch.BlockType.REPORTER,
-          text: '',
+          text: 'class [CLASS] \{[CODE]\}',
           arguments: {
              CLASS: {
                   type: Scratch.ArgumentType.STRING,
@@ -2827,6 +2842,148 @@ VALUE: {
                   type: Scratch.ArgumentType.STRING,
                defaultValue: 'constructor(text,text2)\{return String(text)+String(text2)\}'
               },
+          }
+        },
+        {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Экран',
+        },
+                     {
+          opcode: 'getScreen',
+          blockType: Scratch.BlockType.REPORTER,
+          text: '[PARAM]',
+          arguments: {
+             PARAM: {
+                  type: Scratch.ArgumentType.STRING,
+              menu: 'screenParam'
+              }
+          }
+        },
+                {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Навигатор',
+        },
+                                        {
+          opcode: 'isOnLine',
+          blockType: Scratch.BlockType.BOOLEAN,
+          text: 'в сети?',
+          arguments: {
+             PARAM: {
+                  type: Scratch.ArgumentType.STRING,
+              menu: 'baseParam'
+              }
+          }
+        },
+                                             {
+          opcode: 'language',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'язык пользователя',
+          arguments: {
+             PARAM: {
+                  type: Scratch.ArgumentType.STRING,
+              menu: 'baseParam'
+              }
+          }
+        },
+                           {
+          opcode: 'languageNum',
+          blockType: Scratch.BlockType.REPORTER,
+          text: '[NUM] язык пользователя',
+          arguments: {
+            NUM: {
+                  type: Scratch.ArgumentType.NUMBER,
+              defaultValue: '0'
+              }
+          }
+        },
+        {
+          opcode: 'languages',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'языки пользователя',
+          arguments: {
+             NUM: {
+                  type: Scratch.ArgumentType.STRING,
+              defaultValue: '0'
+              }
+          }
+        },
+                           {
+          opcode: 'cookieEnabled',
+          blockType: Scratch.BlockType.BOOLEAN,
+          text: 'файлы Cookie включены?',
+          arguments: {
+             PARAM: {
+                  type: Scratch.ArgumentType.STRING,
+              menu: 'baseParam'
+              }
+          }
+        },
+                           {
+          opcode: 'RAM',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'ОЗУ',
+          arguments: {
+             PARAM: {
+                  type: Scratch.ArgumentType.STRING,
+              menu: 'baseParam'
+              }
+          }
+        },
+                           {
+          opcode: 'hardware',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'количество ядер процессора',
+          arguments: {
+             PARAM: {
+                  type: Scratch.ArgumentType.STRING,
+              menu: 'baseParam'
+              }
+          }
+        },/*
+                           {
+          opcode: 'buildID',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'ID сборки',
+          arguments: {
+             PARAM: {
+                  type: Scratch.ArgumentType.STRING,
+              menu: 'baseParam'
+              }
+          }
+        },*/
+                           {
+          opcode: 'platform',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'платформа',
+          arguments: {
+             PARAM: {
+                  type: Scratch.ArgumentType.STRING,
+              menu: 'baseParam'
+              }
+          }
+        },
+                           {
+          opcode: 'userAgent',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'пользовательский агент',
+          arguments: {
+             PARAM: {
+                  type: Scratch.ArgumentType.STRING,
+              menu: 'baseParam'
+              }
+          }
+        },
+                           {
+          opcode: 'vendor',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'производитель браузера',
+          arguments: {
+             PARAM: {
+                  type: Scratch.ArgumentType.STRING,
+              menu: 'baseParam'
+              }
           }
         },
       ],
@@ -2869,6 +3026,14 @@ VALUE: {
         },
             setDateParam:{
           items: ['YEAR','MONTH','DAY OF THE WEEK','DAY','HOURS','MINUTES','SECONDS','MS','FULL YEAR','TIME SINCE THE UNIX EPOCH','UTC FULL YEAR','UTC MONTH', 'UTC DAY OF THE WEEK','UTC DAY','UTC HOURS','UTC MINUTES','UTC SECONDS','UTC MS'],
+          acceptReporters: true
+            },
+        baseParam:{
+          items: ['в','из'],
+          acceptReporters: true
+            },
+         screenParam:{
+          items: ["ширина","высота","доступная ширина","доступная высота","первый доступный пиксель слева","первый доступный пиксель сверху","угол ориентации документа","ориентация экрана"],
           acceptReporters: true
             },
       }
@@ -4174,6 +4339,67 @@ return isNaN(Number(DIRECT)) ? 0 : Number(DIRECT)
       newClassR({CLASS,CODE}){
     let res = `globalThis['${CLASS}'] = class ${CLASS}\{\}`
     return eval(res)
+  }
+  codeBase({PARAM,TEXT}){
+    if (PARAM == 'в'){
+    return String(btoa(TEXT))
+    } else if (PARAM == 'из'){
+    return String(atob(TEXT))
+    } else {
+      return undefined //чтобы жизнь мёдом не казалась
+    }
+  }
+  getScreen({PARAM}){
+    if (PARAM == 'ширина'){
+    return screen.width
+    } else if (PARAM == 'высота'){
+    return screen.height
+    } else if (PARAM == 'доступная ширина'){
+    return screen.availWidth
+    } else if (PARAM == 'доступная высота'){
+    return screen.availHeight
+    } else if (PARAM == 'первый доступный пиксель слева'){
+    return screen.availLeft
+    } else if (PARAM == 'угол ориентации документа'){
+    return screen.orientation.angle
+    } else if (PARAM == 'ориентация экрана'){
+    return screen.orientation.type
+    } else if (PARAM == 'ориентация экрана'){
+    return screen.orientation.type
+    }
+  }
+  isOnLine({PARAM}){
+    return navigator.onLine
+  }
+    language({PARAM}){
+    return navigator.language
+  }
+      cookieEnabled({PARAM}){
+    return navigator.cookieEnabled
+  }
+      RAM({PARAM}){
+    return navigator.deviceMemory
+  }
+      hardware({PARAM}){
+    return navigator.hardwareConcurrency
+  }
+  buildID({PARAM}){
+    return navigator.buildID
+  }
+  languageNum({NUM}){
+    return navigator.languages[NUM]
+  }
+    languages({NUM}){
+    return navigator.languages
+  }
+    platform({NUM}){
+    return navigator.userAgentData.platform
+  }
+    userAgent({NUM}){
+    return navigator.userAgent
+  }
+    vendor({NUM}){
+    return navigator.vendor
   }
 }
 Scratch.extensions.register(new teandedScratch());
