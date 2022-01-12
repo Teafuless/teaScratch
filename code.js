@@ -4475,5 +4475,16 @@ return isNaN(Number(DIRECT)) ? 0 : Number(DIRECT)
       return String(e)
     }
   }
+  getUrlParam({PARAM,URL}){
+    function getUrlParam(name,url) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regexp = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        res = regexp.exec(url);
+    if (!res) return null;
+    if (!res[2]) return '';
+    return decodeURIComponent(res[2].replace(/\+/g, ' '));
+}
+    return getUrlParam(PARAM,URL)
+  }
 }
 Scratch.extensions.register(new teandedScratch());
