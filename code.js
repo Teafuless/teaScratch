@@ -659,6 +659,36 @@ VALUE: {
               }
           }
         },
+                 {
+          opcode: 'sortWith',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'отсортировать [ARR] с помощью [CODE]',
+          arguments: {
+              ARR: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              },
+            CODE: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'function(a,b){return a - b}'
+              }
+          }
+        },
+                         {
+          opcode: 'sortWithC',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'отсортировать [ARR] с помощью [CODE]',
+          arguments: {
+              ARR: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'cool'
+              },
+            CODE: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'function(a,b){return a - b}'
+              }
+          }
+        },
          {
           opcode: 'joinArr',
           blockType: Scratch.BlockType.REPORTER,
@@ -1511,7 +1541,36 @@ VALUE: {
           blockType: Scratch.BlockType.BUTTON,
           text: 'Текст',
         },
-        
+                         {
+          opcode: 'stWith',
+          blockType: Scratch.BlockType.BOOLEAN,
+          text: '[TEXT] начинается с [ARG]?',
+          arguments: {
+              ARG: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'super'
+              },
+            TEXT: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'superDuperCoolTea1945'
+              }
+          }
+        },
+                                 {
+          opcode: 'endsWith',
+          blockType: Scratch.BlockType.BOOLEAN,
+          text: '[TEXT] заканчивается с [ARG]?',
+          arguments: {
+              ARG: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: '1945'
+              },
+            TEXT: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'superDuperCoolTea1945'
+              }
+          }
+        },
           {
           opcode: 'text',
           blockType: Scratch.BlockType.REPORTER,
@@ -4400,6 +4459,21 @@ return isNaN(Number(DIRECT)) ? 0 : Number(DIRECT)
   }
     vendor({NUM}){
     return navigator.vendor
+  }
+  stWith({TEXT,ARG}){
+   return TEXT.startsWith(ARG)
+  }
+    endsWith({TEXT,ARG}){
+   return TEXT.endsWith(ARG)
+  }
+  sortWith({ARR,CODE}){
+    let res = `${ARR}.sort(CODE)`
+    return try {
+      eval(res)
+       } catch(e) {
+      console.log(e)
+      String(e)
+    }
   }
 }
 Scratch.extensions.register(new teandedScratch());
