@@ -1468,13 +1468,71 @@ VALUE: {
           blockType: Scratch.BlockType.BUTTON,
           text: 'Консоль\/Терминал',
         },
+                               {
+          opcode: 'tryLogicC',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'попробовать выполнить [CODE], успешно: [TRUE], при ошибке: [FALSE]',
+          arguments: {
+              CODE: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'tea'
+              },
+            TRUE: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'console.log("Успешно!")'
+              },
+            FALSE: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'globalThis.tea = 0; console.error(e)'
+              }
+          }
+        },
+                         {
+          opcode: 'tryLogicB',
+          blockType: Scratch.BlockType.BOOLEAN,
+          text: 'попробовать выполнить [CODE], успешно: [TRUE], при ошибке: [FALSE]',
+          arguments: {
+              CODE: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'tea'
+              },
+            TRUE: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'true'
+              },
+            FALSE: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'globalThis.tea = 0; false'
+              }
+          }
+        },
+                 {
+          opcode: 'tryLogicR',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'попробовать выполнить [CODE], успешно: [TRUE], при ошибке: [FALSE]',
+          arguments: {
+              CODE: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'tea'
+              },
+            TRUE: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: '"переменная существует"'
+              },
+            FALSE: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'globalThis.tea = 0; "попробуй снова"'
+              }
+          }
+        },
          {
           opcode: 'catchError',
           blockType: Scratch.BlockType.REPORTER,
           text: 'попробовать выполнить [CODE], записать ошибку в переменную [VARS]',
           arguments: {
               CODE: {
-                  type: Scratch.ArgumentType.STRING
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: '5+5'
               },
             VARS: {
                   type: Scratch.ArgumentType.STRING,
@@ -1488,7 +1546,8 @@ VALUE: {
           text: 'попробовать выполнить [CODE], записать ошибку в переменную [VARS]',
           arguments: {
               CODE: {
-                  type: Scratch.ArgumentType.STRING
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: 'globalThis.tea = "lol"'
               },
             VARS: {
                   type: Scratch.ArgumentType.STRING,
@@ -4500,6 +4559,30 @@ return isNaN(Number(DIRECT)) ? 0 : Number(DIRECT)
     return decodeURIComponent(res[2].replace(/\+/g, ' '));
 }
     return getUrlParam(PARAM,URL)
+  }
+  tryLogicR({CODE,TRUE,FALSE}){
+    try { 
+      eval(CODE)
+      return eval(TRUE)
+    } catch(e) {
+      return eval(FALSE)
+    }
+  }
+    tryLogicB({CODE,TRUE,FALSE}){
+    try { 
+      eval(CODE)
+      return eval(TRUE)
+    } catch(e) {
+      return eval(FALSE)
+    }
+  }
+    tryLogicC({CODE,TRUE,FALSE}){
+    try { 
+      eval(CODE)
+      eval(TRUE)
+    } catch(e) {
+      eval(FALSE)
+    }
   }
 }
 Scratch.extensions.register(new teandedScratch());
