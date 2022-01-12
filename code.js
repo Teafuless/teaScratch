@@ -2268,6 +2268,21 @@ VALUE: {
           blockType: Scratch.BlockType.BUTTON,
           text: 'Ссылки',
         },
+                {
+          opcode: 'getUrlParam',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'получить параметр [PARAM] из [URL]',
+          arguments: {
+            URL: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'https://example.com/example?test=tea&username=чай'
+            },
+             PARAM: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'test'
+            },
+          }
+        },
          {
           opcode: 'isURL',
           blockType: Scratch.BlockType.BOOLEAN,
@@ -4474,6 +4489,17 @@ return isNaN(Number(DIRECT)) ? 0 : Number(DIRECT)
       console.log(e)
       return String(e)
     }
+  }
+  getUrlParam({PARAM,URL}){
+    function getUrlParam(name,url) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regexp = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        res = regexp.exec(url);
+    if (!res) return null;
+    if (!res[2]) return '';
+    return decodeURIComponent(res[2].replace(/\+/g, ' '));
+}
+    return getUrlParam(PARAM,URL)
   }
 }
 Scratch.extensions.register(new teandedScratch());
