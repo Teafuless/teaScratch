@@ -245,6 +245,21 @@ VALUE: {
               },
           }
         },
+        {
+          opcode: 'enURI',
+          blockType: Scratch.BlockType.REPORTER,
+          text: '[PARAM] URI [TEXT]',
+          arguments: {
+             PARAM: {
+                  type: Scratch.ArgumentType.STRING,
+              menu: 'baseParam'
+              },
+            TEXT: {
+                  type: Scratch.ArgumentType.STRING,
+               defaultValue: 'tea'
+              },
+          }
+        },
          {
           opcode: 'randomText',
           blockType: Scratch.BlockType.REPORTER,
@@ -2794,6 +2809,44 @@ VALUE: {
             }
           }
         },
+                        {
+          opcode: 'changeResR',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'с [PARAM] в [TEXT] на [ARG]',
+          arguments: {
+            PARAM: {
+                type: Scratch.ArgumentType.STRING,
+              menu: 'trueFalse'
+            },
+             TEXT: {
+                type: Scratch.ArgumentType.STRING,
+              defaultValue: 'true \| false'
+            },
+            ARG: {
+                type: Scratch.ArgumentType.STRING,
+              defaultValue: 'истина'
+            },
+          }
+        },
+        {
+          opcode: 'changeResB',
+          blockType: Scratch.BlockType.BOOLEAN,
+          text: 'с [PARAM] в [TEXT] на [ARG]',
+          arguments: {
+            PARAM: {
+                type: Scratch.ArgumentType.STRING,
+              menu: 'trueFalse'
+            },
+             TEXT: {
+                type: Scratch.ArgumentType.STRING,
+              defaultValue: 'true \| false'
+            },
+            ARG: {
+                type: Scratch.ArgumentType.STRING,
+              defaultValue: 'ложь'
+            },
+          }
+        },
          {
           opcode: 'test',
           blockType: Scratch.BlockType.BUTTON,
@@ -4603,5 +4656,18 @@ return isNaN(Number(DIRECT)) ? 0 : Number(DIRECT)
       eval(FALSE)
     }
   }
+  enURI({TEXT,PARAM}){
+    if (PARAM=='в'){
+    return String(encodeURI(TEXT))
+    } else {
+    return String(decodeURI(TEXT))
+    }
+  }
+  changeResR({PARAM,TEXT,ARG}){
+    return String(TEXT).replace(String(PARAM),String(ARG))
+  }
+  changeResB({PARAM,TEXT,ARG}){
+    return String(TEXT).replace(String(PARAM),String(ARG))
+  }                             
 }
 Scratch.extensions.register(new teandedScratch());
