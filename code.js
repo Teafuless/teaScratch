@@ -3283,9 +3283,9 @@ VALUE: {
                   type: Scratch.ArgumentType.STRING,
               defaultValue: 'customEvent'
               },
-            ARG: {
+            CODE: {
                   type: Scratch.ArgumentType.STRING,
-              defaultValue: '"test","lol"'
+              defaultValue: '"123"'
               },
                         PARAM: {
                   type: Scratch.ArgumentType.STRING,
@@ -4819,6 +4819,7 @@ return isNaN(Number(DIRECT)) ? 0 : Number(DIRECT)
     return String(TEXT).replace(String(PARAM),String(ARG))
   }                             
   createEvent({EVENT,CODE}){
+    globalThis[`__${EVENT}__`] = {}
     globalThis[`__${EVENT}__`].code = `${CODE}`
     globalThis[`__${EVENT}__`].executed = false
     globalThis[`__${EVENT}__`].name = `${EVENT}`
