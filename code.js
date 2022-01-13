@@ -2968,6 +2968,21 @@ VALUE: {
               }
           }
         },
+                 {
+          opcode: 'execFuncB',
+          blockType: Scratch.BlockType.BOOLEAN,
+          text: 'выполнить функцию [NAME], с аргументами [ARGS]',
+          arguments: {
+              NAME: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'isTea'
+              },
+            ARGS: {
+                  type: Scratch.ArgumentType.STRING,
+               defaultValue: '"я"'
+              }
+          }
+        },
         {
           opcode: 'test',
           blockType: Scratch.BlockType.BUTTON,
@@ -3556,6 +3571,10 @@ eval(res)
 
   }
   execFuncRep({NAME,ARGS}){
+let res = `${NAME}(${ARGS})`
+return eval(res)
+  }
+    execFuncB({NAME,ARGS}){
 let res = `${NAME}(${ARGS})`
 return eval(res)
   }
