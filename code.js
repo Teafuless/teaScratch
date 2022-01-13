@@ -3283,9 +3283,9 @@ VALUE: {
                   type: Scratch.ArgumentType.STRING,
               defaultValue: 'customEvent'
               },
-            ARG: {
+            CODE: {
                   type: Scratch.ArgumentType.STRING,
-              defaultValue: '"test","lol"'
+              defaultValue: '"123"'
               },
                         PARAM: {
                   type: Scratch.ArgumentType.STRING,
@@ -4819,6 +4819,7 @@ return isNaN(Number(DIRECT)) ? 0 : Number(DIRECT)
     return String(TEXT).replace(String(PARAM),String(ARG))
   }                             
   createEvent({EVENT,CODE}){
+    globalThis[`__${EVENT}__`] = {}
     globalThis[`__${EVENT}__`].code = `${CODE}`
     globalThis[`__${EVENT}__`].executed = false
     globalThis[`__${EVENT}__`].name = `${EVENT}`
@@ -4856,6 +4857,16 @@ return isNaN(Number(DIRECT)) ? 0 : Number(DIRECT)
       return res.concat(opt)
     }
   }
+    execEventR({EVENT,ARG}){
+    globalThis[`__${EVENT}__`].executed = true
+    globalThis[`__${EVENT}__`].options = (ARG == 'runWithNoArgs') ? [false] : options()
+    return eval(globalThis[`__${EVENT}__`].onExecute)
+    function options() {
+      let res = [true]
+      let opt = ARG.split(',')
+      return res.concat(opt)
+    }
+  }
   stopEvent({EVENT}){
     if (typeof globalThis[`__${EVENT}__`].interval != undefined){
      try {
@@ -4874,11 +4885,11 @@ return isNaN(Number(DIRECT)) ? 0 : Number(DIRECT)
   }
     getEvent({EVENT,CODE,PARAM}){
     let res = `globalThis['__${EVENT}__'].${PARAM}`
-    eval(res)
+    return eval(res)
   }
       getEventB({EVENT,CODE,PARAM}){
     let res = `globalThis['__${EVENT}__'].${PARAM}`
-    eval(res)
+    return eval(res)
   }
 }
 Scratch.extensions.register(new teandedScratch());
