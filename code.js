@@ -3198,6 +3198,132 @@ VALUE: {
               }
           }
         },
+         {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'События',
+        },
+         {
+          opcode: 'createEvent',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'создать событие [EVENT] с кодом [CODE]',
+          arguments: {
+             EVENT: {
+                  type: Scratch.ArgumentType.STRING,
+              defaultValue: 'customEvent'
+              },
+            CODE: {
+                  type: Scratch.ArgumentType.STRING,
+              defaultValue: 'console.log("1")'
+              },
+          }
+        },
+                 {
+          opcode: 'startEvent',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'запустить событие [EVENT]',
+          arguments: {
+             EVENT: {
+                  type: Scratch.ArgumentType.STRING,
+              defaultValue: 'customEvent'
+              },
+            ARG: {
+                  type: Scratch.ArgumentType.STRING,
+              defaultValue: '"test","lol"'
+              },
+          }
+        },
+                         {
+          opcode: 'execEvent',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'выполнить событие [EVENT] с параметрами [ARG]',
+          arguments: {
+             EVENT: {
+                  type: Scratch.ArgumentType.STRING,
+              defaultValue: 'customEvent'
+              },
+            ARG: {
+                  type: Scratch.ArgumentType.STRING,
+              defaultValue: '"test","lol"'
+              },
+          }
+        },
+                                 {
+          opcode: 'execEventR',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'выполнить событие [EVENT] с параметрами [ARG]',
+          arguments: {
+             EVENT: {
+                  type: Scratch.ArgumentType.STRING,
+              defaultValue: 'customEvent'
+              },
+            ARG: {
+                  type: Scratch.ArgumentType.STRING,
+              defaultValue: '"test","lol"'
+              },
+          }
+        },
+                                 {
+          opcode: 'stopEvent',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'остановить событие [EVENT]',
+          arguments: {
+             EVENT: {
+                  type: Scratch.ArgumentType.STRING,
+              defaultValue: 'customEvent'
+              },
+          }
+        },
+                                 {
+          opcode: 'setEvent',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'установить [PARAM] от [EVENT] в [CODE]',
+          arguments: {
+             EVENT: {
+                  type: Scratch.ArgumentType.STRING,
+              defaultValue: 'customEvent'
+              },
+            ARG: {
+                  type: Scratch.ArgumentType.STRING,
+              defaultValue: '"test","lol"'
+              },
+                        PARAM: {
+                  type: Scratch.ArgumentType.STRING,
+              menu: "eventParam"
+              },
+          }
+        },
+        
+                                 {
+          opcode: 'getEvent',
+          blockType: Scratch.BlockType.REPORTER,
+          text: '[PARAM] от [EVENT]',
+          arguments: {
+             EVENT: {
+                  type: Scratch.ArgumentType.STRING,
+              defaultValue: 'customEvent'
+              },
+            PARAM: {
+                  type: Scratch.ArgumentType.STRING,
+              menu: "eventParam"
+              },
+          }
+        },
+                                         {
+          opcode: 'getEventB',
+          blockType: Scratch.BlockType.BOOLEAN,
+          text: '[PARAM] от [EVENT]',
+          arguments: {
+             EVENT: {
+                  type: Scratch.ArgumentType.STRING,
+              defaultValue: 'customEvent'
+              },
+            PARAM: {
+                  type: Scratch.ArgumentType.STRING,
+              menu: "eventParam"
+              },
+          }
+        },
       ],
       menus: {
         teaMenu: {
@@ -3246,6 +3372,10 @@ VALUE: {
             },
          screenParam:{
           items: ["ширина","высота","доступная ширина","доступная высота","первый доступный пиксель слева","первый доступный пиксель сверху","угол ориентации документа","ориентация экрана"],
+          acceptReporters: true
+            },
+          eventParam:{
+          items: ["name","code","onRun","onError","onStop","onExecute"],
           acceptReporters: true
             },
       }
@@ -4688,5 +4818,67 @@ return isNaN(Number(DIRECT)) ? 0 : Number(DIRECT)
   changeResB({PARAM,TEXT,ARG}){
     return String(TEXT).replace(String(PARAM),String(ARG))
   }                             
+  createEvent({EVENT,CODE}){
+    globalThis[`__${EVENT}__`].code = `${CODE}`
+    globalThis[`__${EVENT}__`].executed = false
+    globalThis[`__${EVENT}__`].name = `${EVENT}`
+    globalThis[`__${EVENT}__`].onRun = `console.log('${EVENT} just started')`
+    globalThis[`__${EVENT}__`].onExecute = `console.log('${EVENT} just executed')`
+    globalThis[`__${EVENT}__`].onStop = `console.log('${EVENT} just stopped')`
+    globalThis[`__${EVENT}__`].onError = `console.error('At \'${EVENT}\': '+e)`
+    return `${EVENT}`
+  }
+  runEvent({EVENT}){
+    globalThis[`__${EVENT}__`].interval = window.setInterval(event, 500);
+    eval(globalThis[`__${EVENT}__`].onRun)
+    function event() {
+     if (globalThis[`__${EVENT}__`].options[0]){
+       //ничего
+     } else {
+       //тоже пока ничего
+     }
+     if (globalThis[`__${EVENT}__`].executed === true){
+      try {
+       eval(globalThis[`__${EVENT}__`].code)
+      } catch(e) {
+       eval(globalThis[`__${EVENT}__`].onError)
+     }
+    }
+   }
+  }
+  execEvent({EVENT,ARG}){
+    globalThis[`__${EVENT}__`].executed = true
+    globalThis[`__${EVENT}__`].options = (ARG == 'runWithNoArgs') ? [false] : options()
+    eval(globalThis[`__${EVENT}__`].onExecute)
+    function options() {
+      let res = [true]
+      let opt = ARG.split(',')
+      return res.concat(opt)
+    }
+  }
+  stopEvent({EVENT}){
+    if (typeof globalThis[`__${EVENT}__`].interval != undefined){
+     try {
+    clearInterval(globalThis[`__${EVENT}__`].interval)
+       eval(globalThis[`__${EVENT}__`].onStop)
+     } catch(e) {
+       console.error(e)
+     }
+    } else {
+      console.error(`Can\'t stop \"__${EVENT}__\" because it\'s not running\.`)
+    }
+  }
+  setEvent({EVENT,CODE,PARAM}){
+    let res = `globalThis['__${EVENT}__'].${PARAM} = ${CODE}`
+    eval(res)
+  }
+    getEvent({EVENT,CODE,PARAM}){
+    let res = `globalThis['__${EVENT}__'].${PARAM}`
+    eval(res)
+  }
+      getEventB({EVENT,CODE,PARAM}){
+    let res = `globalThis['__${EVENT}__'].${PARAM}`
+    eval(res)
+  }
 }
 Scratch.extensions.register(new teandedScratch());
