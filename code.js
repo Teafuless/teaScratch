@@ -3283,9 +3283,9 @@ VALUE: {
                   type: Scratch.ArgumentType.STRING,
               defaultValue: 'customEvent'
               },
-            ARG: {
+            CODE: {
                   type: Scratch.ArgumentType.STRING,
-              defaultValue: '"test","lol"'
+              defaultValue: '"123"'
               },
                         PARAM: {
                   type: Scratch.ArgumentType.STRING,
