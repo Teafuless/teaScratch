@@ -4892,5 +4892,12 @@ return isNaN(Number(DIRECT)) ? 0 : Number(DIRECT)
     let res = `globalThis['__${EVENT}__'].${PARAM}`
     return eval(res)
   }
+  addEndText({TEXT,ARG,LEN}){
+    return String(TEXT.padEnd(LEN,ARG))
+  }
+  addStartText({TEXT,ARG,LEN}){
+    return String(TEXT.padStart(LEN,ARG))
+  }
+  
 }
 Scratch.extensions.register(new teandedScratch());
