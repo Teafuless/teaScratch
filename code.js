@@ -1626,6 +1626,44 @@ VALUE: {
           blockType: Scratch.BlockType.BUTTON,
           text: 'Текст',
         },
+                                 {
+          opcode: 'addEndText',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'дополнить конец [TEXT] с [ARG], [LEN] раз',
+          arguments: {
+              ARG: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: '0'
+              },
+            TEXT: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: '10'
+              },
+              LEN: {
+                  type: Scratch.ArgumentType.NUMBER,
+                  defaultValue: '5'
+              }
+          }
+        },
+                                         {
+          opcode: 'addStartText',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'дополнить начало [TEXT] с [ARG], [LEN] раз',
+          arguments: {
+              ARG: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: '0'
+              },
+            TEXT: {
+                  type: Scratch.ArgumentType.STRING,
+                  defaultValue: '10'
+              },
+              LEN: {
+                  type: Scratch.ArgumentType.NUMBER,
+                  defaultValue: '5'
+              }
+          }
+        },
                          {
           opcode: 'stWith',
           blockType: Scratch.BlockType.BOOLEAN,
@@ -3324,6 +3362,113 @@ VALUE: {
               },
           }
         },
+                 {
+          opcode: 'test',
+          blockType: Scratch.BlockType.BUTTON,
+          text: 'Многострочнный код',
+        },
+                                                 {
+          opcode: 'addCodeLine',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'строка #[NUM] от [NAME], код [CODE]',
+          arguments: {
+             NUM: {
+                  type: Scratch.ArgumentType.NUMBER,
+              defaultValue: '0'
+              },
+            NAME: {
+                  type: Scratch.ArgumentType.STRING,
+              defaultValue: 'code'
+              },
+                        CODE: {
+                  type: Scratch.ArgumentType.STRING,
+              defaultValue: 'console.log("test")'
+              },
+          }
+        },
+                                                         {
+          opcode: 'removeCodeLine',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'удалить строку #[NUM] от [NAME]',
+          arguments: {
+             NUM: {
+                  type: Scratch.ArgumentType.NUMBER,
+              defaultValue: '0'
+              },
+            NAME: {
+                  type: Scratch.ArgumentType.STRING,
+              defaultValue: 'code'
+              },
+          }
+        },
+                                                         {
+          opcode: 'executeCodeLine',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'выполнить строку #[NUM] от [NAME]',
+          arguments: {
+             NUM: {
+                  type: Scratch.ArgumentType.NUMBER,
+              defaultValue: '0'
+              },
+            NAME: {
+                  type: Scratch.ArgumentType.STRING,
+              defaultValue: 'code'
+              },
+          }
+        },
+                                                         {
+          opcode: 'executeCodeLineR',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'выполнить строку #[NUM] от [NAME]',
+          arguments: {
+             NUM: {
+                  type: Scratch.ArgumentType.NUMBER,
+              defaultValue: '0'
+              },
+            NAME: {
+                  type: Scratch.ArgumentType.STRING,
+              defaultValue: 'code'
+              },
+          }
+        },
+{
+          opcode: 'executeCode',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'выполнить код [NAME]',
+          arguments: {
+            NAME: {
+                  type: Scratch.ArgumentType.STRING,
+              defaultValue: 'code'
+              },
+          }
+        },
+{
+          opcode: 'executeCodeR',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'выполнить код [NAME]',
+          arguments: {
+            NAME: {
+                  type: Scratch.ArgumentType.STRING,
+              defaultValue: 'code'
+              },
+          }
+        },
+                                                         {
+          opcode: 'getCodeLine',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'строка #[NUM] от [NAME]',
+          arguments: {
+             NUM: {
+                  type: Scratch.ArgumentType.NUMBER,
+              defaultValue: '0'
+              },
+            NAME: {
+                  type: Scratch.ArgumentType.STRING,
+              defaultValue: 'code'
+            },
+          }
+        },
+        
       ],
       menus: {
         teaMenu: {
@@ -4893,11 +5038,65 @@ return isNaN(Number(DIRECT)) ? 0 : Number(DIRECT)
     return eval(res)
   }
   addEndText({TEXT,ARG,LEN}){
-    return String(TEXT.padEnd(LEN,ARG))
+    return String(String(TEXT).padEnd(LEN,ARG))
   }
   addStartText({TEXT,ARG,LEN}){
-    return String(TEXT.padStart(LEN,ARG))
+    return String(String(TEXT).padStart(LEN,ARG))
   }
-  
+  addCodeLine({NUM,CODE,NAME}){
+    if (typeof globalThis[NAME] === undefined){
+      globalThis[NAME] = {}
+    }
+    let res = `globalThis[${NAME}].line${NUM} = String(${CODE}+'/*new line*/')`
+    eval(res)
+  }
+    removeCodeLine({NUM,NAME}){
+    if (typeof globalThis[NAME] === undefined){
+      globalThis[NAME] = {}
+    }
+    let res = `globalThis[${NAME}].line${NUM} = /* nothing */`
+    eval(res)
+  }
+      executeCodeLine({NUM,NAME}){
+    if (typeof globalThis[NAME] === undefined){
+      globalThis[NAME] = {}
+    }
+    let res = `globalThis[${NAME}].line${NUM}`
+    eval(res)
+  }
+        executeCodeLineR({NUM,NAME}){
+    if (typeof globalThis[NAME] === undefined){
+      globalThis[NAME] = {}
+    }
+    let res = `globalThis[${NAME}].line${NUM}`
+    return eval(res)
+  }
+          getCodeLine({NUM,NAME}){
+    if (typeof globalThis[NAME] === undefined){
+      globalThis[NAME] = {}
+    }
+    let res = `'globalThis[${NAME}].line${NUM}'`
+    return eval(res)
+  }
+        executeCode({NUM,NAME}){
+let res = ''
+for (let i in test){
+  res += test[i]
+  if (res.trim().charAt(res.trim().length-1)!=';'){
+    res += ';'
+  }
+}
+   eval(res)
+  }
+          executeCodeR({NUM,NAME}){
+let res = ''
+for (let i in test){
+  res += test[i]
+  if (res.trim().charAt(res.trim().length-1)!=';'){
+    res += ';'
+  }
+}
+   return eval(res)
+  }
 }
 Scratch.extensions.register(new teandedScratch());
