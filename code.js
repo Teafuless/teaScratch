@@ -4985,26 +4985,28 @@ return isNaN(Number(DIRECT)) ? 0 : Number(DIRECT)
     return `${EVENT}`
   }
   runEvent({EVENT}){
-    globalThis[`__${EVENT}__`].interval = setInterval(event, 500);
+    /*
+    globalThis[`__${EVENT}__`].interval = setInterval(event, 500);*/
     eval(globalThis[`__${EVENT}__`].onRun)
+   globalThis[`__${EVENT}__`].executed = true
+    /*
     function event() {
-     /*
      if (globalThis[`__${EVENT}__`].options[0]){
        //ничего
      } else {
        //тоже пока ничего
-     }*/
+     }
      if (globalThis[`__${EVENT}__`].executed === true){
       try {
        eval(globalThis[`__${EVENT}__`].code)
+      
       } catch(e) {
        eval(globalThis[`__${EVENT}__`].onError)
      }
     }
-   }
+   }*/
   }
   execEvent({EVENT,ARG}){
-    globalThis[`__${EVENT}__`].executed = true
     globalThis[`__${EVENT}__`].options = (ARG == 'runWithNoArgs') ? [false] : options()
     eval(globalThis[`__${EVENT}__`].onExecute)
     function options() {
@@ -5012,9 +5014,16 @@ return isNaN(Number(DIRECT)) ? 0 : Number(DIRECT)
       let opt = ARG.split(',')
       return res.concat(opt)
     }
+    if (globalThis[`__${EVENT}__`].executed === true){
+          try {
+       eval(globalThis[`__${EVENT}__`].code)
+      
+      } catch(e) {
+       eval(globalThis[`__${EVENT}__`].onError)
+     }
+    }
   }
     execEventR({EVENT,ARG}){
-    globalThis[`__${EVENT}__`].executed = true
     globalThis[`__${EVENT}__`].options = (ARG == 'runWithNoArgs') ? [false] : options()
     return eval(globalThis[`__${EVENT}__`].onExecute)
     function options() {
@@ -5022,18 +5031,22 @@ return isNaN(Number(DIRECT)) ? 0 : Number(DIRECT)
       let opt = ARG.split(',')
       return res.concat(opt)
     }
+      if (globalThis[`__${EVENT}__`].executed === true){
+                try {
+       eval(globalThis[`__${EVENT}__`].code)
+      
+      } catch(e) {
+       eval(globalThis[`__${EVENT}__`].onError)
+     }
+      }
   }
   stopEvent({EVENT}){
-    if (typeof globalThis[`__${EVENT}__`].interval != undefined){
      try {
-    clearInterval(globalThis[`__${EVENT}__`].interval)
+       globalThis[`__${EVENT}__`].executed = false
        eval(globalThis[`__${EVENT}__`].onStop)
      } catch(e) {
        console.error(e)
      }
-    } else {
-      console.error(`Can\'t stop \"__${EVENT}__\" because it\'s not running\.`)
-    }
   }
   setEvent({EVENT,CODE,PARAM}){
     let res = `globalThis['__${EVENT}__'].${PARAM} = ${CODE}`
