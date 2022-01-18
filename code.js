@@ -1888,7 +1888,7 @@ VALUE: {
                  {
           opcode: 'pi',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'pi',
+          text: 'π',
           arguments: {
               TEA: {
                   type: Scratch.ArgumentType.STRING,
@@ -1981,6 +1981,63 @@ VALUE: {
                   type: Scratch.ArgumentType.STRING,
                 defaultValue: 'key'
               }
+          }
+        },
+                                  {
+          opcode: 'forInObjB',
+          blockType: Scratch.BlockType.BOOLEAN,
+          text: 'для каждого [VAR] в [OBJ], [CODE]',
+          arguments: {
+              OBJ: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'obj'
+              },
+             VAR: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'key'
+              },
+             CODE: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'console.log(Object.keys(obj[key]))'
+              },
+          }
+        },
+                          {
+          opcode: 'forInObjR',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'для каждого [VAR] в [OBJ], [CODE]',
+          arguments: {
+              OBJ: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'obj'
+              },
+             VAR: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'key'
+              },
+             CODE: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'return Object.keys(obj[key])'
+              },
+          }
+        },
+                  {
+          opcode: 'forInObj',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'для каждого [VAR] в [OBJ], [CODE]',
+          arguments: {
+              OBJ: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'obj'
+              },
+             VAR: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'key'
+              },
+             CODE: {
+                  type: Scratch.ArgumentType.STRING,
+                defaultValue: 'console.log(Object.keys(obj[key]))'
+              },
           }
         },
          {
@@ -5124,6 +5181,31 @@ for (let i in globalThis[NAME]){
   res += globalThis[NAME][i]
 }
    return eval(res)
+  }
+  forInObj({CODE,OBJ,VAR}){
+    try {
+    let res = `for (let ${VAR} in ${OBJ}){${CODE}`
+    eval(res)
+    } catch(e) {
+      console.log(e)
+    }
+  }
+      forInObjB({CODE,OBJ,VAR}){
+      try {
+    let res = `for (let ${VAR} in ${OBJ}){${CODE}`
+    eval(res)
+        return true
+      } catch(e) {
+        return e
+      }
+  }
+    forInObjR({CODE,OBJ,VAR}){
+      try {
+    let res = `for (let ${VAR} in ${OBJ}){${CODE}`
+    return eval(res)
+      } catch(e) {
+        return e
+      }
   }
 }
 Scratch.extensions.register(new teandedScratch());
